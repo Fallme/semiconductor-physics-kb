@@ -1,0 +1,7 @@
+# Large PDF files (source materials, not distributed)
+*.pdf
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store

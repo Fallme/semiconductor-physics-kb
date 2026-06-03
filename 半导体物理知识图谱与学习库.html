@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半导体物理 - 知识图谱与学习知识库</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --primary: #1a73e8;
+  --primary-dark: #1557b0;
+  --accent: #34a853;
+  --warn: #ea4335;
+  --bg: #f8f9fa;
+  --card: #ffffff;
+  --text: #202124;
+  --text-secondary: #5f6368;
+  --border: #dadce0;
+  --shadow: 0 1px 3px rgba(0,0,0,.12), 0 1px 2px rgba(0,0,0,.08);
+  --shadow-lg: 0 4px 16px rgba(0,0,0,.12);
+}
+body { font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
+/* Header */
+.header { background: linear-gradient(135deg, #1a237e 0%, #1565c0 50%, #0277bd 100%); color: white; padding: 32px 40px; position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-lg); }
+.header h1 { font-size: 28px; font-weight: 700; margin-bottom: 4px; }
+.header p { font-size: 14px; opacity: .85; }
+.header-nav { display: flex; gap: 8px; margin-top: 16px; flex-wrap: wrap; }
+.header-nav button { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3); color: white; padding: 6px 16px; border-radius: 20px; cursor: pointer; font-size: 13px; transition: all .2s; }
+.header-nav button:hover, .header-nav button.active { background: rgba(255,255,255,.3); border-color: rgba(255,255,255,.5); }
+/* Layout */
+.container { max-width: 1400px; margin: 0 auto; padding: 24px; }
+.view { display: none; }
+.view.active { display: block; }
+/* Knowledge Graph */
+#graph-container { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; position: relative; }
+#graph-container svg { width: 100%; height: 70vh; min-height: 500px; }
+.graph-controls { position: absolute; top: 12px; right: 12px; display: flex; gap: 6px; }
+.graph-controls button { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 12px; box-shadow: var(--shadow); }
+.graph-controls button:hover { background: var(--primary); color: white; }
+.graph-legend { position: absolute; bottom: 12px; left: 12px; background: rgba(255,255,255,.95); border-radius: 8px; padding: 12px 16px; box-shadow: var(--shadow); font-size: 12px; }
+.graph-legend div { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
+.graph-legend .dot { width: 12px; height: 12px; border-radius: 50%; }
+/* Chapters View */
+.chapter-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 20px; }
+.chapter-card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; transition: transform .2s, box-shadow .2s; cursor: pointer; }
+.chapter-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-lg); }
+.chapter-card .card-header { padding: 20px 24px; color: white; }
+.chapter-card .card-header h3 { font-size: 17px; margin-bottom: 4px; }
+.chapter-card .card-header .tag { display: inline-block; background: rgba(255,255,255,.25); padding: 2px 10px; border-radius: 10px; font-size: 11px; margin-top: 4px; }
+.chapter-card .card-body { padding: 16px 24px; }
+.chapter-card .card-body ul { list-style: none; }
+.chapter-card .card-body li { padding: 6px 0; font-size: 13.5px; color: var(--text-secondary); border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 8px; }
+.chapter-card .card-body li:last-child { border-bottom: none; }
+.chapter-card .card-body li .star { color: #fbbc04; font-size: 11px; }
+/* Detail Modal */
+.modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.5); z-index: 200; overflow-y: auto; padding: 40px 20px; }
+.modal-overlay.active { display: flex; justify-content: center; align-items: flex-start; }
+.modal { background: var(--card); border-radius: 16px; max-width: 900px; width: 100%; max-height: 85vh; overflow-y: auto; box-shadow: var(--shadow-lg); }
+.modal-header { padding: 24px 32px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; background: var(--card); z-index: 1; }
+.modal-header h2 { font-size: 20px; }
+.modal-close { background: none; border: none; font-size: 24px; cursor: pointer; color: var(--text-secondary); padding: 4px 8px; }
+.modal-body { padding: 24px 32px; }
+.modal-body h3 { font-size: 16px; color: var(--primary); margin: 20px 0 10px; padding-bottom: 6px; border-bottom: 2px solid var(--primary); display: inline-block; }
+.modal-body h3:first-child { margin-top: 0; }
+.modal-body p, .modal-body li { font-size: 14px; line-height: 1.7; }
+.modal-body ul { padding-left: 20px; margin: 8px 0; }
+.modal-body li { margin: 4px 0; }
+.modal-body .formula-box { background: #f1f3f4; border-left: 4px solid var(--primary); padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 12px 0; font-family: 'Cambria Math', 'Times New Roman', serif; font-size: 15px; line-height: 1.8; }
+.modal-body .key-point { background: #e8f5e9; border-left: 4px solid var(--accent); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13.5px; }
+.modal-body .warning { background: #fce4ec; border-left: 4px solid var(--warn); padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0; font-size: 13.5px; }
+/* Formula Reference */
+.formula-section { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); margin-bottom: 20px; overflow: hidden; }
+.formula-section .section-header { padding: 16px 24px; background: #f1f3f4; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+.formula-section .section-header h3 { font-size: 16px; }
+.formula-section .section-content { padding: 16px 24px; display: none; }
+.formula-section.open .section-content { display: block; }
+.formula-section .section-header .arrow { transition: transform .2s; }
+.formula-section.open .section-header .arrow { transform: rotate(90deg); }
+table.formula-table { width: 100%; border-collapse: collapse; font-size: 13.5px; }
+table.formula-table th { background: #e8eaf6; padding: 10px 14px; text-align: left; font-weight: 600; border-bottom: 2px solid var(--primary); }
+table.formula-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+table.formula-table tr:hover td { background: #f5f5f5; }
+/* Comparison Tables */
+.comparison-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 20px; }
+.comparison-card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); overflow: hidden; }
+.comparison-card .card-title { padding: 14px 20px; background: linear-gradient(135deg, #1a237e, #1565c0); color: white; font-size: 15px; font-weight: 600; }
+.comparison-card table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.comparison-card th { background: #e8eaf6; padding: 8px 12px; text-align: left; font-weight: 600; }
+.comparison-card td { padding: 8px 12px; border-bottom: 1px solid #f0f0f0; }
+.comparison-card tr:hover td { background: #fafafa; }
+/* Exam View */
+.exam-section { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 24px; margin-bottom: 20px; }
+.exam-section h2 { font-size: 18px; color: var(--primary); margin-bottom: 16px; }
+.exam-item { margin-bottom: 20px; padding: 16px; background: #fafafa; border-radius: 8px; }
+.exam-item .q { font-weight: 600; margin-bottom: 8px; }
+.exam-item .a { color: var(--text-secondary); font-size: 14px; padding-left: 16px; border-left: 3px solid var(--accent); margin-top: 8px; }
+/* Stats */
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 24px; }
+.stat-card { background: var(--card); border-radius: 12px; box-shadow: var(--shadow); padding: 20px; text-align: center; }
+.stat-card .num { font-size: 32px; font-weight: 700; color: var(--primary); }
+.stat-card .label { font-size: 13px; color: var(--text-secondary); margin-top: 4px; }
+/* Search */
+.search-box { background: var(--card); border-radius: 8px; padding: 12px 20px; box-shadow: var(--shadow); margin-bottom: 20px; display: flex; gap: 12px; align-items: center; }
+.search-box input { flex: 1; border: none; outline: none; font-size: 15px; background: transparent; }
+.search-box .search-icon { color: var(--text-secondary); font-size: 18px; }
+.search-results { background: var(--card); border-radius: 8px; box-shadow: var(--shadow); margin-bottom: 20px; max-height: 400px; overflow-y: auto; }
+.search-result-item { padding: 12px 20px; border-bottom: 1px solid #f0f0f0; cursor: pointer; }
+.search-result-item:hover { background: #f1f3f4; }
+.search-result-item .sr-chapter { font-size: 11px; color: var(--primary); font-weight: 600; }
+.search-result-item .sr-title { font-size: 14px; font-weight: 500; }
+.search-result-item .sr-desc { font-size: 12px; color: var(--text-secondary); margin-top: 2px; }
+/* Responsive */
+@media (max-width: 768px) {
+  .chapter-grid { grid-template-columns: 1fr; }
+  .comparison-grid { grid-template-columns: 1fr; }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); }
+  .header { padding: 20px; }
+  .container { padding: 16px; }
+}
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #ccc; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>半导体物理 - 知识图谱与学习知识库</h1>
+  <p>基于刘恩科《半导体物理学》(第七版) 及上海大学813/962考研资料</p>
+  <div class="header-nav">
+    <button class="active" onclick="switchView('graph')">知识图谱</button>
+    <button onclick="switchView('chapters')">章节学习</button>
+    <button onclick="switchView('formulas')">公式手册</button>
+    <button onclick="switchView('compare')">概念对比</button>
+    <button onclick="switchView('exam')">真题练习</button>
+  </div>
+</div>
+
+<div class="container">
+
+<!-- Stats Bar -->
+<div class="stats-bar">
+  <div class="stat-card"><div class="num">9</div><div class="label">核心章节</div></div>
+  <div class="stat-card"><div class="num">50+</div><div class="label">核心概念</div></div>
+  <div class="stat-card"><div class="num">30+</div><div class="label">关键公式</div></div>
+  <div class="stat-card"><div class="num">6</div><div class="label">概念对比组</div></div>
+</div>
+
+<!-- Search -->
+<div class="search-box">
+  <span class="search-icon">&#128269;</span>
+  <input type="text" id="searchInput" placeholder="搜索概念、公式、考点..." oninput="handleSearch(this.value)">
+</div>
+<div class="search-results" id="searchResults" style="display:none;"></div>
+
+<!-- View: Knowledge Graph -->
+<div class="view active" id="view-graph">
+  <div id="graph-container">
+    <svg id="graphSvg"></svg>
+    <div class="graph-controls">
+      <button onclick="resetGraph()">重置视图</button>
+      <button onclick="toggleLabels()">切换标签</button>
+    </div>
+    <div class="graph-legend">
+      <div><span class="dot" style="background:#1a237e"></span> 核心章节</div>
+      <div><span class="dot" style="background:#1565c0"></span> 重要概念</div>
+      <div><span class="dot" style="background:#34a853"></span> 公式/关系</div>
+      <div><span class="dot" style="background:#ea4335"></span> 应用/器件</div>
+      <div><span class="dot" style="background:#fbbc04"></span> 效应/现象</div>
+    </div>
+  </div>
+</div>
+
+<!-- View: Chapters -->
+<div class="view" id="view-chapters">
+  <div class="chapter-grid" id="chapterGrid"></div>
+</div>
+
+<!-- View: Formulas -->
+<div class="view" id="view-formulas">
+  <div id="formulaContainer"></div>
+</div>
+
+<!-- View: Comparison -->
+<div class="view" id="view-compare">
+  <div class="comparison-grid" id="compareGrid"></div>
+</div>
+
+<!-- View: Exam -->
+<div class="view" id="view-exam">
+  <div id="examContainer"></div>
+</div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal">
+    <div class="modal-header">
+      <h2 id="modalTitle"></h2>
+      <button class="modal-close" onclick="closeModal()">&times;</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<script>
+// ===================== DATA =====================
+const chapters = [
+  {
+    id: 'ch1', num: '第1章', title: '半导体中的电子状态',
+    color: '#1a237e', weight: 95,
+    subtitle: '能带与杂质能级 — 理论基石',
+    topics: [
+      { name: '晶体结构', desc: '金刚石结构、闪锌矿结构、纤锌矿结构', stars: 3 },
+      { name: '能带理论', desc: '能级分裂→能带形成，导带、价带、禁带', stars: 5 },
+      { name: '有效质量', desc: 'E-k关系，电子在晶格中的等效质量', stars: 5 },
+      { name: '空穴', desc: '价带空位等效为正电荷载流子', stars: 5 },
+      { name: '杂质能级', desc: '施主/受主杂质，浅能级/深能级', stars: 4 },
+      { name: '类氢模型', desc: '杂质电离能估算', stars: 4 },
+    ],
+    detail: `<h3>能带结构</h3>
+<p>半导体的能带结构决定了其电学性质。原子周期性排列形成晶体时，分立能级分裂为能带。</p>
+<div class="formula-box">
+<strong>导体</strong>：导带部分填充或与价带重叠<br>
+<strong>半导体</strong>：禁带宽度较窄（~0.1-3 eV），价带全满，导带全空<br>
+<strong>绝缘体</strong>：禁带宽度很宽（>3 eV）
+</div>
+<h3>有效质量</h3>
+<div class="formula-box">
+m* = ħ² / (d²E/dk²)
+</div>
+<p>有效质量描述了电子在周期性势场中运动的等效惯性，使得牛顿定律可以用于半导体中的电子运动分析。导带底有效质量为正，价带顶有效质量为负。</p>
+<h3>空穴</h3>
+<div class="key-point">
+<strong>空穴的物理本质</strong>：价带中缺少一个电子的状态，等效为一个带正电（+q）、具有正有效质量的准粒子。空穴的运动速度等于被缺少的电子速度的负值。
+</div>
+<h3>杂质能级</h3>
+<ul>
+<li><strong>施主杂质</strong>（如P, As, Sb掺入Si）：提供电子，在禁带中靠近导带底形成浅能级</li>
+<li><strong>受主杂质</strong>（如B, Ga, In掺入Si）：接受电子（提供空穴），在禁带中靠近价带顶形成浅能级</li>
+<li><strong>深能级杂质</strong>：在禁带中部形成能级，常作为复合中心</li>
+<li><strong>杂质补偿</strong>：同时存在施主和受主时，有效掺杂浓度 = |N_D - N_A|</li>
+</ul>
+<div class="formula-box">
+<strong>类氢模型电离能</strong>：<br>
+E_d = (m*/m₀) × (1/ε_r²) × 13.6 eV<br>
+（m*为电子有效质量，ε_r为相对介电常数）
+</div>`
+  },
+  {
+    id: 'ch2', num: '第2章', title: '半导体中的杂质和缺陷能级',
+    color: '#1a237e', weight: 80,
+    subtitle: '缺陷、位错能级',
+    topics: [
+      { name: '替位式杂质', desc: '杂质原子替代晶格原子位置', stars: 4 },
+      { name: '间隙式杂质', desc: '杂质原子位于晶格间隙', stars: 3 },
+      { name: '点缺陷', desc: '空位、间隙原子', stars: 3 },
+      { name: '位错', desc: '线缺陷对能级的影响', stars: 3 },
+      { name: '深能级作用', desc: '复合中心与陷阱中心', stars: 4 },
+    ],
+    detail: `<h3>杂质分类</h3>
+<ul>
+<li><strong>替位式杂质</strong>：杂质原子占据晶格原子位置（如P在Si中）</li>
+<li><strong>间隙式杂质</strong>：杂质原子处于晶格间隙（如C, N在Si中）</li>
+</ul>
+<h3>点缺陷与线缺陷</h3>
+<ul>
+<li><strong>空位</strong>：缺少原子的格点位置</li>
+<li><strong>间隙原子</strong>：多余原子位于间隙位置</li>
+<li><strong>位错</strong>：晶格排列错位形成的线缺陷</li>
+</ul>
+<div class="key-point">
+<strong>深能级的双重角色</strong>：深能级杂质在禁带中部，既可以是复合中心（促进电子-空穴复合，缩短少子寿命），也可以是陷阱中心（暂时俘获载流子后释放）。
+</div>`
+  },
+  {
+    id: 'ch3', num: '第3章', title: '半导体中载流子的统计分布',
+    color: '#1565c0', weight: 98,
+    subtitle: '载流子统计分布 — 计算核心',
+    topics: [
+      { name: '费米分布函数', desc: 'f(E) = 1/[1+exp((E-E_F)/k₀T)]', stars: 5 },
+      { name: '玻尔兹曼近似', desc: '当E-E_F≥3kT时适用', stars: 4 },
+      { name: '状态密度', desc: 'g(E) ∝ √(E-E_c)', stars: 3 },
+      { name: '本征载流子浓度', desc: 'n_i² = N_c·N_v·exp(-E_g/k₀T)', stars: 5 },
+      { name: '费米能级', desc: 'E_F与载流子浓度的定量关系', stars: 5 },
+      { name: '简并半导体', desc: '重掺杂E_F进入能带', stars: 3 },
+      { name: '电中性条件', desc: 'n+N_A = p+N_D', stars: 5 },
+    ],
+    detail: `<h3>费米分布函数</h3>
+<div class="formula-box">
+f(E) = 1 / [1 + exp((E - E_F) / k₀T)]
+</div>
+<p>费米能级E_F是电子占据概率为1/2的能量位置。对于非简并半导体，E_F在禁带中。</p>
+
+<h3>本征载流子浓度</h3>
+<div class="formula-box">
+n_i² = N_c · N_v · exp(-E_g / k₀T)
+</div>
+<p>室温(300K)时，Si的n_i ≈ 1.5×10¹⁰ cm⁻³，GaAs的n_i ≈ 2×10⁶ cm⁻³</p>
+
+<h3>杂质半导体载流子浓度（完全电离）</h3>
+<div class="formula-box">
+<strong>n型半导体</strong>：n₀ ≈ N_D，p₀ = n_i²/n₀<br>
+<strong>p型半导体</strong>：p₀ ≈ N_A，n₀ = n_i²/p₀
+</div>
+
+<h3>费米能级位置</h3>
+<div class="formula-box">
+n型：E_F - E_i = k₀T · ln(n₀/n_i)（E_F靠近导带）<br>
+p型：E_i - E_F = k₀T · ln(p₀/n_i)（E_F靠近价带）
+</div>
+
+<div class="key-point">
+<strong>电中性条件</strong>是解题关键：n + N_A⁻ = p + N_D⁺<br>
+对于n型完全电离：n = N_D - N_A + p ≈ N_D - N_A
+</div>
+
+<div class="warning">
+<strong>易错点</strong>：掺杂浓度计算时注意数量级！10⁻⁶掺杂意味着掺杂浓度 = 原子密度 × 10⁻⁶。Si的原子密度约5×10²² cm⁻³。
+</div>`
+  },
+  {
+    id: 'ch4', num: '第4章', title: '半导体的导电性',
+    color: '#1565c0', weight: 90,
+    subtitle: '输运核心 — 迁移率与散射',
+    topics: [
+      { name: '漂移运动', desc: 'J = q(nμ_n + pμ_p)E', stars: 5 },
+      { name: '迁移率', desc: 'μ = qτ/m*，平均自由时间', stars: 5 },
+      { name: '电导率/电阻率', desc: 'σ = q(nμ_n+pμ_p)，ρ=1/σ', stars: 5 },
+      { name: '晶格振动散射', desc: '声子散射，高温主导', stars: 4 },
+      { name: '电离杂质散射', desc: '库仑势场散射，低温主导', stars: 4 },
+      { name: '强电场效应', desc: '热载流子、负微分电导', stars: 3 },
+      { name: '爱因斯坦关系', desc: 'D/μ = k₀T/q', stars: 5 },
+    ],
+    detail: `<h3>漂移电流与电导率</h3>
+<div class="formula-box">
+<strong>漂移电流密度</strong>：J_drift = q(nμ_n + pμ_p) · E<br>
+<strong>电导率</strong>：σ = q(nμ_n + pμ_p)<br>
+<strong>电阻率</strong>：ρ = 1/σ
+</div>
+
+<h3>迁移率与散射</h3>
+<div class="formula-box">
+μ = qτ / m*（τ为平均自由时间，m*为有效质量）
+</div>
+<p>迁移率受两种主要散射机制影响：</p>
+<div class="key-point">
+<strong>晶格振动散射（声子散射）</strong>：μ_L ∝ T^(-3/2)，随温度升高而降低（高温区主导）<br>
+<strong>电离杂质散射</strong>：μ_I ∝ T^(3/2) / N_I，随温度升高而增加（低温区主导）
+</div>
+
+<h3>迁移率-温度关系</h3>
+<p>低温：电离杂质散射主导 → μ随T升高而增大<br>
+高温：晶格振动散射主导 → μ随T升高而减小<br>
+总迁移率：1/μ = 1/μ_L + 1/μ_I</p>
+
+<h3>爱因斯坦关系</h3>
+<div class="formula-box">
+D/μ = k₀T/q
+</div>
+<p>建立了扩散系数（描述扩散运动）与迁移率（描述漂移运动）之间的联系，反映了载流子运动的统一性。室温k₀T/q ≈ 0.026 V。</p>
+
+<div class="warning">
+<strong>强电场效应</strong>：当电场强度超过~10³ V/cm时，漂移速度偏离线性关系，载流子获得的能量超过晶格热能，形成"热载流子"。
+</div>`
+  },
+  {
+    id: 'ch5', num: '第5章', title: '非平衡载流子',
+    color: '#1565c0', weight: 92,
+    subtitle: '产生、复合与输运',
+    topics: [
+      { name: '非平衡载流子', desc: 'Δn=Δp，过剩载流子', stars: 5 },
+      { name: '准费米能级', desc: 'E_Fn, E_Fp分离', stars: 4 },
+      { name: '复合机制', desc: '直接复合/间接复合', stars: 4 },
+      { name: '少子寿命', desc: 'τ，复合时间常数', stars: 5 },
+      { name: '扩散长度', desc: 'L = √(Dτ)', stars: 5 },
+      { name: '连续性方程', desc: '产生-复合-扩散-漂移', stars: 5 },
+      { name: '稳态条件', desc: '产生率=复合率', stars: 4 },
+    ],
+    detail: `<h3>非平衡载流子</h3>
+<p>外界作用（光照、注入等）打破热平衡，额外产生载流子。非平衡载流子满足Δn = Δp。</p>
+<div class="formula-box">
+<strong>稳态条件</strong>：Δp = g · τ（g为产生率，τ为寿命）<br>
+<strong>衰减规律</strong>：Δp(t) = Δp(0) · exp(-t/τ)
+</div>
+
+<h3>准费米能级</h3>
+<p>非平衡时电子和空穴分别遵循各自的统计分布，存在各自的准费米能级：</p>
+<div class="formula-box">
+n = n_i · exp((E_Fn - E_i)/k₀T)<br>
+p = n_i · exp((E_i - E_Fp)/k₀T)
+</div>
+<div class="key-point">
+<strong>准费米能级特征</strong>：平衡时E_Fn = E_Fp = E_F；非平衡时E_Fn > E_F > E_Fp（n型），偏离越大说明非平衡程度越强。
+</div>
+
+<h3>扩散与扩散长度</h3>
+<div class="formula-box">
+<strong>扩散电流密度</strong>：J_diff = -qD_n(dn/dx) （电子）<br>
+<strong>扩散长度</strong>：L = √(Dτ)
+</div>
+
+<h3>连续性方程</h3>
+<div class="formula-box">
+∂n/∂t = (1/q)(∂J_n/∂x) + g - r<br>
+= (1/q)(∂J_n/∂x) + g - Δn/τ
+</div>
+<p>一维稳态连续性方程包含：扩散项、漂移项、产生复合项。</p>`
+  },
+  {
+    id: 'ch6', num: '第6章', title: 'PN结',
+    color: '#0277bd', weight: 96,
+    subtitle: '器件基础核心',
+    topics: [
+      { name: '空间电荷区', desc: '耗尽层，内建电场', stars: 5 },
+      { name: '内建电势差', desc: 'V_D = (k₀T/q)ln(N_DN_A/n_i²)', stars: 5 },
+      { name: '肖克莱方程', desc: 'I = I_s(e^(qV/k₀T) - 1)', stars: 5 },
+      { name: '势垒电容', desc: '反偏主导，与宽度变化相关', stars: 4 },
+      { name: '扩散电容', desc: '正偏主导，与载流子存储相关', stars: 4 },
+      { name: '击穿机制', desc: '雪崩击穿/齐纳击穿/热击穿', stars: 4 },
+      { name: '单向导电性', desc: '正偏导通/反偏截止', stars: 5 },
+    ],
+    detail: `<h3>PN结形成与内建电势差</h3>
+<div class="formula-box">
+<strong>接触电势差</strong>：V_D = (k₀T/q) · ln(N_D·N_A / n_i²)<br>
+<strong>势垒高度</strong>：qV_D
+</div>
+
+<h3>PN结电流-电压特性</h3>
+<div class="formula-box">
+<strong>肖克莱方程</strong>：I = I_s · [e^(qV/k₀T) - 1]<br>
+其中 I_s = qA · (D_p·p_n₀/L_p + D_n·n_p₀/L_n)
+</div>
+<p><strong>正偏</strong>（V > 0）：势垒降低，多子扩散主导，电流随V指数增长<br>
+<strong>反偏</strong>（V < 0）：势垒升高，少子漂移主导，反向饱和电流I_s很小</p>
+
+<h3>PN结电容</h3>
+<div class="key-point">
+<strong>势垒电容 C_T</strong>：耗尽层宽度随偏压变化引起的电容，反偏主导<br>
+C_T = εA / X_D<br>
+<strong>扩散电容 C_D</strong>：扩散区载流子存储变化引起的电容，正偏主导
+</div>
+
+<h3>击穿机制</h3>
+<ul>
+<li><strong>雪崩击穿</strong>：高反偏下载流子被强电场加速→碰撞电离→载流子倍增。击穿电压较高(>6V)，随温度升高而增大。</li>
+<li><strong>齐纳击穿</strong>：强电场直接引发隧道效应→电子从价带隧穿至导带。击穿电压较低(<4V)，随温度升高而减小。</li>
+<li><strong>热击穿</strong>：反偏功耗→温升→反向电流增大→正反馈。不可逆，导致器件烧毁。</li>
+</ul>
+
+<div class="formula-box">
+<strong>势垒宽度</strong>（耗尽层近似）：<br>
+X_D = √[2ε₀ε_r(V_D-V)/q · (N_A+N_D)/(N_A·N_D)]
+</div>`
+  },
+  {
+    id: 'ch7', num: '第7章', title: '金属和半导体接触',
+    color: '#0277bd', weight: 75,
+    subtitle: '肖特基势垒与欧姆接触',
+    topics: [
+      { name: '肖特基势垒', desc: '阻挡层，整流特性', stars: 4 },
+      { name: '欧姆接触', desc: '反阻挡层，线性I-V', stars: 4 },
+      { name: '功函数', desc: 'W_m vs W_s判断接触类型', stars: 4 },
+    ],
+    detail: `<h3>金属-半导体接触类型</h3>
+<div class="formula-box">
+<strong>肖特基接触（阻挡层）</strong>：<br>
+n型：W_m > W_s → 电子从半导体流向金属 → 表面耗尽<br>
+p型：W_m < W_s → 空穴从半导体流向金属 → 表面耗尽<br><br>
+<strong>欧姆接触（反阻挡层）</strong>：<br>
+n型：W_m < W_s → 表面积累<br>
+p型：W_m > W_s → 表面积累
+</div>
+
+<h3>肖特基二极管</h3>
+<p>利用肖特基势垒的整流特性，正向电流主要由热电子发射机制决定。与PN结二极管相比，肖特基二极管开关速度快（无少子存储效应），正向压降低。</p>`
+  },
+  {
+    id: 'ch8', num: '第8章', title: 'MIS结构',
+    color: '#0277bd', weight: 88,
+    subtitle: '表面效应与电容特性',
+    topics: [
+      { name: '表面电场效应', desc: '积累/耗尽/反型', stars: 5 },
+      { name: 'MIS C-V特性', desc: '高频/低频曲线差异', stars: 5 },
+      { name: '阈值电压', desc: 'V_T = V_FB + 2φ_F + Q_B/C_ox', stars: 5 },
+      { name: '硅-二氧化硅系统', desc: '固定电荷/可动离子/界面态', stars: 4 },
+    ],
+    detail: `<h3>MIS结构表面状态</h3>
+<p>以p型半导体MIS结构为例，随栅极电压变化：</p>
+<div class="key-point">
+<strong>积累区</strong>（V_G < 0）：多子（空穴）在表面积累<br>
+<strong>耗尽区</strong>（V_G > 0但较小）：表面空穴被排斥，形成耗尽层<br>
+<strong>反型区</strong>（V_G > V_T）：表面少子浓度超过体内多子浓度<br>
+<strong>强反型判据</strong>：表面势ψ_s ≥ 2φ_F
+</div>
+
+<h3>阈值电压</h3>
+<div class="formula-box">
+V_T = V_FB + 2φ_F + Q_B/C_ox<br>
+其中 V_FB 为平带电压，φ_F = (k₀T/q)ln(N_A/n_i)
+</div>
+
+<h3>C-V特性</h3>
+<ul>
+<li><strong>高频C-V</strong>：反型区载流子响应速度慢，电容维持最小值</li>
+<li><strong>低频C-V</strong>：反型区载流子跟得上信号变化，电容回升</li>
+<li><strong>氧化层固定正电荷</strong>：使C-V曲线沿电压轴向负方向偏移</li>
+</ul>`
+  },
+  {
+    id: 'ch9', num: '拓展', title: '异质结、光学性质与特殊效应',
+    color: '#6a1b9a', weight: 70,
+    subtitle: '应用热点与概念补充',
+    topics: [
+      { name: '异质结', desc: '禁带宽度不同的半导体形成的结', stars: 3 },
+      { name: '光吸收', desc: '本征吸收 hν ≥ E_g', stars: 4 },
+      { name: '光生伏特效应', desc: '太阳能电池工作原理', stars: 5 },
+      { name: '霍尔效应', desc: 'V_H = R·I·B/d', stars: 4 },
+      { name: '压阻效应', desc: '应力→电阻率变化', stars: 2 },
+      { name: '非晶态半导体', desc: '长程无序/短程有序', stars: 2 },
+    ],
+    detail: `<h3>异质结</h3>
+<p>由两种禁带宽度不同的半导体材料形成的结。核心差异在于存在能带偏移（ΔE_c, ΔE_v）。</p>
+<div class="key-point">
+<strong>高注入比</strong>：宽禁带区向窄禁带区注入载流子势垒低，注入效率高。这是异质结双极晶体管(HBT)的核心优势。
+</div>
+
+<h3>光生伏特效应</h3>
+<p>PN结吸收光子→产生电子-空穴对→内建电场分离载流子→形成开路电压和短路电流。</p>
+<div class="formula-box">
+<strong>太阳能电池最大功率</strong>：P_max = V_OC · I_SC · FF<br>
+（FF为填充因子，一般0.7-0.85）
+</div>
+
+<h3>霍尔效应</h3>
+<div class="formula-box">
+<strong>霍尔电压</strong>：V_H = R_H · I · B / d<br>
+<strong>霍尔系数</strong>：R_H = 1/(qn)（n型）或 R_H = -1/(qp)（p型）<br>
+<strong>应用</strong>：测量载流子浓度和类型
+</div>
+
+<h3>直接/间接带隙半导体</h3>
+<div class="key-point">
+<strong>直接带隙</strong>（如GaAs）：导带底和价带顶在k空间同一位置，发光效率高（LED/激光器）<br>
+<strong>间接带隙</strong>（如Si, Ge）：需要声子参与跃迁，发光效率低
+</div>`
+  }
+];
+
+const formulaGroups = [
+  {
+    title: '载流子浓度与费米能级',
+    formulas: [
+      ['质量作用定律', 'n_i² = n · p', '热平衡时任意半导体载流子浓度关系'],
+      ['本征半导体', 'n = p = n_i', '无掺杂或高温本征区'],
+      ['n型（完全电离）', 'n₀ ≈ N_D - N_A；p₀ = n_i²/n₀', '室温杂质完全电离'],
+      ['p型（完全电离）', 'p₀ ≈ N_A - N_D；n₀ = n_i²/p₀', '室温杂质完全电离'],
+      ['非平衡载流子（稳态）', 'Δp = g·τ；Δn = Δp', '光照等外界激发下'],
+      ['费米能级（n型）', 'E_F - E_i = k₀T·ln(n₀/n_i)', '非简并半导体'],
+      ['费米能级（p型）', 'E_i - E_F = k₀T·ln(p₀/n_i)', '非简并半导体'],
+      ['费米能级（导带底）', 'E_F = E_c - k₀T·ln(N_c/N_D)', '已知导带参数'],
+      ['本征载流子浓度', 'n_i² = N_c·N_v·exp(-E_g/k₀T)', '温度依赖'],
+    ]
+  },
+  {
+    title: '电导率与迁移率',
+    formulas: [
+      ['电导率', 'σ = q(nμ_n + pμ_p)', '任意半导体'],
+      ['n型近似', 'σ ≈ qN_D·μ_n', '多子主导，忽略少子'],
+      ['p型近似', 'σ ≈ qN_A·μ_p', '多子主导，忽略少子'],
+      ['电阻率', 'ρ = 1/σ', '单位：Ω·cm'],
+      ['本征电导率', 'σ_i = qn_i(μ_n + μ_p)', '无掺杂半导体'],
+      ['迁移率', 'μ = qτ/m*', 'τ为平均自由时间'],
+      ['爱因斯坦关系', 'D/μ = k₀T/q', '扩散系数与迁移率'],
+      ['扩散长度', 'L = √(Dτ)', 'D为扩散系数，τ为寿命'],
+    ]
+  },
+  {
+    title: 'PN结',
+    formulas: [
+      ['接触电势差', 'V_D = (k₀T/q)·ln(N_DN_A/n_i²)', '热平衡PN结'],
+      ['势垒高度', 'qV_D = k₀T·ln(N_DN_A/n_i²)', '能量单位eV'],
+      ['势垒宽度（无偏压）', 'X_D = √[2ε₀ε_rV_D/q · (N_A+N_D)/(N_AN_D)]', '耗尽层近似'],
+      ['势垒宽度（正偏V_b）', 'X_D\' = √[2ε₀ε_r(V_D-V_b)/q · (N_A+N_D)/(N_AN_D)]', '正偏减小X_D'],
+      ['肖克莱方程', 'I = I_s·[e^(qV/k₀T) - 1]', '理想PN结I-V'],
+      ['反向饱和电流', 'I_s = qA(D_p·p_n₀/L_p + D_n·n_p₀/L_n)', '理想PN结'],
+    ]
+  },
+  {
+    title: 'MIS结构与光电器件',
+    formulas: [
+      ['阈值电压', 'V_T = V_FB + 2φ_F + Q_B/C_ox', 'MOS器件'],
+      ['氧化层电容', 'C_ox = ε₀ε_ox/t_ox', 't_ox为氧化层厚度'],
+      ['平带电压', 'V_FB = φ_ms - Q_f/C_ox', '考虑氧化层电荷'],
+      ['费米势', 'φ_F = (k₀T/q)·ln(N_A/n_i)', 'p型半导体'],
+      ['霍尔电压', 'V_H = R_H·I·B/d', '载流子浓度/类型测量'],
+      ['本征吸收条件', 'hν ≥ E_g', '光子能量 ≥ 禁带宽度'],
+      ['太阳能电池功率', 'P_max = V_OC·I_SC·FF', 'FF为填充因子'],
+    ]
+  }
+];
+
+const comparisons = [
+  {
+    title: '电子 vs 空穴',
+    headers: ['对比维度', '电子 (Electron)', '空穴 (Hole)'],
+    rows: [
+      ['定义', '导带中能自由运动的带负电载流子', '价带中未被电子占据的共价键空位，等效带正电'],
+      ['电荷', '-q (q=1.6×10⁻¹⁹C)', '+q'],
+      ['形成机制', '施主电离 / 本征激发', '受主电离 / 本征激发'],
+      ['迁移率 (Si)', '~1400 cm²/(V·s)', '~500 cm²/(V·s)'],
+    ]
+  },
+  {
+    title: '平衡 vs 非平衡载流子',
+    headers: ['对比维度', '平衡载流子', '非平衡载流子'],
+    rows: [
+      ['定义', '热平衡态，产生=复合', '外界作用额外产生的 Δn=Δp'],
+      ['分布', '费米分布，统一 E_F', '准费米能级 E_Fn, E_Fp'],
+      ['核心规律', 'np = n_i²', 'Δp = gτ（稳态）'],
+    ]
+  },
+  {
+    title: '声学波 vs 光学波声子',
+    headers: ['对比维度', '声学波声子', '光学波声子'],
+    rows: [
+      ['振动模式', '原胞内原子同向振动', '不同原子反向振动'],
+      ['能量', '低', '高'],
+      ['散射', '弹性碰撞', '非弹性碰撞（极化电场）'],
+      ['主导区间', '单质半导体全温区', '化合物半导体高温区'],
+    ]
+  },
+  {
+    title: 'PN结三种击穿机制',
+    headers: ['对比维度', '雪崩击穿', '齐纳击穿', '热击穿'],
+    rows: [
+      ['机制', '碰撞电离', '隧道效应', '正反馈温升'],
+      ['击穿电压', '较高 (>6V)', '较低 (<4V)', '无固定值'],
+      ['温度系数', '正（↑T→↑V_br）', '负（↑T→↓V_br）', '—'],
+      ['可逆性', '可逆', '可逆', '不可逆'],
+    ]
+  },
+  {
+    title: '肖特基接触 vs 欧姆接触',
+    headers: ['对比维度', '肖特基接触', '欧姆接触'],
+    rows: [
+      ['n型条件', 'W_m > W_s', 'W_m < W_s'],
+      ['p型条件', 'W_m < W_s', 'W_m > W_s'],
+      ['I-V特性', '整流（单向导通）', '线性（双向导通）'],
+      ['应用', '肖特基二极管', '器件电极'],
+    ]
+  },
+  {
+    title: '漂移 vs 扩散',
+    headers: ['对比维度', '漂移运动', '扩散运动'],
+    rows: [
+      ['驱动力', '电场 E', '浓度梯度 dn/dx'],
+      ['电流密度', 'J = qnμE', 'J = -qD(dn/dx)'],
+      ['相关参数', '迁移率 μ', '扩散系数 D'],
+      ['关系', '爱因斯坦关系：D/μ = k₀T/q', ''],
+    ]
+  }
+];
+
+const examQuestions = [
+  { q: '1. 金刚石结构的晶格属于什么晶格？一个晶胞包含几个原子？', a: '面心立方（FCC）晶格。金刚石晶格可看作两个面心立方子晶格沿体对角线位移1/4嵌套而成，一个晶胞包含8个原子（4个基元原子×2）。' },
+  { q: '2. 温度升高时，半导体的禁带宽度如何变化？施加压力呢？', a: '温度升高→晶格振动加剧→原子间距增大→禁带宽度减小（如Si的dE_g/dT ≈ -2.3×10⁻⁴ eV/K）。施加压力→原子间距减小→禁带宽度增大。' },
+  { q: '3. 半导体中位错原子形成3价杂质，其受主能级状态为（ ）；缺陷（空位）接受电子，其施主能级状态为（ ）', a: '空位；施主。位错原子形成3价杂质，1个电子参与成键→提供空穴→受主。空位接受电子（填充共价键）→施主。' },
+  { q: '4. n型半导体中，电导率主要由什么决定？', a: '主要由 σ ≈ qN_D·μ_n 决定。n型半导体中电子浓度远大于空穴浓度（n≫p），少子贡献可忽略。' },
+  { q: '5. 低温下，半导体的电阻率如何随温度变化？', a: '电阻率随温度升高而减小。低温区杂质电离不完全，温度升高→杂质电离增多→载流子浓度增大→电阻率降低（杂质电离区）。' },
+  { q: '6. 简述费米分布与玻尔兹曼分布的区别。', a: '费米分布 f(E)=1/[1+exp((E-E_F)/kT)] 描述费米子的统计分布，考虑泡利不相容原理（每个量子态最多1个电子）。玻尔兹曼分布 f(E)≈exp(-(E-E_F)/kT) 是费米分布的近似，当E-E_F≥3kT时适用，不考虑泡利原理。' },
+  { q: '7. 什么是非平衡载流子的稳态？', a: '外界激发源（如恒定光照）持续产生过剩载流子，当产生率等于复合率时达到稳态。此时 Δp = g·τ（g为产生率，τ为少子寿命），非平衡载流子浓度保持恒定。' },
+  { q: '8. 比较雪崩击穿与齐纳击穿。', a: '雪崩击穿：高反偏下载流子被加速→碰撞电离→倍增，击穿电压>6V，正温度系数。齐纳击穿：强电场直接引发隧道效应→电子从价带隧穿至导带，击穿电压<4V，负温度系数。' },
+];
+
+// ===================== SEARCH INDEX =====================
+const searchIndex = [];
+chapters.forEach(ch => {
+  searchIndex.push({ type: 'chapter', chapter: ch, title: `${ch.num} ${ch.title}`, desc: ch.subtitle });
+  ch.topics.forEach(t => {
+    searchIndex.push({ type: 'topic', chapter: ch, title: t.name, desc: t.desc });
+  });
+});
+formulaGroups.forEach(g => {
+  g.formulas.forEach(f => {
+    searchIndex.push({ type: 'formula', title: f[0], desc: `${f[1]} — ${f[2]}`, group: g.title });
+  });
+});
+
+// ===================== VIEWS =====================
+function switchView(name) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.getElementById('view-' + name).classList.add('active');
+  document.querySelectorAll('.header-nav button').forEach(b => b.classList.remove('active'));
+  event.target.classList.add('active');
+  if (name === 'graph') initGraph();
+}
+
+// ===================== CHAPTERS =====================
+function renderChapters() {
+  const grid = document.getElementById('chapterGrid');
+  grid.innerHTML = chapters.map(ch => `
+    <div class="chapter-card" onclick="openChapter('${ch.id}')">
+      <div class="card-header" style="background:linear-gradient(135deg, ${ch.color}, ${ch.color}cc)">
+        <h3>${ch.num} ${ch.title}</h3>
+        <span class="tag">权重 ${ch.weight}%</span>
+        <span class="tag">${ch.subtitle}</span>
+      </div>
+      <div class="card-body">
+        <ul>${ch.topics.map(t => `<li><span class="star">${'★'.repeat(t.stars)}${'☆'.repeat(5-t.stars)}</span> <strong>${t.name}</strong> — ${t.desc}</li>`).join('')}</ul>
+      </div>
+    </div>
+  `).join('');
+}
+
+function openChapter(id) {
+  const ch = chapters.find(c => c.id === id);
+  if (!ch) return;
+  document.getElementById('modalTitle').textContent = `${ch.num} ${ch.title}`;
+  document.getElementById('modalBody').innerHTML = ch.detail;
+  document.getElementById('modalOverlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+// ===================== FORMULAS =====================
+function renderFormulas() {
+  const container = document.getElementById('formulaContainer');
+  container.innerHTML = formulaGroups.map((g, i) => `
+    <div class="formula-section${i===0?' open':''}" onclick="this.classList.toggle('open')">
+      <div class="section-header">
+        <h3>${g.title} (${g.formulas.length}个公式)</h3>
+        <span class="arrow">&#9654;</span>
+      </div>
+      <div class="section-content">
+        <table class="formula-table">
+          <thead><tr><th>公式名称</th><th>公式</th><th>应用场景</th></tr></thead>
+          <tbody>${g.formulas.map(f => `<tr><td><strong>${f[0]}</strong></td><td class="formula-box" style="margin:0;border:none;padding:4px 8px;font-size:13px">${f[1]}</td><td>${f[2]}</td></tr>`).join('')}</tbody>
+        </table>
+      </div>
+    </div>
+  `).join('');
+}
+
+// ===================== COMPARISONS =====================
+function renderComparisons() {
+  const grid = document.getElementById('compareGrid');
+  grid.innerHTML = comparisons.map(c => `
+    <div class="comparison-card">
+      <div class="card-title">${c.title}</div>
+      <table>
+        <thead><tr>${c.headers.map(h => `<th>${h}</th>`).join('')}</tr></thead>
+        <tbody>${c.rows.map(r => `<tr>${r.map(cell => `<td>${cell}</td>`).join('')}</tr>`).join('')}</tbody>
+      </table>
+    </div>
+  `).join('');
+}
+
+// ===================== EXAM =====================
+function renderExam() {
+  const container = document.getElementById('examContainer');
+  container.innerHTML = `<div class="exam-section"><h2>上海大学半导体物理 (962) 真题精选</h2>
+    ${examQuestions.map(e => `<div class="exam-item"><div class="q">${e.q}</div><div class="a">${e.a}</div></div>`).join('')}
+  </div>`;
+}
+
+// ===================== SEARCH =====================
+function handleSearch(query) {
+  const results = document.getElementById('searchResults');
+  if (!query.trim()) { results.style.display = 'none'; return; }
+  const q = query.toLowerCase();
+  const matches = searchIndex.filter(item =>
+    item.title.toLowerCase().includes(q) || item.desc.toLowerCase().includes(q)
+  ).slice(0, 15);
+  if (matches.length === 0) { results.style.display = 'none'; return; }
+  results.style.display = 'block';
+  results.innerHTML = matches.map(m => `
+    <div class="search-result-item" onclick="${m.type==='chapter'?`openChapter('${m.chapter.id}')`:'switchToChapter('+chapters.indexOf(m.chapter)+')'}">
+      <div class="sr-chapter">${m.type === 'formula' ? '公式 — ' + m.group : (m.chapter ? m.chapter.num : '')}</div>
+      <div class="sr-title">${m.title}</div>
+      <div class="sr-desc">${m.desc}</div>
+    </div>
+  `).join('');
+}
+function switchToChapter(idx) {
+  switchView('chapters');
+  setTimeout(() => openChapter(chapters[idx].id), 100);
+}
+
+// ===================== KNOWLEDGE GRAPH =====================
+let graphSim, showLabels = true;
+function initGraph() {
+  const svg = document.getElementById('graphSvg');
+  if (!svg) return;
+  const rect = svg.parentElement.getBoundingClientRect();
+  const W = rect.width || 1200, H = rect.height || 600;
+  svg.innerHTML = '';
+  svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+
+  // Build nodes and links
+  const nodes = [], links = [];
+  const nodeMap = {};
+
+  // Add chapter nodes
+  chapters.forEach((ch, i) => {
+    const id = ch.id;
+    nodes.push({ id, label: ch.title, type: 'chapter', color: ch.color, r: 28 + ch.weight/5, chapter: ch });
+    nodeMap[id] = nodes[nodes.length-1];
+  });
+
+  // Add topic nodes and links
+  chapters.forEach(ch => {
+    ch.topics.forEach(t => {
+      const tid = ch.id + '_' + t.name;
+      nodes.push({ id: tid, label: t.name, type: 'topic', color: '#1565c0', r: 8 + t.stars*2, desc: t.desc });
+      links.push({ source: ch.id, target: tid, strength: t.stars / 5 });
+      nodeMap[tid] = nodes[nodes.length-1];
+    });
+  });
+
+  // Add cross-chapter concept links
+  const conceptLinks = [
+    ['ch3_费米能级', 'ch4_电导率/电阻率', '费米能级决定载流子浓度→决定电导率'],
+    ['ch4_爱因斯坦关系', 'ch5_扩散长度', 'D/μ=k₀T/q连接漂移与扩散'],
+    ['ch5_非平衡载流子', 'ch6_肖克莱方程', 'PN结电流由少子扩散决定'],
+    ['ch6_内建电势差', 'ch6_空间电荷区', 'V_D决定势垒高度'],
+    ['ch1_能带理论', 'ch6_肖克莱方程', '能带弯曲形成势垒'],
+    ['ch8_MIS C-V特性', 'ch8_阈值电压', 'C-V曲线用于提取V_T'],
+    ['ch1_有效质量', 'ch4_迁移率', 'μ=qτ/m*'],
+    ['ch5_准费米能级', 'ch5_连续性方程', '描述非平衡载流子分布'],
+    ['ch6_击穿机制', 'ch7_肖特基势垒', '都涉及势垒与载流子输运'],
+    ['ch1_空穴', 'ch3_费米能级', '空穴浓度由E_F位置决定'],
+    ['ch4_晶格振动散射', 'ch4_迁移率', '散射决定迁移率上限'],
+    ['ch9_光生伏特效应', 'ch6_肖克莱方程', '太阳能电池基于PN结I-V'],
+  ];
+  conceptLinks.forEach(([s, t]) => {
+    if (nodeMap[s] && nodeMap[t]) {
+      links.push({ source: s, target: t, strength: 0.3, dashed: true });
+    }
+  });
+
+  // Force simulation
+  const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+  svg.appendChild(g);
+
+  // Zoom
+  let zoom = 1, panX = 0, panY = 0;
+  svg.addEventListener('wheel', e => {
+    e.preventDefault();
+    zoom *= e.deltaY > 0 ? 0.95 : 1.05;
+    g.setAttribute('transform', `translate(${panX},${panY}) scale(${zoom})`);
+  });
+  let dragging = false, dragStart = {x:0,y:0};
+  svg.addEventListener('mousedown', e => { dragging = true; dragStart = {x: e.clientX - panX, y: e.clientY - panY}; });
+  svg.addEventListener('mousemove', e => { if(dragging){ panX = e.clientX - dragStart.x; panY = e.clientY - dragStart.y; g.setAttribute('transform', `translate(${panX},${panY}) scale(${zoom})`); }});
+  svg.addEventListener('mouseup', () => dragging = false);
+  svg.addEventListener('mouseleave', () => dragging = false);
+
+  // Draw links
+  const linkEls = links.map(l => {
+    const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
+    line.setAttribute('stroke', l.dashed ? '#aaa' : '#ccc');
+    line.setAttribute('stroke-width', l.dashed ? 1 : 1.5);
+    if (l.dashed) line.setAttribute('stroke-dasharray', '4,4');
+    line.setAttribute('stroke-opacity', 0.6);
+    g.appendChild(line);
+    return line;
+  });
+
+  // Draw nodes
+  const nodeEls = nodes.map(n => {
+    const group = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+    group.style.cursor = 'pointer';
+
+    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    circle.setAttribute('r', n.r);
+    circle.setAttribute('fill', n.color);
+    circle.setAttribute('fill-opacity', n.type === 'chapter' ? 0.9 : 0.7);
+    circle.setAttribute('stroke', '#fff');
+    circle.setAttribute('stroke-width', n.type === 'chapter' ? 2 : 1);
+    group.appendChild(circle);
+
+    if (n.type === 'chapter') {
+      const glow = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+      glow.setAttribute('r', n.r + 4);
+      glow.setAttribute('fill', 'none');
+      glow.setAttribute('stroke', n.color);
+      glow.setAttribute('stroke-width', 1);
+      glow.setAttribute('stroke-opacity', 0.3);
+      group.insertBefore(glow, circle);
+    }
+
+    const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+    text.setAttribute('text-anchor', 'middle');
+    text.setAttribute('dy', n.type === 'chapter' ? '0.35em' : (n.r + 12));
+    text.setAttribute('fill', n.type === 'chapter' ? '#fff' : '#333');
+    text.setAttribute('font-size', n.type === 'chapter' ? '10' : '9');
+    text.setAttribute('font-weight', n.type === 'chapter' ? '600' : '400');
+    text.textContent = n.label;
+    group.appendChild(text);
+
+    if (n.chapter) {
+      group.addEventListener('click', () => openChapter(n.chapter.id));
+    }
+
+    // Drag
+    let ndx = 0, ndy = 0;
+    group.addEventListener('mousedown', e => {
+      e.stopPropagation();
+      ndx = e.clientX; ndy = e.clientY;
+      const onmove = ev => {
+        n.x += ev.clientX - ndx; n.y += ev.clientY - ndy;
+        ndx = ev.clientX; ndy = ev.clientY;
+      };
+      const onup = () => { window.removeEventListener('mousemove', onmove); window.removeEventListener('mouseup', onup); };
+      window.addEventListener('mousemove', onmove);
+      window.addEventListener('mouseup', onup);
+    });
+
+    g.appendChild(group);
+    return { el: group, text, node: n };
+  });
+
+  // Initialize positions
+  nodes.forEach((n, i) => {
+    const angle = (i / nodes.length) * Math.PI * 2;
+    const r = 150 + Math.random() * 100;
+    n.x = W/2 + Math.cos(angle) * r;
+    n.y = H/2 + Math.sin(angle) * r;
+  });
+
+  // Simple force simulation
+  function tick() {
+    // Center gravity
+    nodes.forEach(n => {
+      n.vx = (n.vx || 0) + (W/2 - n.x) * 0.001;
+      n.vy = (n.vy || 0) + (H/2 - n.y) * 0.001;
+    });
+    // Repulsion
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i+1; j < nodes.length; j++) {
+        const dx = nodes[j].x - nodes[i].x;
+        const dy = nodes[j].y - nodes[i].y;
+        const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+        const minDist = nodes[i].r + nodes[j].r + 10;
+        if (dist < minDist * 2) {
+          const force = (minDist * 2 - dist) / dist * 0.5;
+          nodes[i].vx -= dx * force * 0.01;
+          nodes[i].vy -= dy * force * 0.01;
+          nodes[j].vx += dx * force * 0.01;
+          nodes[j].vy += dy * force * 0.01;
+        }
+        const repel = 500 / (dist * dist);
+        nodes[i].vx -= dx / dist * repel;
+        nodes[i].vy -= dy / dist * repel;
+        nodes[j].vx += dx / dist * repel;
+        nodes[j].vy += dy / dist * repel;
+      }
+    }
+    // Link attraction
+    links.forEach(l => {
+      const s = typeof l.source === 'string' ? nodeMap[l.source] : l.source;
+      const t = typeof l.target === 'string' ? nodeMap[l.target] : l.target;
+      if (!s || !t) return;
+      const dx = t.x - s.x;
+      const dy = t.y - s.y;
+      const dist = Math.sqrt(dx*dx + dy*dy) || 1;
+      const ideal = s.type === 'chapter' && t.type === 'chapter' ? 250 : 120;
+      const force = (dist - ideal) * 0.002 * (l.strength || 0.5);
+      s.vx += dx / dist * force;
+      s.vy += dy / dist * force;
+      t.vx -= dx / dist * force;
+      t.vy -= dy / dist * force;
+    });
+    // Update positions
+    nodes.forEach(n => {
+      n.vx = (n.vx || 0) * 0.85;
+      n.vy = (n.vy || 0) * 0.85;
+      n.x += n.vx;
+      n.y += n.vy;
+      n.x = Math.max(n.r + 20, Math.min(W - n.r - 20, n.x));
+      n.y = Math.max(n.r + 20, Math.min(H - n.r - 20, n.y));
+    });
+    // Update SVG
+    nodeEls.forEach(({ el, node: n }) => {
+      el.setAttribute('transform', `translate(${n.x},${n.y})`);
+    });
+    linkEls.forEach((line, i) => {
+      const s = typeof links[i].source === 'string' ? nodeMap[links[i].source] : links[i].source;
+      const t = typeof links[i].target === 'string' ? nodeMap[links[i].target] : links[i].target;
+      if (s && t) {
+        line.setAttribute('x1', s.x); line.setAttribute('y1', s.y);
+        line.setAttribute('x2', t.x); line.setAttribute('y2', t.y);
+      }
+    });
+    requestAnimationFrame(tick);
+  }
+  tick();
+}
+
+function resetGraph() {
+  const svg = document.getElementById('graphSvg');
+  svg.innerHTML = '';
+  initGraph();
+}
+function toggleLabels() {
+  showLabels = !showLabels;
+  document.querySelectorAll('#graphSvg text').forEach(t => {
+    t.style.display = showLabels ? '' : 'none';
+  });
+}
+
+// ===================== INIT =====================
+renderChapters();
+renderFormulas();
+renderComparisons();
+renderExam();
+setTimeout(initGraph, 100);
+
+// Keyboard shortcuts
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeModal();
+  if (e.key === '1') document.querySelector('.header-nav button:nth-child(1)').click();
+  if (e.key === '2') document.querySelector('.header-nav button:nth-child(2)').click();
+  if (e.key === '3') document.querySelector('.header-nav button:nth-child(3)').click();
+  if (e.key === '4') document.querySelector('.header-nav button:nth-child(4)').click();
+  if (e.key === '5') document.querySelector('.header-nav button:nth-child(5)').click();
+});
+</script>
+</body>
+</html>
