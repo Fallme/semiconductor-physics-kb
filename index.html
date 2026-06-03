@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半导体物理知识图谱</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, 'Microsoft YaHei', sans-serif; background: linear-gradient(135deg, #0f0c29, #302b63, #24243e); min-height: 100vh; display: flex; align-items: center; justify-content: center; color: #fff; }
+.container { text-align: center; max-width: 700px; padding: 40px; }
+h1 { font-size: 2.2em; margin-bottom: 8px; background: linear-gradient(90deg, #667eea, #764ba2); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.subtitle { color: #a0a0c0; margin-bottom: 50px; font-size: 1.05em; }
+.cards { display: flex; flex-direction: column; gap: 20px; }
+.card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 30px; text-decoration: none; color: #fff; transition: all 0.3s; backdrop-filter: blur(10px); }
+.card:hover { background: rgba(255,255,255,0.12); transform: translateY(-3px); border-color: rgba(102,126,234,0.5); }
+.card h2 { font-size: 1.3em; margin-bottom: 8px; }
+.card p { color: #a0a0c0; font-size: 0.95em; line-height: 1.5; }
+.tag { display: inline-block; background: rgba(102,126,234,0.2); color: #667eea; padding: 3px 10px; border-radius: 20px; font-size: 0.8em; margin-top: 10px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>半导体物理 知识图谱</h1>
+  <p class="subtitle">基于刘恩科《半导体物理学》(第七版) & 上海大学813/962考研资料</p>
+  <div class="cards">
+    <a class="card" href="./%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86-%E5%88%86%E7%AB%A0%E8%8A%82%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1.html">
+      <h2>分章节知识图谱</h2>
+      <p>9个核心章节 / 50+ 知识节点 / Canvas可视化关系图 / 可展开详情</p>
+      <span class="tag">推荐</span>
+    </a>
+    <a class="card" href="./%E5%8D%8A%E5%AF%BC%E4%BD%93%E7%89%A9%E7%90%86%E7%9F%A5%E8%AF%86%E5%9B%BE%E8%B0%B1%E4%B8%8E%E5%AD%A6%E4%B9%A0%E5%BA%93.html">
+      <h2>知识图谱与学习库</h2>
+      <p>D3力导向图 / 5种视图 / 公式速查 / 对比辨析 / 真题练习</p>
+      <span class="tag">综合版</span>
+    </a>
+  </div>
+</div>
+</body>
+</html>
