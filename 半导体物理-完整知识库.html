@@ -72,6 +72,20 @@ table.cmp tr:hover td{background:rgba(255,255,255,0.02)}
 .section-title{font-size:1.1em;font-weight:600;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
 .cross-link{display:inline-flex;align-items:center;gap:4px;background:rgba(102,126,234,0.1);padding:3px 10px;border-radius:12px;font-size:0.78em;color:var(--accent);cursor:pointer;text-decoration:none;margin:2px}
 .cross-link:hover{background:rgba(102,126,234,0.2)}
+/* E-book navigation */
+.chapter-nav{display:flex;justify-content:space-between;margin-top:40px;padding-top:24px;border-top:2px solid var(--border)}
+.nav-btn{display:flex;align-items:center;gap:8px;padding:12px 20px;border-radius:12px;background:var(--card);border:1px solid var(--border);cursor:pointer;transition:all 0.3s;color:var(--text);text-decoration:none}
+.nav-btn:hover{background:rgba(102,126,234,0.15);border-color:var(--accent)}
+.nav-btn.disabled{opacity:0.3;cursor:not-allowed}
+.nav-btn .arrow{font-size:1.2em}
+.nav-btn .info{display:flex;flex-direction:column}
+.nav-btn .label{font-size:0.7em;color:var(--text2)}
+.nav-btn .title{font-size:0.85em;font-weight:600}
+.progress-bar{position:fixed;bottom:0;left:280px;right:0;height:3px;background:rgba(255,255,255,0.05);z-index:100}
+.progress-fill{height:100%;background:linear-gradient(90deg,var(--accent),var(--accent2));transition:width 0.3s}
+.page-indicator{position:fixed;bottom:12px;right:20px;font-size:0.75em;color:var(--text2);background:var(--bg2);padding:4px 12px;border-radius:12px;border:1px solid var(--border)}
+.kb-shortcut{position:fixed;bottom:12px;right:160px;font-size:0.7em;color:var(--text2);background:var(--bg2);padding:4px 10px;border-radius:12px;border:1px solid var(--border)}
+.kb-shortcut kbd{background:rgba(255,255,255,0.1);padding:1px 5px;border-radius:3px;font-family:monospace}
 canvas.kg{width:100%;height:300px;border-radius:10px;background:rgba(0,0,0,0.2);margin:12px 0;border:1px solid var(--border)}
 .search-box{padding:10px 16px;border-bottom:1px solid var(--border)}
 .search-box input{width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--text);font-size:0.85em;outline:none}
@@ -117,6 +131,9 @@ canvas.kg{width:100%;height:300px;border-radius:10px;background:rgba(0,0,0,0.2);
 <div class="main" id="mainContent">
 <!-- JS will populate content -->
 </div>
+<div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+<div class="page-indicator" id="pageIndicator">1 / 11</div>
+<div class="kb-shortcut"><kbd>←</kbd> <kbd>→</kbd> 翻页 &nbsp; <kbd>Enter</kbd> 展开</div>
 
 <script>
 // ==================== KNOWLEDGE DATA ====================
@@ -772,6 +789,14 @@ html+=`<div class="section-title">📊 知识关系图</div><canvas class="kg" i
 ch.kp.forEach((k,i)=>{
 html+=`<div class="kp-card" id="kp${idx}_${i}"><div class="kp-title" onclick="toggleKP(${idx},${i})"><div class="kp-num">${i+1}</div><div class="kp-name">${k.n}</div><div class="kp-stars">${k.s}</div><div class="kp-arrow">▼</div></div><div class="kp-body">${k.body}</div></div>`;
 });
+
+// Navigation buttons
+const prevTitle=idx>0?chapters[idx-1].title.replace(/第\d+章 /,''):'';
+const nextTitle=idx<chapters.length-1?chapters[idx+1].title.replace(/第\d+章 /,''):'';
+html+=`<div class="chapter-nav">`;
+html+=idx>0?`<div class="nav-btn" onclick="prevCh()"><div class="arrow">←</div><div class="info"><div class="label">上一章</div><div class="title">${prevTitle}</div></div></div>`:`<div class="nav-btn disabled"><div class="arrow">←</div><div class="info"><div class="label">上一章</div><div class="title">已是第一章</div></div></div>`;
+html+=idx<chapters.length-1?`<div class="nav-btn" onclick="nextCh()"><div class="info"><div class="label">下一章</div><div class="title">${nextTitle}</div></div><div class="arrow">→</div></div>`:`<div class="nav-btn disabled"><div class="info"><div class="label">下一章</div><div class="title">已是最后一章</div></div><div class="arrow">→</div></div>`;
+html+=`</div>`;
 html+=`</div>`;
 return html;
 }
@@ -811,21 +836,36 @@ allHtml+=renderFormulas();
 allHtml+=renderExam();
 main.innerHTML=allHtml;
 
+// ==================== INTERACTIONS ====================
+var totalCh=chapters.length;
+var currentCh=0;
+
 // Show first chapter
 showCh(0,document.querySelector('.nav-item'));
 
 // Draw all canvases
 setTimeout(()=>{chapters.forEach((ch,i)=>drawKG(i,ch.kg))},100);
 
-// ==================== INTERACTIONS ====================
 function showCh(idx,el){
+if(idx<0||idx>=totalCh)return;
+currentCh=idx;
 document.querySelectorAll('.chapter').forEach(c=>c.classList.remove('active'));
 document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
 const ch=document.getElementById('ch'+idx);
 if(ch)ch.classList.add('active');
-if(el)el.classList.add('active');
+if(el){
+el.classList.add('active');
+}else{
+document.querySelectorAll('.nav-item')[idx]?.classList.add('active');
+}
+// Update progress and page indicator
+document.getElementById('progressFill').style.width=((idx+1)/totalCh*100)+'%';
+document.getElementById('pageIndicator').textContent=(idx+1)+' / '+totalCh;
 window.scrollTo(0,0);
 }
+
+function prevCh(){showCh(currentCh-1)}
+function nextCh(){showCh(currentCh+1)}
 
 function toggleKP(ch,kp){
 const el=document.getElementById(`kp${ch}_${kp}`);
@@ -845,7 +885,13 @@ if(text.includes(q)){card.classList.add('open');card.scrollIntoView({behavior:'s
 });
 }
 
-// ==================== CANVAS DRAWING ====================
+// Keyboard navigation
+document.addEventListener('keydown',e=>{
+if(e.target.tagName==='INPUT')return;
+if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();prevCh()}
+if(e.key==='ArrowRight'||e.key==='ArrowDown'){e.preventDefault();nextCh()}
+});
+</script>
 function drawKG(idx,kg){
 const canvas=document.getElementById('kg'+idx);
 if(!canvas)return;
