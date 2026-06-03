@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>半导体物理 - 完整知识库</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#0f0c29;--bg2:#1a1640;--bg3:#242050;--accent:#667eea;--accent2:#764ba2;--text:#e8e6f0;--text2:#a0a0c0;--border:rgba(255,255,255,0.08);--card:rgba(255,255,255,0.04);--success:#4ade80;--warn:#fbbf24;--danger:#f87171;--info:#60a5fa}
+body{font-family:-apple-system,'Microsoft YaHei','PingFang SC',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;display:flex}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
+.sidebar{width:280px;min-width:280px;background:var(--bg2);border-right:1px solid var(--border);height:100vh;position:sticky;top:0;overflow-y:auto;display:flex;flex-direction:column}
+.sidebar-header{padding:20px;border-bottom:1px solid var(--border);text-align:center}
+.sidebar-header h1{font-size:1.1em;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.sidebar-header p{font-size:0.75em;color:var(--text2);margin-top:4px}
+.nav-section{padding:8px 0}
+.nav-label{padding:6px 20px;font-size:0.7em;color:var(--accent);text-transform:uppercase;letter-spacing:1px;font-weight:600}
+.nav-item{display:flex;align-items:center;padding:8px 20px;cursor:pointer;transition:all 0.2s;font-size:0.85em;border-left:3px solid transparent}
+.nav-item:hover{background:rgba(102,126,234,0.1)}
+.nav-item.active{background:rgba(102,126,234,0.15);border-left-color:var(--accent);color:var(--accent)}
+.nav-item .ch-num{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:0.75em;font-weight:600;margin-right:10px;flex-shrink:0}
+.nav-item .ch-title{flex:1;line-height:1.3}
+.nav-item .ch-badge{font-size:0.65em;padding:2px 6px;border-radius:10px;background:rgba(255,255,255,0.06);color:var(--text2)}
+.main{flex:1;padding:30px 40px;max-width:1000px;overflow-x:hidden}
+.chapter{display:none}.chapter.active{display:block}
+.chapter-header{margin-bottom:30px;padding-bottom:20px;border-bottom:1px solid var(--border)}
+.chapter-header h2{font-size:1.6em;margin-bottom:6px}
+.chapter-header .meta{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.chapter-header .tag{font-size:0.75em;padding:3px 10px;border-radius:12px}
+.tag-weight{background:rgba(102,126,234,0.15);color:var(--accent)}
+.tag-stars{background:rgba(251,191,36,0.15);color:var(--warn)}
+.tag-exam{background:rgba(248,113,113,0.15);color:var(--danger)}
+.tag-core{background:rgba(74,222,128,0.15);color:var(--success)}
+.kp-section{margin-bottom:24px}
+.kp-card{background:var(--card);border:1px solid var(--border);border-radius:12px;margin-bottom:12px;overflow:hidden}
+.kp-title{padding:14px 18px;cursor:pointer;display:flex;align-items:center;gap:10px;transition:background 0.2s}
+.kp-title:hover{background:rgba(255,255,255,0.03)}
+.kp-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.75em;font-weight:600;flex-shrink:0}
+.kp-name{font-weight:600;flex:1}
+.kp-stars{color:var(--warn);font-size:0.8em}
+.kp-arrow{color:var(--text2);transition:transform 0.3s;font-size:0.8em}
+.kp-card.open .kp-arrow{transform:rotate(180deg)}
+.kp-body{padding:0 18px 16px;display:none}
+.kp-card.open .kp-body{display:block}
+.kp-body p{margin-bottom:8px;line-height:1.7;color:var(--text);font-size:0.9em}
+.kp-body strong{color:var(--accent)}
+.kp-body .formula-box{background:rgba(102,126,234,0.08);border:1px solid rgba(102,126,234,0.2);border-radius:8px;padding:12px 16px;margin:10px 0;font-family:'Courier New',monospace;font-size:0.9em;color:#c4b5fd;line-height:1.6}
+.kp-body .tip{background:rgba(74,222,128,0.08);border-left:3px solid var(--success);padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0;font-size:0.85em}
+.kp-body .warn{background:rgba(248,113,113,0.08);border-left:3px solid var(--danger);padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0;font-size:0.85em}
+.kp-body .info{background:rgba(96,165,250,0.08);border-left:3px solid var(--info);padding:10px 14px;margin:10px 0;border-radius:0 8px 8px 0;font-size:0.85em}
+table.cmp{width:100%;border-collapse:collapse;margin:12px 0;font-size:0.82em}
+table.cmp th{background:rgba(102,126,234,0.12);padding:10px 12px;text-align:left;font-weight:600;border-bottom:2px solid rgba(102,126,234,0.3)}
+table.cmp td{padding:9px 12px;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.5}
+table.cmp tr:hover td{background:rgba(255,255,255,0.02)}
+.formula-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:12px 0}
+.formula-card{background:rgba(102,126,234,0.06);border:1px solid rgba(102,126,234,0.15);border-radius:10px;padding:14px}
+.formula-card h4{font-size:0.8em;color:var(--accent);margin-bottom:6px}
+.formula-card .f{font-family:'Courier New',monospace;font-size:0.88em;color:#c4b5fd;margin-bottom:4px;line-height:1.5}
+.formula-card .desc{font-size:0.78em;color:var(--text2);line-height:1.4}
+.exam-q{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:16px}
+.exam-q .q-header{display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.exam-q .q-type{font-size:0.7em;padding:3px 8px;border-radius:8px;font-weight:600}
+.q-choice{background:rgba(248,113,113,0.1);color:var(--danger)}
+.q-fill{background:rgba(251,191,36,0.1);color:var(--warn)}
+.q-short{background:rgba(96,165,250,0.1);color:var(--info)}
+.q-calc{background:rgba(74,222,128,0.1);color:var(--success)}
+.exam-q .q-text{font-size:0.9em;line-height:1.7;margin-bottom:10px}
+.exam-q .q-answer{display:none;padding-top:12px;border-top:1px solid var(--border);margin-top:12px;font-size:0.88em;line-height:1.7}
+.exam-q.open .q-answer{display:block}
+.q-toggle{cursor:pointer;color:var(--accent);font-size:0.85em;margin-top:8px}
+.q-toggle:hover{text-decoration:underline}
+.section-title{font-size:1.1em;font-weight:600;margin:24px 0 12px;padding-bottom:8px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px}
+.cross-link{display:inline-flex;align-items:center;gap:4px;background:rgba(102,126,234,0.1);padding:3px 10px;border-radius:12px;font-size:0.78em;color:var(--accent);cursor:pointer;text-decoration:none;margin:2px}
+.cross-link:hover{background:rgba(102,126,234,0.2)}
+canvas.kg{width:100%;height:300px;border-radius:10px;background:rgba(0,0,0,0.2);margin:12px 0;border:1px solid var(--border)}
+.search-box{padding:10px 16px;border-bottom:1px solid var(--border)}
+.search-box input{width:100%;padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:rgba(255,255,255,0.05);color:var(--text);font-size:0.85em;outline:none}
+.search-box input:focus{border-color:var(--accent)}
+.search-box input::placeholder{color:var(--text2)}
+.stats{display:flex;gap:16px;padding:16px 20px;border-bottom:1px solid var(--border);flex-wrap:wrap}
+.stat{text-align:center;flex:1;min-width:60px}
+.stat .num{font-size:1.2em;font-weight:700;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat .label{font-size:0.65em;color:var(--text2);margin-top:2px}
+</style>
+</head>
+<body>
+<div class="sidebar">
+<div class="sidebar-header">
+<h1>半导体物理 知识库</h1>
+<p>刘恩科《半导体物理学》第七版</p>
+<p>上海大学813/962考研资料</p>
+</div>
+<div class="stats">
+<div class="stat"><div class="num">9</div><div class="label">章节</div></div>
+<div class="stat"><div class="num">60+</div><div class="label">知识点</div></div>
+<div class="stat"><div class="num">40+</div><div class="label">公式</div></div>
+<div class="stat"><div class="num">58</div><div class="label">真题</div></div>
+</div>
+<div class="search-box"><input type="text" placeholder="搜索知识点..." oninput="doSearch(this.value)"></div>
+<div class="nav-section">
+<div class="nav-label">核心基础 (70%)</div>
+<div class="nav-item active" onclick="showCh(0,this)"><div class="ch-num" style="background:rgba(102,126,234,0.2);color:var(--accent)">1</div><div class="ch-title">电子状态与能带<br><small style="color:var(--text2)">晶体结构/能带/有效质量/空穴</small></div><div class="ch-badge">95%</div></div>
+<div class="nav-item" onclick="showCh(1,this)"><div class="ch-num" style="background:rgba(118,75,162,0.2);color:var(--accent2)">2</div><div class="ch-title">杂质与缺陷能级<br><small style="color:var(--text2)">施主/受主/深能级/补偿</small></div><div class="ch-badge">80%</div></div>
+<div class="nav-item" onclick="showCh(2,this)"><div class="ch-num" style="background:rgba(74,222,128,0.2);color:var(--success)">3</div><div class="ch-title">载流子统计分布<br><small style="color:var(--text2)">费米分布/浓度/费米能级</small></div><div class="ch-badge">98%</div></div>
+<div class="nav-item" onclick="showCh(3,this)"><div class="ch-num" style="background:rgba(251,191,36,0.2);color:var(--warn)">4</div><div class="ch-title">半导体导电性<br><small style="color:var(--text2)">迁移率/散射/电导率</small></div><div class="ch-badge">90%</div></div>
+<div class="nav-item" onclick="showCh(4,this)"><div class="ch-num" style="background:rgba(248,113,113,0.2);color:var(--danger)">5</div><div class="ch-title">非平衡载流子<br><small style="color:var(--text2)">复合/扩散/爱因斯坦关系</small></div><div class="ch-badge">92%</div></div>
+<div class="nav-item" onclick="showCh(5,this)"><div class="ch-num" style="background:rgba(96,165,250,0.2);color:var(--info)">6</div><div class="ch-title">PN结<br><small style="color:var(--text2)">能带图/I-V/击穿/电容</small></div><div class="ch-badge">96%</div></div>
+<div class="nav-item" onclick="showCh(6,this)"><div class="ch-num" style="background:rgba(217,119,6,0.2);color:#d97706">7</div><div class="ch-title">金属-半导体接触<br><small style="color:var(--text2)">肖特基/欧姆接触</small></div><div class="ch-badge">75%</div></div>
+<div class="nav-item" onclick="showCh(7,this)"><div class="ch-num" style="background:rgba(168,85,247,0.2);color:#a855f7">8</div><div class="ch-title">MIS/MOS结构<br><small style="color:var(--text2)">C-V特性/阈值电压</small></div><div class="ch-badge">88%</div></div>
+<div class="nav-label">拓展应用 (30%)</div>
+<div class="nav-item" onclick="showCh(8,this)"><div class="ch-num" style="background:rgba(236,72,153,0.2);color:#ec4899">9</div><div class="ch-title">异质结/光电/效应<br><small style="color:var(--text2)">异质结/光吸收/霍尔效应</small></div><div class="ch-badge">70%</div></div>
+<div class="nav-label">参考</div>
+<div class="nav-item" onclick="showCh(9,this)"><div class="ch-num" style="background:rgba(255,255,255,0.1);color:var(--text)">F</div><div class="ch-title">公式速查手册<br><small style="color:var(--text2)">40+核心公式分类汇总</small></div></div>
+<div class="nav-item" onclick="showCh(10,this)"><div class="ch-num" style="background:rgba(255,255,255,0.1);color:var(--text)">E</div><div class="ch-title">2021真题及解析<br><small style="color:var(--text2)">选择/填空/简答/计算</small></div></div>
+</div>
+</div>
+<div class="main" id="mainContent">
+<!-- JS will populate content -->
+</div>
+
+<script>
+// ==================== KNOWLEDGE DATA ====================
+const chapters = [
+// ===== CH1: 电子状态与能带 =====
+{
+title:"第1章 半导体中的电子状态", subtitle:"能带理论与电子运动 — 全书理论基石",
+tags:[{t:"权重95%",c:"tag-weight"},{t:"★★★★★",c:"tag-stars"},{t:"核心基础",c:"tag-core"}],
+kp:[
+{n:"晶体结构",s:"★★★☆☆",body:`
+<p><strong>金刚石结构</strong>：Si、Ge等元素半导体。可视为两个FCC子晶格沿体对角线位移1/4嵌套，每个晶胞含<strong>8个原子</strong>（4基元×2）。配位数4，键角109.5°。</p>
+<p><strong>闪锌矿结构</strong>：GaAs等化合物半导体。两套FCC子晶格由不同原子占据。与金刚石结构区别：原胞内原子种类不同，导致空间反演对称性破缺。</p>
+<p><strong>纤锌矿结构</strong>：GaN、ZnO等。六方密堆积，原胞含2个原子。具有极性，沿c轴方向有自发极化。</p>
+<p><strong>布里渊区</strong>：金刚石(FCC)的第一布里渊区为<strong>截角八面体（十四面体）</strong>，由6个正方形面和8个正三角形面组成。</p>
+<div class="tip">记忆：金刚石=同种原子+FCC；闪锌矿=不同原子+FCC；纤锌矿=六方密堆积</div>
+<div class="info">真题：金刚石晶体的第一布里渊区形状是十四面体（2021选择题第1题）</div>
+`},
+{n:"能带理论",s:"★★★★★",body:`
+<p><strong>能带形成</strong>：孤立原子分立能级 → 晶体中周期性势场 → 能级分裂 → 形成<strong>准连续能带</strong>。N个原子形成晶体，每个能级分裂为N个靠得很近的能级。</p>
+<p><strong>导带(E<sub>c</sub>)</strong>：电子自由运动的能带，能量最低点为导带底。<br>
+<strong>价带(E<sub>v</sub>)</strong>：共价键电子所在的能带，能量最高点为价带顶。<br>
+<strong>禁带宽度(E<sub>g</sub>)</strong>：E<sub>c</sub> - E<sub>v</sub>，决定半导体性质。</p>
+<div class="formula-box">
+Si: E<sub>g</sub> = 1.12 eV (300K)<br>
+Ge: E<sub>g</sub> = 0.66 eV (300K)<br>
+GaAs: E<sub>g</sub> = 1.43 eV (300K)
+</div>
+<p><strong>导体</strong>：导带部分填充 / 价带导带重叠<br>
+<strong>半导体</strong>：禁带窄(0.1~3eV)，价带满/导带空<br>
+<strong>绝缘体</strong>：禁带宽(>3eV)</p>
+<p><strong>温度效应</strong>：温度升高 → 晶格间距增大 → 禁带宽度<strong>减小</strong>（如Si: dE<sub>g</sub>/dT ≈ -2.3×10⁻⁴ eV/K）<br>
+<strong>压力效应</strong>：压力升高 → 原子间距减小 → 禁带宽度<strong>增大</strong></p>
+<div class="warn">易错：温度升高E<sub>g</sub>减小，压力升高E<sub>g</sub>增大（2021选择题第2题答案C）</div>
+`},
+{n:"有效质量",s:"★★★★★",body:`
+<p>电子在周期性势场中的运动等效为自由粒子在<strong>有效质量</strong>下的运动。</p>
+<div class="formula-box">m* = ħ² / (d²E/dk²)</div>
+<p><strong>E-k关系</strong>：描述能量与波矢的关系。导带底附近E-k曲线开口向上 → m*>0（正有效质量）；价带顶附近开口向下 → m*<0（负有效质量）。</p>
+<p><strong>物理意义</strong>：有效质量 = 晶格对电子作用的宏观体现。m*越小，电子越"轻"，越容易被加速，迁移率越高。</p>
+<p><strong>各向异性</strong>：Si导带底有6个等价能谷，沿不同方向有效质量不同。纵向有效质量m<sub>l</sub>* > 横向有效质量m<sub>t</sub>*。</p>
+<div class="info">填空题：电子有效质量定义式 m* = ħ²(∂²E/∂k²)⁻¹</div>
+`},
+{n:"空穴",s:"★★★★★",body:`
+<p><strong>定义</strong>：价带中缺少一个电子的空位，等效为带<strong>+q</strong>电荷的准粒子。</p>
+<p><strong>运动</strong>：空穴速度 = 被缺少电子速度的<strong>负值</strong>。空穴运动可类比<strong>气泡在水中上升</strong>。</p>
+<p><strong>等效质量</strong>：空穴具有正的有效质量（价带顶附近）。</p>
+<p><strong>电导率贡献</strong>：σ = q(nμ<sub>n</sub> + pμ<sub>p</sub>)<br>
+Si中: μ<sub>n</sub>≈1400, μ<sub>p</sub>≈500 cm²/(V·s)</p>
+<div class="tip">空穴不是真实粒子，是价带中大量电子集体运动的等效描述。类比：满水的杯中气泡上升。</div>
+`},
+{n:"本征半导体与杂质半导体",s:"★★★★☆",body:`
+<p><strong>本征半导体</strong>：纯净无杂质的半导体，n = p = n<sub>i</sub>（本征载流子浓度）。费米能级E<sub>F</sub>位于禁带中央附近。</p>
+<p><strong>n型半导体</strong>：掺入施主杂质（如Si中掺P），多子为电子，少子为空穴。n ≈ N<sub>D</sub>，p = n<sub>i</sub>²/n。</p>
+<p><strong>p型半导体</strong>：掺入受主杂质（如Si中掺B），多子为空穴，少子为电子。p ≈ N<sub>A</sub>，n = n<sub>i</sub>²/p。</p>
+<div class="warn">易混淆：n型中电子是多子（浓度高），但空穴仍存在（少子）；p型同理。</div>
+`},
+{n:"E-k图与能谷结构",s:"★★★☆☆",body:`
+<p><strong>E-k图</strong>：描述电子能量E与波矢k的关系，是能带理论的核心图形工具。</p>
+<p><strong>Si的能谷</strong>：导带底位于6个等价能谷（<100>方向），在[111]方向施加磁场时，各能谷有效质量投影相同，仅观测到<strong>1个吸收峰</strong>。</p>
+<p><strong>GaAs的能谷</strong>：导带底位于Γ点（k=0），为直接带隙半导体。主能谷与次能谷之间的能量差ΔE≈0.36eV，强电场下可发生<strong>转移电子效应（耿氏效应）</strong>。</p>
+<div class="info">真题：n型硅在[111]方向施加磁场时，观测到1个吸收峰（2021选择题第5题）</div>
+`}
+],
+kg:{nodes:[{x:50,y:20,r:18,c:"#667eea",l:"能带理论"},{x:20,y:45,r:14,c:"#764ba2",l:"晶体结构"},{x:50,y:50,r:16,c:"#4ade80",l:"有效质量"},{x:80,y:45,r:14,c:"#fbbf24",l:"空穴"},{x:30,y:75,r:13,c:"#f87171",l:"E-k图"},{x:70,y:75,r:13,c:"#60a5fa",l:"本征/杂质"}],edges:[{a:0,b:1,l:"基础"},{a:0,b:2,l:"描述"},{a:0,b:3,l:"价带"},{a:2,b:4,l:"图形"},{a:0,b:5,l:"分类"}]}
+},
+
+// ===== CH2: 杂质与缺陷能级 =====
+{
+title:"第2章 杂质和缺陷能级", subtitle:"掺杂机制与缺陷物理",
+tags:[{t:"权重80%",c:"tag-weight"},{t:"★★★★☆",c:"tag-stars"},{t:"核心基础",c:"tag-core"}],
+kp:[
+{n:"施主杂质与受主杂质",s:"★★★★★",body:`
+<p><strong>施主杂质（Donor）</strong>：能提供电子的杂质原子。如Si中掺P（第V族），P最外层5个电子，比Si多1个，多余电子容易电离进入导带。</p>
+<p><strong>受主杂质（Acceptor）</strong>：能接受电子（提供空穴）的杂质原子。如Si中掺B（第III族），B最外层3个电子，比Si少1个，容易从价带接受电子，在价带留下空穴。</p>
+<p><strong>替位式掺杂</strong>：杂质原子替代晶格中原子的位置。要求杂质原子半径与宿主原子相近。</p>
+<p><strong>间隙式杂质</strong>：杂质原子占据晶格间隙位置。如Cu、Au等重金属在Si中。</p>
+`},
+{n:"浅能级杂质与类氢模型",s:"★★★★★",body:`
+<p><strong>浅能级</strong>：电离能很小（~meV量级），靠近导带底（施主）或价带顶（受主）。室温下通常完全电离。</p>
+<div class="formula-box">
+类氢模型杂质电离能：<br>
+E<sub>d</sub> = (m*/m₀) × (1/ε<sub>r</sub>²) × 13.6 eV<br><br>
+Si中施主（P, As, Sb）：E<sub>d</sub> ≈ 0.045 eV<br>
+Si中受主（B, Al, Ga）：E<sub>a</sub> ≈ 0.045 eV<br>
+Ge中施主：E<sub>d</sub> ≈ 0.012 eV
+</div>
+<p><strong>类氢模型</strong>：将杂质电子视为氢原子模型，库仑势场中的电子，用有效质量m*和介电常数ε<sub>r</sub>修正。</p>
+<div class="info">计算题：用类氢模型计算Si中P施主电离能，需代入m*、ε<sub>r</sub>=11.7</div>
+`},
+{n:"深能级杂质",s:"★★★★☆",body:`
+<p><strong>深能级</strong>：电离能较大（~0.1-0.5eV），位于禁带中部附近。如Si中的Au、Cu。</p>
+<p><strong>特点</strong>：可同时作为施主和受主（两性杂质）；电子与空穴的<strong>俘获概率相近</strong>，因此常作为<strong>复合中心</strong>。</p>
+<p><strong>复合中心</strong>：深能级杂质通过"俘获电子→俘获空穴"的两步过程促进载流子复合，显著缩短少子寿命。</p>
+<div class="tip">论述题答题要点：深能级位置靠近禁带中线 → 电子与空穴俘获概率相近 → 高效复合中心 → 缩短少子寿命</div>
+`},
+{n:"杂质补偿效应",s:"★★★★☆",body:`
+<p><strong>补偿</strong>：同时存在施主和受主杂质时，它们的作用互相抵消。</p>
+<p><strong>n型补偿半导体</strong>：N<sub>D</sub> > N<sub>A</sub>，有效施主浓度 = N<sub>D</sub> - N<sub>A</sub>，n ≈ N<sub>D</sub> - N<sub>A</sub></p>
+<p><strong>p型补偿半导体</strong>：N<sub>A</sub> > N<sub>D</sub>，有效受主浓度 = N<sub>A</sub> - N<sub>D</sub>，p ≈ N<sub>A</sub> - N<sub>D</sub></p>
+<p><strong>半导体类型判断</strong>：比较N<sub>D</sub>和N<sub>A</sub>的大小，大的一方决定导电类型。</p>
+<div class="warn">真题：位错处原子仅形成3个共价键，呈中性；俘获1个电子后带负电，属于受主缺陷（2021选择题第3题）</div>
+`},
+{n:"缺陷物理",s:"★★★☆☆",body:`
+<p><strong>点缺陷</strong>：空位（原子缺失）、间隙原子、反位缺陷。影响载流子浓度和迁移率。</p>
+<p><strong>线缺陷（位错）</strong>：位错处原子仅形成3个共价键，产生悬挂键。悬挂键可捕获电子，表现为受主。</p>
+<p><strong>面缺陷</strong>：晶界、层错。多晶半导体中晶界处存在大量悬挂键和缺陷态。</p>
+<div class="info">位错原子：3个共价键 → 中性；俘获1个电子 → 负电 → 受主缺陷</div>
+`}
+],
+kg:{nodes:[{x:50,y:15,r:18,c:"#667eea",l:"施主/受主"},{x:25,y:40,r:14,c:"#764ba2",l:"类氢模型"},{x:75,y:40,r:14,c:"#4ade80",l:"浅能级"},{x:25,y:70,r:14,c:"#f87171",l:"深能级"},{x:75,y:70,r:14,c:"#fbbf24",l:"补偿效应"},{x:50,y:90,r:12,c:"#60a5fa",l:"缺陷"}],edges:[{a:0,b:1,l:"计算"},{a:0,b:2,l:"特征"},{a:0,b:3,l:"复合中心"},{a:0,b:4,l:"浓度"},{a:3,b:5,l:"产生"}]}
+},
+
+// ===== CH3: 载流子统计分布 =====
+{
+title:"第3章 载流子的统计分布", subtitle:"计算核心 — 浓度、费米能级与统计规律",
+tags:[{t:"权重98%",c:"tag-weight"},{t:"★★★★★",c:"tag-stars"},{t:"计算高频",c:"tag-exam"}],
+kp:[
+{n:"费米-狄拉克分布",s:"★★★★★",body:`
+<p><strong>费米分布函数</strong>：描述热平衡状态下，能量为E的量子态被电子占据的概率。</p>
+<div class="formula-box">
+f(E) = 1 / [1 + exp((E - E<sub>F</sub>)/(k₀T))]<br><br>
+T=0K时：E < E<sub>F</sub> → f=1（全满）；E > E<sub>F</sub> → f=0（全空）<br>
+T>0K时：E = E<sub>F</sub> → f = 0.5（半满）
+</div>
+<p><strong>E<sub>F</sub>的物理意义</strong>：电子占据概率为50%的能级。T=0K时是最高被占据能级。</p>
+`},
+{n:"玻尔兹曼近似",s:"★★★★★",body:`
+<p>当 E - E<sub>F</sub> ≥ 3k₀T 时，费米分布可近似为<strong>玻尔兹曼分布</strong>：</p>
+<div class="formula-box">
+f(E) ≈ exp(-(E - E<sub>F</sub>)/(k₀T))<br><br>
+适用条件：非简并半导体，E<sub>F</sub>在禁带中远离导带底和价带顶
+</div>
+<p><strong>简并vs非简并</strong>：非简并时E<sub>F</sub>在禁带中，可用玻尔兹曼近似；简并时E<sub>F</sub>进入导带或价带，必须用完整费米分布。</p>
+<div class="info">填空题：什么是玻尔兹曼近似？答：用玻尔兹曼分布近似费米分布，适用条件为E-E<sub>F</sub>≥3kT</div>
+`},
+{n:"状态密度",s:"★★★★☆",body:`
+<p><strong>k空间量子态密度</strong>：三维k空间中，单位体积的允许态数为 2V/(2π)³（含自旋）。</p>
+<div class="formula-box">
+导带底附近状态密度：g(E) = (4π(2m<sub>n</sub>*)^(3/2)/h³) × √(E - E<sub>c</sub>)<br>
+价带顶附近状态密度：g(E) = (4π(2m<sub>p</sub>*)^(3/2)/h³) × √(E<sub>v</sub> - E)<br><br>
+有效态密度：<br>
+N<sub>c</sub> = 2(2πm<sub>n</sub>*k₀T/h²)^(3/2)  (导带)<br>
+N<sub>v</sub> = 2(2πm<sub>p</sub>*k₀T/h²)^(3/2)  (价带)
+</div>
+<p>Si在300K：N<sub>c</sub> ≈ 2.8×10¹⁹ cm⁻³，N<sub>v</sub> ≈ 1.04×10¹⁹ cm⁻³</p>
+`},
+{n:"本征载流子浓度",s:"★★★★★",body:`
+<div class="formula-box">
+质量作用定律：n × p = n<sub>i</sub>²<br><br>
+本征载流子浓度：<br>
+n<sub>i</sub>² = N<sub>c</sub>N<sub>v</sub> × exp(-E<sub>g</sub>/(k₀T))<br><br>
+n<sub>i</sub> = √(N<sub>c</sub>N<sub>v</sub>) × exp(-E<sub>g</sub>/(2k₀T))
+</div>
+<p>Si在300K：n<sub>i</sub> ≈ 1.5×10¹⁰ cm⁻³（也有取1.0×10¹⁰）<br>
+Ge在300K：n<sub>i</sub> ≈ 2.4×10¹³ cm⁻³</p>
+<div class="warn">质量作用定律适用于<strong>热平衡</strong>状态下的任意半导体（本征、n型、p型均适用）</div>
+`},
+{n:"杂质半导体载流子浓度",s:"★★★★★",body:`
+<p><strong>杂质完全电离条件</strong>（室温下通常满足）：</p>
+<div class="formula-box">
+n型：n₀ ≈ N<sub>D</sub> - N<sub>A</sub>（多子），p₀ = n<sub>i</sub>²/n₀（少子）<br>
+p型：p₀ ≈ N<sub>A</sub> - N<sub>D</sub>（多子），n₀ = n<sub>i</sub>²/p₀（少子）<br><br>
+电中性条件：<br>
+n型：n + N<sub>A</sub>⁻ = p + N<sub>D</sub>⁺<br>
+p型：p + N<sub>D</sub>⁺ = n + N<sub>A</sub>⁻
+</div>
+<p><strong>温度区间</strong>（5个阶段）：<br>
+低温弱电离区 → 中间电离区 → 强电离区（饱和区）→ 本征激发区 → 高温本征区</p>
+<div class="tip">解题步骤：①确定类型（n/p）→ ②判断温区 → ③电中性条件 → ④代入公式</div>
+`},
+{n:"费米能级位置",s:"★★★★★",body:`
+<div class="formula-box">
+n型：E<sub>F</sub> - E<sub>i</sub> = k₀T × ln(n₀/n<sub>i</sub>)<br>
+p型：E<sub>i</sub> - E<sub>F</sub> = k₀T × ln(p₀/n<sub>i</sub>)<br><br>
+n型（非简并）：E<sub>F</sub> = E<sub>c</sub> - k₀T × ln(N<sub>c</sub>/N<sub>D</sub>)<br>
+p型（非简并）：E<sub>F</sub> = E<sub>v</sub> + k₀T × ln(N<sub>v</sub>/N<sub>A</sub>)<br><br>
+室温 k₀T ≈ 0.026 eV
+</div>
+<p><strong>变化规律</strong>：N<sub>D</sub>↑ → E<sub>F</sub>向导带移动；N<sub>A</sub>↑ → E<sub>F</sub>向价带移动；进入导带/价带时变为简并。</p>
+<div class="warn">易错：非平衡状态下，多子浓度变化可忽略（Δn≪n₀），电子费米能级近似不变</div>
+`},
+{n:"简并半导体",s:"★★★☆☆",body:`
+<p><strong>简并条件</strong>：当掺杂浓度极高，使E<sub>F</sub>进入导带（n型）或价带（p型）时，半导体变为简并半导体。</p>
+<p><strong>禁带变窄效应</strong>：重掺杂时，杂质能级展宽为杂质带，与导带/价带重叠，导致有效禁带宽度减小。</p>
+<p><strong>统计分布</strong>：必须使用完整费米-狄拉克分布，不能用玻尔兹曼近似。</p>
+<div class="info">真题：费米能级进入导带或价带时，载流子统计分布遵循简并型分布（2021选择题第4题）</div>
+`}
+],
+kg:{nodes:[{x:50,y:12,r:18,c:"#667eea",l:"费米分布"},{x:20,y:35,r:14,c:"#764ba2",l:"状态密度"},{x:80,y:35,r:14,c:"#4ade80",l:"载流子浓度"},{x:20,y:65,r:14,c:"#fbbf24",l:"费米能级"},{x:80,y:65,r:14,c:"#f87171",l:"玻尔兹曼"},{x:50,y:88,r:12,c:"#60a5fa",l:"简并"}],edges:[{a:0,b:1,l:"基础"},{a:0,b:2,l:"核心"},{a:0,b:3,l:"位置"},{a:0,b:4,l:"近似"},{a:2,b:5,l:"重掺杂"}]}
+},
+
+// ===== CH4: 半导体导电性 =====
+{
+title:"第4章 半导体的导电性", subtitle:"载流子输运 — 迁移率、散射与电导率",
+tags:[{t:"权重90%",c:"tag-weight"},{t:"★★★★★",c:"tag-stars"},{t:"核心基础",c:"tag-core"}],
+kp:[
+{n:"漂移运动与迁移率",s:"★★★★★",body:`
+<p><strong>漂移速度</strong>：载流子在外电场作用下的定向运动速度。弱电场下 v<sub>d</sub> = μE（线性关系）。</p>
+<div class="formula-box">
+漂移电流密度：<br>
+J<sub>n</sub> = qnμ<sub>n</sub>E（电子）<br>
+J<sub>p</sub> = qpμ<sub>p</sub>E（空穴）<br><br>
+迁移率定义：μ = v<sub>d</sub>/E（单位：cm²/(V·s)）
+</div>
+<p><strong>电导率</strong>：σ = q(nμ<sub>n</sub> + pμ<sub>p</sub>)<br>
+<strong>电阻率</strong>：ρ = 1/σ</p>
+<p>室温Si：μ<sub>n</sub> ≈ 1350-1450, μ<sub>p</sub> ≈ 450-500 cm²/(V·s)</p>
+`},
+{n:"散射机制",s:"★★★★★",body:`
+<table class="cmp">
+<tr><th>对比维度</th><th>电离杂质散射</th><th>晶格振动散射（声子散射）</th></tr>
+<tr><td>散射源</td><td>电离杂质的库仑势场</td><td>晶格振动产生的声子</td></tr>
+<tr><td>温度依赖</td><td>P ∝ T⁻³/²，温度↑散射↓</td><td>P ∝ T³/²（声学波），温度↑散射↑</td></tr>
+<tr><td>主导温度区</td><td>低温区</td><td>室温及高温区</td></tr>
+<tr><td>对迁移率影响</td><td>低温下主导，温度升高μ增大</td><td>室温后主导，温度升高μ减小</td></tr>
+</table>
+<p><strong>声学波声子</strong>：原胞内原子同向振动，能量低，弹性碰撞。<br>
+<strong>光学波声子</strong>：多原子原胞内不同原子反向振动，能量高，非弹性碰撞。仅存在于含2+不同原子的晶体。</p>
+`},
+{n:"迁移率与温度/杂质浓度关系",s:"★★★★★",body:`
+<div class="formula-box">
+马西森定则：1/μ = 1/μ<sub>L</sub> + 1/μ<sub>I</sub><br>
+μ<sub>L</sub>（晶格散射）∝ T⁻³/²<br>
+μ<sub>I</sub>（杂质散射）∝ T³/²<br><br>
+综合效果：<br>
+低温：μ随T升高而增大（杂质散射减弱）<br>
+高温：μ随T升高而减小（晶格散射增强）
+</div>
+<p><strong>杂质浓度影响</strong>：杂质浓度↑ → 电离杂质散射↑ → μ↓</p>
+<p><strong>电阻率-温度曲线三段式</strong>：<br>
+①低温弱电离区：ρ快速下降（载流子浓度快速增大）<br>
+②饱和区：ρ平缓上升（载流子浓度不变，μ减小）<br>
+③本征激发区：ρ急剧下降（本征载流子指数增长）</p>
+<div class="info">论述题：画出ρ-T图并分阶段解释（2021简答题第2题，10分）</div>
+`},
+{n:"强电场效应与热载流子",s:"★★★☆☆",body:`
+<p><strong>热载流子</strong>：强电场下，载流子获得的能量超过晶格热能，漂移速度偏离欧姆定律。</p>
+<p><strong>速度饱和</strong>：极强电场下，载流子漂移速度趋于饱和值（~10⁷ cm/s），不再随电场增大。</p>
+<p><strong>耿氏效应</strong>：GaAs等多能谷半导体中，强电场使电子从主能谷转移到次能谷，出现<strong>负微分电导</strong>，产生微波振荡。</p>
+<div class="tip">论述题：什么是热载流子？答：强电场下，载流子获得的能量超过晶格热能，漂移速度偏离欧姆定律的载流子。</div>
+`}
+],
+kg:{nodes:[{x:50,y:15,r:18,c:"#667eea",l:"迁移率"},{x:20,y:40,r:14,c:"#764ba2",l:"漂移运动"},{x:80,y:40,r:14,c:"#4ade80",l:"散射机制"},{x:30,y:70,r:14,c:"#fbbf24",l:"电导率"},{x:70,y:70,r:14,c:"#f87171",l:"热载流子"}],edges:[{a:0,b:1,l:"定义"},{a:0,b:2,l:"决定"},{a:1,b:3,l:"计算"},{a:0,b:4,l:"强场"}]}
+},
+
+// ===== CH5: 非平衡载流子 =====
+{
+title:"第5章 非平衡载流子", subtitle:"产生-复合与输运 — 衔接理论与器件",
+tags:[{t:"权重92%",c:"tag-weight"},{t:"★★★★★",c:"tag-stars"},{t:"核心基础",c:"tag-core"}],
+kp:[
+{n:"非平衡载流子的注入与复合",s:"★★★★★",body:`
+<p><strong>注入</strong>：外界作用（光照、电注入等）打破热平衡，产生额外载流子Δn、Δp。</p>
+<p><strong>复合</strong>：非平衡载流子最终通过复合回到平衡态。复合率 = Δn/τ（τ为少子寿命）。</p>
+<div class="formula-box">
+稳态条件：产生率 = 复合率<br>
+Δp = g × τ（g为产生率，τ为寿命）<br><br>
+衰减规律（撤去激发后）：<br>
+Δp(t) = Δp(0) × exp(-t/τ)
+</div>
+<p><strong>非平衡载流子</strong>：满足Δn = Δp（本征激发下），但多子浓度变化可忽略。</p>
+<div class="info">计算题：已知g=10¹⁸, τ=10μs → Δp = 10¹³ cm⁻³（2021计算题第1题）</div>
+`},
+{n:"直接复合与间接复合",s:"★★★★☆",body:`
+<p><strong>直接复合</strong>：电子从导带直接跃迁到价带与空穴复合，释放能量（光子或声子）。复合率 R = r × n × p（r为复合系数）。</p>
+<p><strong>间接复合（SRH复合）</strong>：通过复合中心（深能级杂质/缺陷）的两步过程：<br>
+① 俘获电子：n → 复合中心<br>
+② 俘获空穴：复合中心 → p<br>
+间接复合是半导体中更常见的复合方式。</p>
+<p><strong>表面复合</strong>：半导体表面的悬挂键和缺陷态作为复合中心，表面复合速度S描述复合强度。</p>
+`},
+{n:"准费米能级",s:"★★★★☆",body:`
+<p><strong>定义</strong>：非平衡状态下，分别描述电子和空穴统计分布的等效能级。</p>
+<div class="formula-box">
+电子准费米能级：E<sub>Fn</sub>，满足 n = N<sub>c</sub>exp(-(E<sub>c</sub>-E<sub>Fn</sub>)/(k₀T))<br>
+空穴准费米能级：E<sub>Fp</sub>，满足 p = N<sub>v</sub>exp(-(E<sub>Fp</sub>-E<sub>v</sub>)/(k₀T))<br><br>
+平衡时：E<sub>Fn</sub> = E<sub>Fp</sub> = E<sub>F</sub><br>
+非平衡时：E<sub>Fn</sub> ≠ E<sub>Fp</sub>，两者分离
+</div>
+<p><strong>位置特征</strong>：注入使电子准费米能级上移（向导带），空穴准费米能级下移（向价带）。注入越大，分离越大。</p>
+`},
+{n:"扩散运动与扩散长度",s:"★★★★★",body:`
+<div class="formula-box">
+扩散电流密度：<br>
+J<sub>n,diff</sub> = qD<sub>n</sub>(dn/dx)（电子）<br>
+J<sub>p,diff</sub> = -qD<sub>p</sub>(dp/dx)（空穴）<br><br>
+扩散长度：<br>
+L<sub>n</sub> = √(D<sub>n</sub>τ<sub>n</sub>)（电子）<br>
+L<sub>p</sub> = √(D<sub>p</sub>τ<sub>p</sub>)（空穴）
+</div>
+<p><strong>扩散长度</strong>：载流子在复合前平均扩散的距离。L越大，载流子扩散越远。</p>
+<div class="info">计算题：已知τ=10μs, D=10cm²/s → L = √(10×10⁻⁵) ≈ 3.16×10⁻² cm = 316 μm</div>
+`},
+{n:"爱因斯坦关系式",s:"★★★★★",body:`
+<div class="formula-box">
+D/μ = k₀T/q<br><br>
+D<sub>n</sub>/μ<sub>n</sub> = D<sub>p</sub>/μ<sub>p</sub> = k₀T/q<br><br>
+室温(300K)：k₀T/q ≈ 0.026 V
+</div>
+<p><strong>物理意义</strong>：建立了扩散系数（描述扩散运动）与迁移率（描述漂移运动）之间的联系，反映了载流子运动的<strong>统一性</strong>。</p>
+<p><strong>推导基础</strong>：从热平衡条件下漂移电流与扩散电流平衡出发推导。</p>
+<div class="tip">论述题：简述爱因斯坦关系式的物理意义。答：建立了D与μ的联系，反映漂移和扩散运动的统一性。</div>
+`},
+{n:"连续性方程",s:"★★★★★",body:`
+<div class="formula-box">
+一维连续性方程：<br>
+∂n/∂t = (1/q)(∂J<sub>n</sub>/∂x) + g<sub>n</sub> - r<sub>n</sub><br>
+∂p/∂t = -(1/q)(∂J<sub>p</sub>/∂x) + g<sub>p</sub> - r<sub>p</sub><br><br>
+含漂移和扩散的完整形式：<br>
+∂n/∂t = D<sub>n</sub>(∂²n/∂x²) + μ<sub>n</sub>E(∂n/∂x) + g - (n-n₀)/τ
+</div>
+<p><strong>物理含义</strong>：载流子浓度的时间变化 = 扩散项 + 漂移项 + 产生复合项</p>
+<p><strong>稳态解</strong>：恒定光注入下，少子分布满足扩散方程，边界条件为欧姆接触处Δn=0。</p>
+`},
+{n:"陷阱效应",s:"★★★☆☆",body:`
+<p><strong>陷阱中心</strong>：能俘获载流子并暂时存储，随后释放的缺陷态。与复合中心不同，陷阱释放概率较大。</p>
+<p><strong>影响</strong>：① 延长表观少子寿命（载流子被陷阱俘获后延迟复合）；② 引起光电导衰减的非单指数行为；③ 产生发光延迟（磷光效应）。</p>
+`}
+],
+kg:{nodes:[{x:50,y:12,r:18,c:"#667eea",l:"非平衡载流子"},{x:15,y:35,r:14,c:"#764ba2",l:"注入/复合"},{x:85,y:35,r:14,c:"#4ade80",l:"准费米能级"},{x:20,y:65,r:14,c:"#fbbf24",l:"扩散"},{x:80,y:65,r:14,c:"#f87171",l:"爱因斯坦"},{x:50,y:88,r:12,c:"#60a5fa",l:"连续性方程"}],edges:[{a:0,b:1,l:"产生"},{a:0,b:2,l:"描述"},{a:1,b:3,l:"输运"},{a:3,b:4,l:"联系"},{a:4,b:5,l:"方程"}]}
+},
+
+// ===== CH6: PN结 =====
+{
+title:"第6章 PN结", subtitle:"器件基础核心 — 能带图、I-V特性与击穿机制",
+tags:[{t:"权重96%",c:"tag-weight"},{t:"★★★★★",c:"tag-stars"},{t:"每年必考",c:"tag-exam"}],
+kp:[
+{n:"PN结形成与内建电场",s:"★★★★★",body:`
+<p><strong>形成过程</strong>：p型和n型半导体接触后，多子浓度差驱动扩散 → 空间电荷区（耗尽层）形成 → 内建电场阻止进一步扩散 → 热平衡。</p>
+<div class="formula-box">
+接触电势差（内建电势）：<br>
+V<sub>D</sub> = (k₀T/q) × ln(N<sub>D</sub>N<sub>A</sub>/n<sub>i</sub>²)<br><br>
+势垒高度：<br>
+qV<sub>D</sub> = k₀T × ln(N<sub>D</sub>N<sub>A</sub>/n<sub>i</sub>²)<br><br>
+例：N<sub>D</sub>=2×10¹⁹, N<sub>A</sub>=5×10¹⁴, n<sub>i</sub>=10¹⁰<br>
+→ qV<sub>D</sub> = 0.026 × ln(10²³) ≈ 1.39 eV
+</div>
+`},
+{n:"PN结能带图",s:"★★★★★",body:`
+<p><strong>无偏压（热平衡）</strong>：E<sub>Fn</sub> = E<sub>Fp</sub> = E<sub>F</sub>（统一费米能级）。n区能带低于p区，结区形成势垒qV<sub>D</sub>。扩散电流 = 漂移电流，总电流为0。</p>
+<p><strong>正偏压（V>0）</strong>：p接正、n接负。势垒降低至q(V<sub>D</sub>-V)，结区变窄。E<sub>Fn</sub> > E<sub>Fp</sub>（准费米能级分离）。扩散电流 > 漂移电流，正向电流随V指数增长。</p>
+<p><strong>反偏压（V<0）</strong>：p接负、n接正。势垒升高至q(V<sub>D</sub>+|V|)，结区变宽。E<sub>Fn</sub> < E<sub>Fp</sub>。漂移电流 > 扩散电流，反向饱和电流小。</p>
+<div class="info">真题：画出pn结在无偏压、正偏压和反偏压下的能带图（2021简答题第4题，10分）</div>
+`},
+{n:"肖克莱方程（I-V特性）",s:"★★★★★",body:`
+<div class="formula-box">
+理想PN结电流：<br>
+I = I<sub>s</sub>[exp(qV/(k₀T)) - 1]<br><br>
+反向饱和电流：<br>
+I<sub>s</sub> = qA[n<sub>p</sub>D<sub>n</sub>/(L<sub>n</sub>) + p<sub>n</sub>D<sub>p</sub>/(L<sub>p</sub>)]<br><br>
+正向（qV >> k₀T）：I ≈ I<sub>s</sub> × exp(qV/(k₀T))<br>
+反向（V < 0, |qV| >> k₀T）：I ≈ -I<sub>s</sub>
+</div>
+<p><strong>适用条件</strong>：理想PN结（无复合电流、无串联电阻、突变结）。</p>
+<p><strong>非理想因素</strong>：复合电流（低正偏主导）、隧穿电流（重掺杂）、串联电阻（大电流）。</p>
+`},
+{n:"PN结击穿机制",s:"★★★★★",body:`
+<table class="cmp">
+<tr><th>对比维度</th><th>雪崩击穿</th><th>齐纳击穿</th><th>热击穿</th></tr>
+<tr><td>物理机制</td><td>碰撞电离：载流子被强电场加速，碰撞产生大量载流子</td><td>隧道效应：电子从价带隧穿至导带</td><td>功耗→温度↑→电流↑（正反馈）</td></tr>
+<tr><td>击穿电压</td><td>较高（>6V），随温度升高而增大</td><td>较低（<4V），随温度升高而减小</td><td>无固定值，与散热相关</td></tr>
+<tr><td>适用条件</td><td>低掺杂、宽势垒</td><td>高掺杂、窄势垒</td><td>所有pn结</td></tr>
+<tr><td>可逆性</td><td>可逆</td><td>可逆</td><td>不可逆（破坏性）</td></tr>
+<tr><td>应用</td><td>稳压管（高压型）</td><td>稳压管（低压型）</td><td>需避免</td></tr>
+</table>
+<div class="warn">判断方法：击穿电压>6V→雪崩；<4V→齐纳；4-6V两者兼有。温度系数：雪崩正，齐纳负。</div>
+`},
+{n:"PN结电容",s:"★★★★☆",body:`
+<p><strong>势垒电容（耗尽层电容）</strong>：耗尽层宽度随偏压变化引起的电容效应。反偏时主导。</p>
+<div class="formula-box">
+C<sub>T</sub> = ε<sub>0</sub>ε<sub>r</sub>A/X<sub>D</sub><br><br>
+势垒宽度：<br>
+X<sub>D</sub> = √[2ε<sub>0</sub>ε<sub>r</sub>(V<sub>D</sub>-V)/(q) × (N<sub>A</sub>+N<sub>D</sub>)/(N<sub>A</sub>N<sub>D</sub>)]<br><br>
+高掺杂简化（N<sub>D</sub>>>N<sub>A</sub>）：<br>
+X<sub>D</sub> ≈ √[2ε<sub>0</sub>ε<sub>r</sub>V<sub>D</sub>/(qN<sub>A</sub>)]
+</div>
+<p><strong>扩散电容</strong>：正偏时，扩散区存储的少数载流子随偏压变化引起的电容。正偏时主导。</p>
+`},
+{n:"隧穿效应与隧道二极管",s:"★★★☆☆",body:`
+<p><strong>隧道结条件</strong>：重掺杂（简并半导体），势垒极窄（~10nm），电子可穿越势垒。</p>
+<p><strong>隧道二极管</strong>：正偏时出现<strong>负微分电阻</strong>区域（电流先增后减再增），可用于高频振荡和高速开关。</p>
+`}
+],
+kg:{nodes:[{x:50,y:12,r:18,c:"#667eea",l:"PN结"},{x:15,y:35,r:14,c:"#764ba2",l:"内建电场"},{x:85,y:35,r:14,c:"#4ade80",l:"能带图"},{x:15,y:65,r:14,c:"#fbbf24",l:"肖克莱方程"},{x:85,y:65,r:14,c:"#f87171",l:"击穿机制"},{x:50,y:88,r:12,c:"#60a5fa",l:"电容"}],edges:[{a:0,b:1,l:"形成"},{a:0,b:2,l:"描述"},{a:0,b:3,l:"I-V"},{a:0,b:4,l:"反偏"},{a:0,b:5,l:"效应"}]}
+},
+
+// ===== CH7: 金属-半导体接触 =====
+{
+title:"第7章 金属和半导体的接触", subtitle:"肖特基势垒与欧姆接触",
+tags:[{t:"权重75%",c:"tag-weight"},{t:"★★★☆☆",c:"tag-stars"},{t:"拓展基础",c:"tag-core"}],
+kp:[
+{n:"肖特基势垒（阻挡层）",s:"★★★★☆",body:`
+<table class="cmp">
+<tr><th>对比</th><th>阻挡层（Schottky Barrier）</th><th>反阻挡层（Ohmic Contact）</th></tr>
+<tr><td>n型功函数条件</td><td>W<sub>m</sub> > W<sub>s</sub></td><td>W<sub>m</sub> < W<sub>s</sub></td></tr>
+<tr><td>p型功函数条件</td><td>W<sub>m</sub> < W<sub>s</sub></td><td>W<sub>m</sub> > W<sub>s</sub></td></tr>
+<tr><td>能带特征</td><td>表面能带弯曲，形成势垒</td><td>无明显势垒</td></tr>
+<tr><td>I-V特性</td><td>整流特性</td><td>欧姆特性（线性）</td></tr>
+<tr><td>应用</td><td>肖特基二极管</td><td>器件电极</td></tr>
+</table>
+<p><strong>n型半导体</strong>：W<sub>m</sub> > W<sub>s</sub>时，电子从半导体流向金属，表面能带向上弯曲，形成阻挡层（肖特基势垒）。</p>
+<p><strong>传输机制</strong>：热电子发射（主要）、扩散理论、隧穿效应（重掺杂时）。</p>
+`},
+{n:"欧姆接触",s:"★★★☆☆",body:`
+<p><strong>定义</strong>：金属-半导体接触呈线性I-V特性，无整流效应。是半导体器件电极的基本要求。</p>
+<p><strong>实现方法</strong>：<br>
+① 选择合适功函数使W<sub>m</sub> < W<sub>s</sub>（n型）或W<sub>m</sub> > W<sub>s</sub>（p型）<br>
+② 重掺杂半导体表面，利用隧穿效应实现低阻接触<br>
+③ 在界面引入中间层（如合金化处理）</p>
+<div class="info">真题：p型半导体，W<sub>m</sub> > W<sub>s</sub> → 向上弯曲 → 反阻挡层；W<sub>m</sub> < W<sub>s</sub> → 向下弯曲 → 阻挡层（2021选择题第7题）</div>
+`}
+],
+kg:{nodes:[{x:50,y:20,r:18,c:"#667eea",l:"金属-半导体接触"},{x:25,y:55,r:14,c:"#764ba2",l:"肖特基势垒"},{x:75,y:55,r:14,c:"#4ade80",l:"欧姆接触"},{x:50,y:85,r:12,c:"#fbbf24",l:"功函数差"}],edges:[{a:0,b:1,l:"阻挡"},{a:0,b:2,l:"反阻挡"},{a:0,b:3,l:"决定"}]}
+},
+
+// ===== CH8: MIS/MOS结构 =====
+{
+title:"第8章 半导体表面与MIS结构", subtitle:"MOS器件基础 — C-V特性与阈值电压",
+tags:[{t:"权重88%",c:"tag-weight"},{t:"★★★★★",c:"tag-stars"},{t:"高频考点",c:"tag-exam"}],
+kp:[
+{n:"表面电场效应",s:"★★★★★",body:`
+<p><strong>p型半导体MIS结构</strong>随栅压V<sub>G</sub>变化的三种状态：</p>
+<div class="formula-box">
+V<sub>G</sub> < 0（负偏）：多子堆积区<br>
+→ 表面空穴浓度 > 体内，能带向下弯曲<br><br>
+V<sub>G</sub> > 0（低正偏）：多子耗尽区<br>
+→ 表面空穴被排斥，能带向上弯曲<br><br>
+V<sub>G</sub> >> 0（高正偏）：反型层区<br>
+→ 表面电子浓度 > 空穴浓度，形成反型层<br>
+判据：表面势 φ<sub>s</sub> ≥ 2φ<sub>F</sub>（强反型）
+</div>
+<div class="info">真题：p型MIS，SiO₂端加正电压 → φ<sub>s</sub><0 → 能带向上 → 低电压耗尽 → 高电压反型（2021选择题第8题，答案C）</div>
+`},
+{n:"理想MIS结构C-V特性",s:"★★★★★",body:`
+<p><strong>高频C-V曲线</strong>（常用）：<br>
+积累区：C = C<sub>ox</sub>（氧化层电容，最大值）<br>
+耗尽区：C随V<sub>G</sub>增大而减小<br>
+反型区：C趋于最小值C<sub>min</sub>（反型层载流子无法响应高频信号）</p>
+<p><strong>低频C-V曲线</strong>：<br>
+反型区：C回升至C<sub>ox</sub>（反型层载流子可响应低频信号）</p>
+<div class="formula-box">
+氧化层电容：C<sub>ox</sub> = ε<sub>0</sub>ε<sub>ox</sub>/t<sub>ox</sub><br>
+SiO₂: ε<sub>ox</sub> = 3.9ε<sub>0</sub>
+</div>
+`},
+{n:"实际MIS结构的影响因素",s:"★★★★★",body:`
+<p><strong>氧化层固定正电荷</strong>：使C-V曲线沿电压轴<strong>负向偏移</strong>（平带电压偏移）。偏移量 ΔV<sub>FB</sub> = -Q<sub>f</sub>/C<sub>ox</sub>。</p>
+<p><strong>可动离子（如Na⁺）</strong>：在氧化层中移动，导致C-V曲线<strong>双向漂移</strong>。正偏压温度处理（BI）后向负偏，负偏压温度处理（BI）后向正偏。</p>
+<p><strong>界面态</strong>：Si-SiO₂界面处的缺陷态，导致C-V曲线<strong>拉伸</strong>（stretch-out），高频曲线斜率减小。</p>
+<div class="warn">论述题：简述氧化层可动离子对MOS器件C-V曲线的影响。答：可动离子移动导致C-V曲线沿电压轴漂移，方向与离子极性和偏压温度处理条件相关。</div>
+`},
+{n:"阈值电压",s:"★★★★★",body:`
+<div class="formula-box">
+阈值电压：<br>
+V<sub>T</sub> = V<sub>FB</sub> + 2φ<sub>F</sub> + √(2ε<sub>s</sub>qN<sub>A</sub>·2φ<sub>F</sub>)/C<sub>ox</sub><br><br>
+其中：<br>
+V<sub>FB</sub>：平带电压（理想=0，实际含氧化层电荷修正）<br>
+φ<sub>F</sub>：费米势 = (k₀T/q)ln(N<sub>A</sub>/n<sub>i</sub>)<br>
+最后一项：耗尽层电荷项
+</div>
+<p><strong>体效应</strong>：衬底偏压使阈值电压增大的现象。</p>
+`},
+{n:"硅-二氧化硅系统中的电荷",s:"★★★★☆",body:`
+<p>四种主要电荷类型：</p>
+<p>① <strong>界面态电荷（Q<sub>it</sub>）</strong>：界面处悬挂键产生，可通过氢钝化减少<br>
+② <strong>固定氧化层电荷（Q<sub>f</sub>）</strong>：靠近界面的正电荷，与氧化工艺相关<br>
+③ <strong>可动离子电荷（Q<sub>m</sub>）</strong>：Na⁺、K⁺等碱金属离子，在电场和温度下可移动<br>
+④ <strong>氧化层陷阱电荷（Q<sub>ot</sub>）</strong>：辐射或热载流子注入产生的陷阱电荷</p>
+`}
+],
+kg:{nodes:[{x:50,y:15,r:18,c:"#667eea",l:"MIS/MOS结构"},{x:20,y:40,r:14,c:"#764ba2",l:"表面电场"},{x:80,y:40,r:14,c:"#4ade80",l:"C-V特性"},{x:20,y:70,r:14,c:"#fbbf24",l:"阈值电压"},{x:80,y:70,r:14,c:"#f87171",l:"氧化层电荷"}],edges:[{a:0,b:1,l:"基础"},{a:0,b:2,l:"测量"},{a:1,b:3,l:"决定"},{a:2,b:4,l:"影响"}]}
+},
+
+// ===== CH9: 异质结/光电/特殊效应 =====
+{
+title:"第9章 异质结、半导体光学性质与特殊效应", subtitle:"拓展应用 — 器件升级与物理效应",
+tags:[{t:"权重70%",c:"tag-weight"},{t:"★★★☆☆",c:"tag-stars"},{t:"拓展应用",c:"tag-core"}],
+kp:[
+{n:"半导体异质结",s:"★★★★☆",body:`
+<p><strong>定义</strong>：由两种<strong>禁带宽度不同</strong>的半导体材料构成的结。</p>
+<p><strong>能带突变</strong>：导带阶 ΔE<sub>c</sub> = χ<sub>1</sub> - χ<sub>2</sub>（电子亲和能之差）<br>
+价带阶 ΔE<sub>v</sub> = (E<sub>g1</sub> - E<sub>g2</sub>) - ΔE<sub>c</sub><br>
+满足：ΔE<sub>c</sub> + ΔE<sub>v</sub> = |E<sub>g1</sub> - E<sub>g2</sub>|</p>
+<p><strong>高注入比</strong>：宽禁带区向窄禁带区注入载流子的势垒低，注入效率高。异质结双极晶体管（HBT）利用此特性提高电流增益。</p>
+<p><strong>悬挂键密度</strong>：(100)面 N<sub>s</sub> = |1/a<sub>1</sub> - 1/a<sub>2</sub>|/4</p>
+<div class="info">计算题：Ge/GaAs异质结，(100)面悬挂键密度 ≈ 0.0822 cm⁻²（2021选择题第10题）</div>
+`},
+{n:"半导体光吸收",s:"★★★★☆",body:`
+<p><strong>本征吸收</strong>：光子能量 hν ≥ E<sub>g</sub> 时，价带电子吸收光子跃迁至导带。</p>
+<div class="formula-box">
+本征吸收条件：hν ≥ E<sub>g</sub> → λ ≤ hc/E<sub>g</sub><br>
+Si截止波长：λ<sub>c</sub> ≈ 1.1 μm<br>
+GaAs截止波长：λ<sub>c</sub> ≈ 0.87 μm
+</div>
+<p><strong>其他吸收</strong>：<br>
+① 杂质吸收：杂质能级→导带/价带，长波限更长<br>
+② 自由载流子吸收：导带内跃迁，红外区<br>
+③ 晶格吸收：声子吸收，远红外区</p>
+`},
+{n:"光电导效应",s:"★★★★☆",body:`
+<p><strong>原理</strong>：光照→产生非平衡载流子→电导率增大→光电导。</p>
+<div class="formula-box">
+光电导增益：G = τ/t<sub>tr</sub><br>
+τ：载流子寿命，t<sub>tr</sub>：渡越时间<br><br>
+Δσ = q(Δn·μ<sub>n</sub> + Δp·μ<sub>p</sub>)<br>
+稳态光电导：Δσ = qgτ(μ<sub>n</sub> + μ<sub>p</sub>)
+</div>
+<p><strong>器件</strong>：光敏电阻（光电导探测器）。增益>1意味着一个光子可产生多个载流子循环。</p>
+`},
+{n:"光生伏特效应与太阳能电池",s:"★★★★★",body:`
+<p><strong>物理过程</strong>：① 光吸收产生电子-空穴对 → ② PN结内建电场分离载流子 → ③ n区积累电子、p区积累空穴 → ④ 形成光生电压。</p>
+<div class="formula-box">
+太阳能电池参数：<br>
+开路电压：V<sub>OC</sub> ≈ (k₀T/q)ln(I<sub>sc</sub>/I<sub>s</sub>)<br>
+短路电流：I<sub>sc</sub>（光照下V=0时的电流）<br>
+最大输出功率：P<sub>max</sub> = V<sub>OC</sub> × I<sub>sc</sub> × FF<br>
+FF：填充因子（0.5~0.85）
+</div>
+<p><strong>直接/间接带隙</strong>：直接带隙（GaAs）发光效率高（无需声子参与）；间接带隙（Si）发光效率低。</p>
+`},
+{n:"半导体发光与激光",s:"★★★☆☆",body:`
+<p><strong>三种辐射过程</strong>：<br>
+① 自发辐射：随机自发，非相干光（LED）<br>
+② 受激辐射：外光子诱导，相干光（激光）<br>
+③ 受激吸收：光子被吸收</p>
+<p><strong>激光条件</strong>：粒子数反转 + 谐振腔 + 增益 > 损耗</p>
+<p><strong>LED原理</strong>：正偏PN结注入的电子和空穴在结区复合，释放光子。直接带隙材料发光效率高。</p>
+`},
+{n:"霍尔效应",s:"★★★★☆",body:`
+<div class="formula-box">
+霍尔电压：V<sub>H</sub> = R<sub>H</sub> × I × B / d<br><br>
+霍尔系数：R<sub>H</sub> = 1/(qn)（n型）或 -1/(qp)（p型）<br><br>
+载流子浓度：n = 1/(q|R<sub>H</sub>|)<br><br>
+判断载流子类型：V<sub>H</sub>正→p型，V<sub>H</sub>负→n型
+</div>
+<p><strong>应用</strong>：测量载流子浓度和类型。实验中需消除副效应（爱廷豪森效应、能斯特效应等），通过改变电流和磁场方向取平均。</p>
+<div class="info">实验题：设计实验测量N型半导体载流子浓度（原理→步骤→数据处理）</div>
+`},
+{n:"压阻效应与热电效应",s:"★★★☆☆",body:`
+<p><strong>压阻效应</strong>：应力导致半导体电阻率变化。用于压力传感器。Si的压阻系数较大，是MEMS压力传感器的核心材料。</p>
+<p><strong>热电效应</strong>：<br>
+① 塞贝克效应：温差→电压（温差发电）<br>
+② 珀尔帖效应：电流→吸热/放热（热电制冷）<br>
+③ 汤姆逊效应：电流+温差→吸热/放热</p>
+`},
+{n:"非晶态半导体",s:"★★☆☆☆",body:`
+<p><strong>核心特征</strong>：长程无序、短程有序。原子排列缺乏周期性，但近邻原子间距和配位数与晶体相似。</p>
+<p><strong>电子态密度</strong>：带尾态（禁带中出现连续态密度）、迁移率边（区分局域态和扩展态）。</p>
+<p><strong>应用</strong>：非晶硅(a-Si)太阳能电池（可大面积制备）、薄膜晶体管(TFT)、静电复印。</p>
+`}
+],
+kg:{nodes:[{x:50,y:15,r:16,c:"#667eea",l:"异质结"},{x:15,y:45,r:14,c:"#764ba2",l:"光吸收"},{x:85,y:45,r:14,c:"#4ade80",l:"光生伏特"},{x:15,y:75,r:14,c:"#fbbf24",l:"霍尔效应"},{x:85,y:75,r:14,c:"#f87171",l:"发光/激光"},{x:50,y:90,r:12,c:"#60a5fa",l:"压阻/热电"}],edges:[{a:0,b:1,l:"器件"},{a:1,b:2,l:"应用"},{a:2,b:4,l:"发光"},{a:3,b:5,l:"效应"}]}
+}
+];
+
+// ==================== FORMULA DATA ====================
+const formulaGroups = [
+{name:"载流子浓度与费米能级",formulas:[
+{f:"n × p = n<sub>i</sub>²",d:"质量作用定律（热平衡，任意半导体）"},
+{f:"n<sub>i</sub> = √(N<sub>c</sub>N<sub>v</sub>) × exp(-E<sub>g</sub>/(2k₀T))",d:"本征载流子浓度"},
+{f:"n型：n₀ ≈ N<sub>D</sub> - N<sub>A</sub>；p₀ = n<sub>i</sub>²/n₀",d:"n型完全电离载流子浓度"},
+{f:"p型：p₀ ≈ N<sub>A</sub> - N<sub>D</sub>；n₀ = n<sub>i</sub>²/p₀",d:"p型完全电离载流子浓度"},
+{f:"E<sub>F</sub> - E<sub>i</sub> = k₀T × ln(n₀/n<sub>i</sub>)",d:"n型费米能级位置"},
+{f:"E<sub>F</sub> = E<sub>c</sub> - k₀T × ln(N<sub>c</sub>/N<sub>D</sub>)",d:"n型费米能级（导带参考）"},
+{f:"Δp = g × τ",d:"稳态非平衡载流子浓度"}
+]},
+{name:"电导率与迁移率",formulas:[
+{f:"σ = q(nμ<sub>n</sub> + pμ<sub>p</sub>)",d:"电导率公式（核心）"},
+{f:"ρ = 1/σ",d:"电阻率与电导率关系"},
+{f:"σ<sub>i</sub> = qn<sub>i</sub>(μ<sub>n</sub> + μ<sub>p</sub>)",d:"本征半导体电导率"},
+{f:"n型：σ ≈ qN<sub>D</sub>μ<sub>n</sub>",d:"n型简化电导率"},
+{f:"D/μ = k₀T/q",d:"爱因斯坦关系式"},
+{f:"L = √(Dτ)",d:"扩散长度"}
+]},
+{name:"PN结参数",formulas:[
+{f:"V<sub>D</sub> = (k₀T/q)ln(N<sub>D</sub>N<sub>A</sub>/n<sub>i</sub>²)",d:"接触电势差（内建电势）"},
+{f:"qV<sub>D</sub> = k₀T × ln(N<sub>D</sub>N<sub>A</sub>/n<sub>i</sub>²)",d:"势垒高度"},
+{f:"X<sub>D</sub> = √[2ε<sub>0</sub>ε<sub>r</sub>(V<sub>D</sub>-V)/(q) × (N<sub>A</sub>+N<sub>D</sub>)/(N<sub>A</sub>N<sub>D</sub>)]",d:"势垒宽度（一般公式）"},
+{f:"I = I<sub>s</sub>[exp(qV/(k₀T)) - 1]",d:"肖克莱方程（理想I-V）"},
+{f:"I<sub>s</sub> = qA[n<sub>p</sub>D<sub>n</sub>/L<sub>n</sub> + p<sub>n</sub>D<sub>p</sub>/L<sub>p</sub>]",d:"反向饱和电流"},
+{f:"N<sub>D</sub>>>N<sub>A</sub>时：X<sub>D</sub> ≈ √[2ε<sub>0</sub>ε<sub>r</sub>V<sub>D</sub>/(qN<sub>A</sub>)]",d:"单边突变结简化"}
+]},
+{name:"MIS/MOS结构",formulas:[
+{f:"C<sub>ox</sub> = ε<sub>0</sub>ε<sub>ox</sub>/t<sub>ox</sub>",d:"氧化层电容"},
+{f:"V<sub>T</sub> = V<sub>FB</sub> + 2φ<sub>F</sub> + √(2ε<sub>s</sub>qN<sub>A</sub>·2φ<sub>F</sub>)/C<sub>ox</sub>",d:"阈值电压"},
+{f:"φ<sub>F</sub> = (k₀T/q)ln(N<sub>A</sub>/n<sub>i</sub>)",d:"费米势"},
+{f:"V<sub>H</sub> = R<sub>H</sub>IB/d",d:"霍尔电压"},
+{f:"n = 1/(q|R<sub>H</sub>|)",d:"霍尔效应测载流子浓度"}
+]},
+{name:"光学与特殊效应",formulas:[
+{f:"hν ≥ E<sub>g</sub> → λ ≤ hc/E<sub>g</sub>",d:"本征吸收条件"},
+{f:"Δσ = qgτ(μ<sub>n</sub> + μ<sub>p</sub>)",d:"稳态光电导"},
+{f:"P<sub>max</sub> = V<sub>OC</sub> × I<sub>sc</sub> × FF",d:"太阳能电池最大功率"},
+{f:"E = ħω (声子)",d:"声子能量"},
+{f:"E = hν = hc/λ (光子)",d:"光子能量"}
+]}
+];
+
+// ==================== EXAM DATA ====================
+const examQuestions = [
+{type:"选择",cls:"q-choice",q:"金刚石晶体的第一布里渊区形状是？<br>A. 正四面体  B. 八面体  C. 十二面体  D. 十四面体",
+a:"<strong>答案：D</strong>（十四面体）<br>金刚石为FCC晶格，第一布里渊区为截角八面体，由6个正方形面和8个正三角形面组成。"},
+{type:"选择",cls:"q-choice",q:"温度升高时，半导体禁带宽度会（）；压力升高时会（）？<br>A.增加；减小  B.增加；增加  C.减小；增加  D.减小；减小",
+a:"<strong>答案：C</strong><br>温度升高→晶格振动加剧→键合减弱→E<sub>g</sub>减小（Si: -2.3×10⁻⁴eV/K）；压力升高→原子间距减小→能带重叠增加→E<sub>g</sub>增大。"},
+{type:"选择",cls:"q-choice",q:"半导体中位错处原子带电状态为（）；俘获1个电子后为（），该缺陷属于（）？<br>A.正电；中性；施主  B.中性；负电；受主  C.中性；负电；受主  D.负电；中性；受主",
+a:"<strong>答案：B</strong><br>位错原子仅3个共价键→中性；俘获电子→负电→受主缺陷。"},
+{type:"选择",cls:"q-choice",q:"当费米能级进入导带或价带时，载流子统计分布遵循？<br>A.玻尔兹曼分布  B.费米分布  C.简并型分布  D.高斯分布",
+a:"<strong>答案：C</strong><br>E<sub>F</sub>进入导带/价带→简并态，用完整费米-狄拉克分布，特指为简并型分布。"},
+{type:"选择",cls:"q-choice",q:"n型硅导带底有6个等价能谷，[111]方向施加磁场时吸收峰数量为？<br>A.1  B.2  C.3  D.6",
+a:"<strong>答案：A</strong><br>[111]方向磁场使各能谷有效质量投影相同→简并→仅1个吸收峰。"},
+{type:"选择",cls:"q-choice",q:"室温下杂质完全电离的n型半导体，电导率主要由（）决定？<br>A.qN<sub>D</sub>μ<sub>n</sub>  B.qN<sub>A</sub>μ<sub>p</sub>  C.q(N<sub>D</sub>-N<sub>A</sub>)μ<sub>n</sub>  D.qN<sub>D</sub>μ<sub>m</sub>",
+a:"<strong>答案：A</strong><br>n型完全电离：n≈N<sub>D</sub>，σ≈qnμ<sub>n</sub>≈qN<sub>D</sub>μ<sub>n</sub>。少子贡献忽略。"},
+{type:"填空",cls:"q-fill",q:"电子有效质量的定义式为______",
+a:"m* = ħ²(∂²E/∂k²)⁻¹<br>有效质量是能量对波矢二阶导数的倒数与ħ²的乘积。"},
+{type:"填空",cls:"q-fill",q:"三维k空间中电子的量子态密度为______",
+a:"V/(2π)³ × 2（或 k²/(2π²)）<br>需考虑电子自旋（×2）和k空间体积元。"},
+{type:"填空",cls:"q-fill",q:"杂质全部电离且本征激发可忽略时，载流子浓度与温度无关，该区间称为______",
+a:"饱和区（强电离饱和区）<br>载流子浓度n≈N<sub>D</sub>，不随温度变化。"},
+{type:"填空",cls:"q-fill",q:"室温下n型非简并半导体费米能级公式为______",
+a:"E<sub>F</sub> = E<sub>c</sub> - k₀T × ln(N<sub>c</sub>/N<sub>D</sub>)"},
+{type:"填空",cls:"q-fill",q:"载流子复合可分为______和______两类",
+a:"直接复合；间接复合<br>直接复合无中间能级，间接复合通过复合中心。"},
+{type:"填空",cls:"q-fill",q:"随着温度升高，杂质半导体载流子浓度变化经历的五个阶段依次为______",
+a:"低温弱电离区→中间电离区→强电离区（饱和区）→本征激发区→高温本征区"},
+{type:"填空",cls:"q-fill",q:"pn结击穿机制主要有______、______和______三种",
+a:"雪崩击穿；齐纳击穿；热击穿"},
+{type:"填空",cls:"q-fill",q:"p型MIS结构中栅压从负到正增大时，表面依次经历______、______和______",
+a:"多子堆积区；多子耗尽区；反型层区"},
+{type:"简答",cls:"q-short",q:"简述电子与空穴的定义及形成机制（10分）",
+a:"<strong>电子</strong>：导带中能自由运动的带负电载流子。形成：①施主杂质电离（n型）②本征激发。<br><strong>空穴</strong>：价带中未被电子占据的共价键空位，等效带正电。形成：①受主杂质电离（p型）②本征激发。空穴不是真实粒子，是价带电子集体运动的等效描述。"},
+{type:"简答",cls:"q-short",q:"画出半导体电阻率-温度图像，分阶段解释（10分）",
+a:"三段式：①低温弱电离区：ρ快速下降（载流子浓度快速增大主导）；②饱和区：ρ平缓上升（浓度不变，晶格散射使μ减小）；③本征激发区：ρ急剧下降（n<sub>i</sub>指数增长主导）。核心：载流子浓度与迁移率的竞争关系。"},
+{type:"简答",cls:"q-short",q:"简述费米能级的定义及物理意义（10分）",
+a:"<strong>定义</strong>：T=0K时最高被占据能级；任意温度下电子占据概率为50%的能级。<br><strong>意义</strong>：①反映载流子填充水平（n型靠近导带，p型靠近价带）；②决定载流子浓度；③热平衡标志（各区域E<sub>F</sub>必须相等）。"},
+{type:"简答",cls:"q-short",q:"画出pn结在三种偏压下的能带图并简述特征（10分）",
+a:"<strong>无偏</strong>：E<sub>Fn</sub>=E<sub>Fp</sub>，势垒qV<sub>D</sub>，扩散=漂移，I=0。<br><strong>正偏</strong>：势垒q(V<sub>D</sub>-V)↓，E<sub>Fn</sub>>E<sub>Fp</sub>，扩散>漂移，I随V指数增长。<br><strong>反偏</strong>：势垒q(V<sub>D</sub>+|V|)↑，E<sub>Fn</sub><E<sub>Fp</sub>，漂移>扩散，I≈-I<sub>s</sub>。"},
+{type:"计算",cls:"q-calc",q:"已知n型Si：N<sub>D</sub>=10¹⁶cm⁻³，τ=10μs，g=10¹⁸cm⁻³s⁻¹，k₀T=0.026eV，n<sub>i</sub>=10¹⁰cm⁻³。<br>求(1)Δp (2)无光照和有光照下E<sub>F</sub>相对E<sub>i</sub>的位置",
+a:"<strong>(1)</strong> Δp = gτ = 10¹⁸ × 10⁻⁵ = <strong>10¹³ cm⁻³</strong><br><strong>(2)</strong> 无光照：E<sub>F</sub>-E<sub>i</sub> = k₀T×ln(n₀/n<sub>i</sub>) = 0.026×ln(10¹⁶/10¹⁰) = 0.026×13.82 ≈ <strong>0.36eV</strong><br>有光照：Δn=10¹³≪n₀=10¹⁶，电子浓度近似不变，E<sub>F</sub>-E<sub>i</sub> ≈ <strong>0.36eV</strong>（几乎不变）"},
+{type:"计算",cls:"q-calc",q:"本征Ge：ρ<sub>i</sub>=47Ω·cm，μ<sub>n</sub>=3600，μ<sub>p</sub>=1700 cm²/(V·s)，N=4.4×10²²cm⁻³。P掺杂百万分之一。<br>求(1)n<sub>i</sub> (2)n₀、p₀、ρ",
+a:"<strong>(1)</strong> n<sub>i</sub> = 1/[qρ<sub>i</sub>(μ<sub>n</sub>+μ<sub>p</sub>)] = 1/[1.6×10⁻¹⁹×47×5300] ≈ <strong>2.5×10¹³ cm⁻³</strong><br><strong>(2)</strong> N<sub>D</sub> = 4.4×10²²×10⁻⁶ = 4.4×10¹⁶<br>n₀ ≈ N<sub>D</sub> = <strong>4.4×10¹⁶ cm⁻³</strong><br>p₀ = n<sub>i</sub>²/n₀ = (2.5×10¹³)²/(4.4×10¹⁶) ≈ <strong>1.42×10¹⁰ cm⁻³</strong><br>ρ = 1/(qn₀μ<sub>n</sub>) ≈ <strong>0.039 Ω·cm</strong>"},
+{type:"计算",cls:"q-calc",q:"pn结：N<sub>D</sub>=2×10¹⁹，N<sub>A</sub>=5×10¹⁴，ε<sub>r</sub>=12，n<sub>i</sub>=10¹⁰，V<sub>b</sub>=0.5V。<br>求(1)qV<sub>D</sub> (2)无偏X<sub>D</sub> (3)正偏V<sub>b</sub>=0.5V时的势垒",
+a:"<strong>(1)</strong> qV<sub>D</sub> = k₀T×ln(N<sub>D</sub>N<sub>A</sub>/n<sub>i</sub>²) = 0.026×ln(10²³) ≈ <strong>1.388eV</strong><br><strong>(2)</strong> N<sub>D</sub>>>N<sub>A</sub>，简化：X<sub>D</sub>≈√[2ε<sub>0</sub>ε<sub>r</sub>V<sub>D</sub>/(qN<sub>A</sub>)]<br>V<sub>D</sub>=1.388/1.6×10⁻¹⁹≈0.8675V<br>X<sub>D</sub>=√[2×8.84×10⁻¹⁴×12×0.8675/(1.6×10⁻¹⁹×5×10¹⁴)] ≈ <strong>4.84×10⁻⁵ cm = 0.484 μm</strong><br><strong>(3)</strong> 正偏势垒高度 = q(V<sub>D</sub>-V<sub>b</sub>) = 1.388-0.5 = <strong>0.888eV</strong><br>正偏宽度 X<sub>D</sub>' ≈ √[2ε<sub>0</sub>ε<sub>r</sub>(V<sub>D</sub>-V<sub>b</sub>)/(qN<sub>A</sub>)] ≈ <strong>0.342 μm</strong>"}
+];
+
+// ==================== RENDER ====================
+function renderChapter(ch,idx){
+let html=`<div class="chapter" id="ch${idx}">`;
+html+=`<div class="chapter-header"><h2>${ch.title}</h2><p style="color:var(--text2);margin-top:4px">${ch.subtitle}</p><div class="meta">${ch.tags.map(t=>`<span class="tag ${t.c}">${t.t}</span>`).join('')}</div></div>`;
+
+// Canvas KG
+html+=`<div class="section-title">📊 知识关系图</div><canvas class="kg" id="kg${idx}" width="900" height="300"></canvas>`;
+
+// Knowledge points
+ch.kp.forEach((k,i)=>{
+html+=`<div class="kp-card" id="kp${idx}_${i}"><div class="kp-title" onclick="toggleKP(${idx},${i})"><div class="kp-num">${i+1}</div><div class="kp-name">${k.n}</div><div class="kp-stars">${k.s}</div><div class="kp-arrow">▼</div></div><div class="kp-body">${k.body}</div></div>`;
+});
+html+=`</div>`;
+return html;
+}
+
+function renderFormulas(){
+let html=`<div class="chapter" id="ch9"><div class="chapter-header"><h2>公式速查手册</h2><p style="color:var(--text2)">40+ 核心公式分类汇总</p></div>`;
+formulaGroups.forEach(g=>{
+html+=`<div class="section-title">📝 ${g.name}</div><div class="formula-grid">`;
+g.formulas.forEach(f=>{
+html+=`<div class="formula-card"><div class="f">${f.f}</div><div class="desc">${f.d}</div></div>`;
+});
+html+=`</div>`;
+});
+html+=`</div>`;
+return html;
+}
+
+function renderExam(){
+let html=`<div class="chapter" id="ch10"><div class="chapter-header"><h2>2021年真题及详细解析</h2><p style="color:var(--text2)">上海大学半导体物理（962）回忆版 | 选择10题+填空10题+简答4题+计算3题</p></div>`;
+let lastType="";
+examQuestions.forEach((q,i)=>{
+if(q.type!==lastType){
+html+=`<div class="section-title">${q.type==='选择'?'一、选择题（每题3分）':q.type==='填空'?'二、填空题（每题1分）':q.type==='简答'?'三、简答题（每题10分）':'四、计算题（共59分）'}</div>`;
+lastType=q.type;
+}
+html+=`<div class="exam-q" id="eq${i}"><div class="q-header"><span class="q-type ${q.cls}">${q.type}</span><span style="font-size:0.75em;color:var(--text2)">第${i+1}题</span></div><div class="q-text">${q.q}</div><div class="q-toggle" onclick="toggleExam(${i})">💡 查看答案</div><div class="q-answer">${q.a}</div></div>`;
+});
+html+=`</div>`;
+return html;
+}
+
+// Init
+const main=document.getElementById('mainContent');
+let allHtml='';
+chapters.forEach((ch,i)=>{allHtml+=renderChapter(ch,i)});
+allHtml+=renderFormulas();
+allHtml+=renderExam();
+main.innerHTML=allHtml;
+
+// Show first chapter
+showCh(0,document.querySelector('.nav-item'));
+
+// Draw all canvases
+setTimeout(()=>{chapters.forEach((ch,i)=>drawKG(i,ch.kg))},100);
+
+// ==================== INTERACTIONS ====================
+function showCh(idx,el){
+document.querySelectorAll('.chapter').forEach(c=>c.classList.remove('active'));
+document.querySelectorAll('.nav-item').forEach(n=>n.classList.remove('active'));
+const ch=document.getElementById('ch'+idx);
+if(ch)ch.classList.add('active');
+if(el)el.classList.add('active');
+window.scrollTo(0,0);
+}
+
+function toggleKP(ch,kp){
+const el=document.getElementById(`kp${ch}_${kp}`);
+el.classList.toggle('open');
+}
+
+function toggleExam(i){
+document.getElementById('eq'+i).classList.toggle('open');
+}
+
+function doSearch(q){
+if(!q||q.length<2)return;
+q=q.toLowerCase();
+document.querySelectorAll('.kp-card').forEach(card=>{
+const text=card.textContent.toLowerCase();
+if(text.includes(q)){card.classList.add('open');card.scrollIntoView({behavior:'smooth',block:'center'})}
+});
+}
+
+// ==================== CANVAS DRAWING ====================
+function drawKG(idx,kg){
+const canvas=document.getElementById('kg'+idx);
+if(!canvas)return;
+const ctx=canvas.getContext('2d');
+const W=canvas.width,H=canvas.height;
+ctx.clearRect(0,0,W,H);
+
+// Draw edges
+kg.edges.forEach(e=>{
+const a=kg.nodes[e.a],b=kg.nodes[e.b];
+const ax=a.x/100*W,ay=a.y/100*H,bx=b.x/100*W,by=b.y/100*H;
+ctx.beginPath();ctx.moveTo(ax,ay);ctx.lineTo(bx,by);
+ctx.strokeStyle='rgba(255,255,255,0.12)';ctx.lineWidth=1.5;ctx.stroke();
+// Edge label
+const mx=(ax+bx)/2,my=(ay+by)/2;
+ctx.fillStyle='rgba(255,255,255,0.35)';ctx.font='11px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+ctx.fillText(e.l,mx,my-8);
+});
+
+// Draw nodes
+kg.nodes.forEach(n=>{
+const x=n.x/100*W,y=n.y/100*H,r=n.r;
+// Glow
+const g=ctx.createRadialGradient(x,y,0,x,y,r*2);
+g.addColorStop(0,n.c+'40');g.addColorStop(1,'transparent');
+ctx.fillStyle=g;ctx.beginPath();ctx.arc(x,y,r*2,0,Math.PI*2);ctx.fill();
+// Circle
+ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);
+ctx.fillStyle=n.c+'30';ctx.fill();
+ctx.strokeStyle=n.c+'80';ctx.lineWidth=2;ctx.stroke();
+// Label
+ctx.fillStyle='#fff';ctx.font='bold 12px sans-serif';ctx.textAlign='center';ctx.textBaseline='middle';
+ctx.fillText(n.l,x,y);
+});
+}
+</script>
+</body>
+</html>
