@@ -40,6 +40,8 @@ body{font-family:-apple-system,'Microsoft YaHei','PingFang SC',sans-serif;backgr
 .kp-num{width:26px;height:26px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.75em;font-weight:600;flex-shrink:0}
 .kp-name{font-weight:600;flex:1}
 .kp-stars{color:var(--warn);font-size:0.8em}
+
+.kp-exam{display:inline-block;background:rgba(248,113,113,0.15);color:#f87171;padding:2px 8px;border-radius:10px;font-size:0.7em;margin-left:8px;font-weight:600}
 .kp-arrow{color:var(--text2);transition:transform 0.3s;font-size:0.8em}
 .kp-card.open .kp-arrow{transform:rotate(180deg)}
 .kp-body{padding:0 18px 16px;display:none}
@@ -288,7 +290,11 @@ kp:[
 </table>
 <p>Si是最成熟的半导体材料，拥有高质量的天然氧化物SiO<sub>2</sub>，是集成电路的基石。GaAs因高电子迁移率和直接带隙广泛用于高频和光电器件。GaN因宽禁带适合高功率高温应用。</p>
 <div class="info">Si的n<sub>i</sub>远低于Ge，因此Si器件的漏电流更小，高温性能更好。这是Si取代Ge成为主流半导体材料的重要原因之一。</div>
-`}
+`},
+{n:"量子力学基础与薛定谔方程",s:"★★★★★",exam:1,body:`<p><strong>薛定谔方程</strong>：描述微观粒子运动状态的基本方程。定态薛定谔方程为：</p><div class="formula-box">-ℏ²/2m · ∇²ψ + V(r)ψ = Eψ</div><p>其中ℏ为约化普朗克常数(1.055×10⁻³⁴ J·s)，m为粒子质量，V(r)为势能，E为能量本征值。</p><p><strong>布洛赫定理</strong>：周期性势场中，电子波函数满足ψ_k(r)=u_k(r)·e^(ik·r)，其中u_k(r)具有晶格周期性。这是能带论的理论基石。</p><div class="tip"><strong>考研高频</strong>：布洛赫定理的物理意义是考研简答题高频考点。要点：①波函数可分离为平面波和周期函数之积；②k是"晶体动量"（准动量），非真实动量。</div><div class="warn"><strong>易错</strong>：布洛赫定理中的k不是真正的动量，而是"晶体动量"（准动量）。真实动量算符作用于布洛赫态后不再是本征态。</div>`},
+{n:"Kronig-Penney模型与能带形成",s:"★★★★★",exam:1,body:`<p><strong>一维K-P模型</strong>：将晶体势场简化为周期性方势阱（周期a），求解薛定谔方程得到色散关系E(k)：</p><div class="formula-box">cos(ka) = cos(αa) + P/αa · sin(αa)<br>其中 α = √(2mE)/ℏ，P = mV₀ba/ℏ²</div><p><strong>能带形成条件</strong>：P有限时，cos(ka)取值限制在[-1,1]，不是所有能量E都满足该条件，从而形成允许能带和禁带。能隙出现在布里渊区边界(k=nπ/a)处。</p><div class="info"><strong>极限情况</strong>：①P→0：自由电子，E=ℏ²k²/2m，无能隙；②P→∞：紧束缚极限，能带变窄，趋近于分立能级。</div><div class="tip"><strong>考研高频</strong>：K-P模型的推导过程和物理意义是考研必考。重点掌握：①能带形成的条件；②有效质量的正负与能带曲率的关系。</div><div class="warn"><strong>易错</strong>：能隙出现在k空间的布里渊区边界，不是E空间的特定值。第一能隙出现在k=±π/a处。</div>`},
+{n:"Si、Ge、GaAs的能带结构详解",s:"★★★★★",exam:1,body:`<p><strong>硅(Si)</strong>：间接带隙，导带底在X点附近，有6个等价能谷。</p><div class="formula-box">Si: Eg=1.12eV(300K)，间接带隙<br>导带底: ml*=0.98m₀, mt*=0.19m₀, mdn*≈1.08m₀<br>价带顶: mhh*=0.49m₀, mlh*=0.16m₀<br>μn=1350 cm²/V·s, μp=480 cm²/V·s</div><p><strong>锗(Ge)</strong>：间接带隙，导带底在L点，有4个等价能谷。</p><div class="formula-box">Ge: Eg=0.66eV(300K)，间接带隙<br>导带底: ml*=1.64m₀, mt*=0.082m₀, mdn*≈0.56m₀<br>μn=3900 cm²/V·s, μp=1900 cm²/V·s</div><p><strong>GaAs</strong>：直接带隙，导带底在Γ点，L点有卫星能谷（ΔE≈0.31eV），是耿氏效应基础。</p><div class="formula-box">GaAs: Eg=1.43eV(300K)，直接带隙<br>导带底: m*=0.067m₀（轻，迁移率高）<br>μn=8500 cm²/V·s, μp=400 cm²/V·s</div><div class="tip"><strong>考研高频</strong>：三种材料的能带参数对比是考研计算题常见数据来源。重点记忆Si(1.12eV,6谷)、GaAs(1.43eV,0.067m₀)、Ge(0.66eV最小)。</div><table class="cmp"><tr><th>参数</th><th>Si</th><th>Ge</th><th>GaAs</th></tr><tr><td>带隙类型</td><td>间接</td><td>间接</td><td>直接</td></tr><tr><td>Eg(eV)</td><td>1.12</td><td>0.66</td><td>1.43</td></tr><tr><td>导带底</td><td>X点</td><td>L点</td><td>Γ点</td></tr><tr><td>等价能谷数</td><td>6</td><td>4</td><td>1</td></tr><tr><td>μn(cm²/V·s)</td><td>1350</td><td>3900</td><td>8500</td></tr><tr><td>μp(cm²/V·s)</td><td>480</td><td>1900</td><td>400</td></tr></table>`},
+{n:"直接/间接带隙与跃迁选择定则",s:"★★★★☆",exam:1,body:`<p><strong>直接跃迁</strong>：电子从导带底跃迁到价带顶时，k值不变（Δk=0），只需吸收一个光子（hν≈Eg）。GaAs等直接带隙材料光跃迁概率高，适合LED和激光器。</p><p><strong>间接跃迁</strong>：导带底和价带顶不在同一k点，跃迁需要声子参与提供动量，是二级过程，概率远低于直接跃迁。Si和Ge不适合制作高效发光器件。</p><div class="formula-box">直接跃迁概率 >> 间接跃迁概率<br>直接跃迁: 只需光子 (一级过程)<br>间接跃迁: 光子+声子 (二级过程)</div><div class="info"><strong>应用</strong>：①GaAs→LED/激光器（直接带隙）；②Si→太阳能电池（吸收系数低需更厚吸收层）；③Ge→红外探测器（小带隙对应长波长）。</div><div class="tip"><strong>考研高频</strong>：直接/间接带隙对光电器件的影响是考研简答题高频内容。</div>`}
 ],
 kg:{nodes:[{x:50,y:12,r:18,c:"#667eea",l:"能带理论"},{x:15,y:35,r:14,c:"#764ba2",l:"晶体结构"},{x:50,y:45,r:16,c:"#4ade80",l:"有效质量"},{x:85,y:35,r:14,c:"#fbbf24",l:"空穴"},{x:15,y:70,r:13,c:"#f87171",l:"E-k图"},{x:50,y:78,r:13,c:"#60a5fa",l:"本征/杂质"},{x:85,y:70,r:13,c:"#a855f7",l:"功函数"},{x:50,y:95,r:12,c:"#ec4899",l:"费米能级"}],edges:[{a:0,b:1,l:"基础"},{a:0,b:2,l:"描述"},{a:0,b:3,l:"价带"},{a:2,b:4,l:"图形"},{a:0,b:5,l:"分类"},{a:0,b:6,l:"参考"},{a:0,b:7,l:"核心"}]}
 },
@@ -736,6 +742,14 @@ kp:[
 <p><strong>太阳能电池</strong>：利用PN结光生伏特效应将光能转化为电能。最大输出功率P<sub>max</sub> = V<sub>OC</sub> × I<sub>sc</sub> × FF，其中FF为填充因子（0.5-0.85）。硅太阳能电池效率约20-26%，GaAs可达28%以上。</p>
 <div class="formula-box">太阳能电池参数：<br>V<sub>OC</sub> ≈ (k₀T/q)ln(I<sub>sc</sub>/I<sub>s</sub>)<br>P<sub>max</sub> = V<sub>OC</sub> × I<sub>sc</sub> × FF<br>η = P<sub>max</sub>/P<sub>in</sub>（光电转换效率）</div>
 `},
+{n:"隧道效应与量子隧穿",s:"★★★★★",exam:1,body:`
+<p><strong>量子隧穿效应</strong>：当粒子遇到势垒（高度V₀>E）时，经典力学认为不可能穿越，但量子力学中波函数在势垒内呈指数衰减而非突然截止，存在穿越势垒的非零概率。</p>
+<div class="formula-box">隧穿概率 T ≈ exp(-2κd)<br>其中 κ = √[2m*(V₀-E)]/ℏ<br>d为势垒宽度</div>
+<p><strong>在PN结中的应用</strong>：当P区和N区均为重掺杂（简并半导体）时，耗尽层极窄（~10nm），电子可通过量子隧穿直接穿过势垒，形成隧道电流。这是隧道二极管（Esaki二极管）的工作原理。</p>
+<p><strong>隧道二极管特性</strong>：I-V曲线出现负微分电阻区域（NDR）：正向电压增大时，电流先增后减再增，形成峰-谷结构。峰谷比(PVR)是重要性能参数。</p>
+<div class="tip"><strong>考研高频</strong>：隧道效应的物理机制和隧道二极管特性是考研简答题高频考点。关键点：①隧穿概率与势垒宽度d的关系（指数衰减）；②重掺杂导致耗尽层窄化；③NDR区域的产生条件。</div>
+<div class="warn"><strong>易错</strong>：隧道效应发生在重掺杂PN结中（耗尽层宽度<10nm），普通PN结中隧穿概率可忽略。不要混淆隧道电流（量子效应）和热电子发射电流（经典热效应）。</div>
+`},
 {n:"PN结的温度特性",s:"★★★☆☆",body:`
 <p><strong>反向电流温度特性</strong>：I<sub>s</sub> ∝ n<sub>i</sub>² ∝ exp(-E<sub>g</sub>/(k₀T))，温度每升高10°C，I<sub>s</sub>约增大一倍。这是半导体器件高温漏电流增大的根本原因。</p>
 <p><strong>正向压降温度特性</strong>：固定正向电流下，V<sub>f</sub>随温度升高而减小（约-2mV/°C）。因为温度升高使n<sub>i</sub>增大→在相同注入水平下需要更低的偏压。这被用于制作温度传感器（PN结温度计）。</p>
@@ -933,6 +947,45 @@ kp:[
 <p><strong>应用</strong>：非晶硅(a-Si:H)太阳能电池（可大面积沉积在玻璃上，成本低，效率~10%）；薄膜晶体管(TFT)驱动的LCD/OLED显示面板；静电复印（光导鼓）。</p>
 <div class="info">非晶硅太阳能电池虽然效率低于晶体硅，但可在柔性衬底上制备，成本极低，适合建筑一体化光伏(BIPV)等应用。</div>
 `},
+{n:"光纤通信半导体材料",s:"★★★☆☆",body:`
+<p><strong>光纤通信波段</strong>：光纤通信主要使用三个低损耗窗口：①850nm（第一窗口，多模光纤）；②1310nm（第二窗口，零色散）；③1550nm（第三窗口，最低损耗0.2dB/km）。</p>
+<p><strong>光源材料</strong>：①GaAlAs/GaAs双异质结激光器用于850nm窗口；②InGaAsP/InP四元合金激光器用于1310nm和1550nm窗口。材料带隙需满足Eg ≈ hc/λ。</p>
+<div class="formula-box">Eg = hc/λ = 1.24/λ(μm) eV<br>850nm → Eg ≈ 1.46 eV (GaAlAs)<br>1310nm → Eg ≈ 0.95 eV (InGaAsP)<br>1550nm → Eg ≈ 0.80 eV (InGaAsP)</div>
+<p><strong>探测器材料</strong>：①Si-PIN用于850nm（Si带隙1.12eV对应截止波长1.11μm）；②InGaAs-PIN用于1310/1550nm；③Ge-APD用于长波长。</p>
+<div class="info"><strong>应用联系</strong>：光纤通信用半导体的选材原则是"带隙对应波段"——材料的带隙决定了其响应波长范围（λ_c = 1.24/Eg），吸收边应在工作波长附近。</div>
+`},
+{n:"光电探测器结构与原理",s:"★★★★☆",exam:1,body:`
+<p><strong>PIN光电二极管</strong>：在P区和N区之间插入一层高阻本征层（I层），增大耗尽层宽度以提高光吸收效率。工作在反偏状态下，光生载流子在电场作用下快速漂移，响应速度快。</p>
+<p><strong>雪崩光电二极管(APD)</strong>：利用碰撞电离实现内部增益。反偏电压接近击穿电压时，光生载流子获得足够能量产生二次电子-空穴对，形成雪崩倍增。</p>
+<div class="formula-box">PIN响应度: R = ηq/hν = ηλ(μm)/1.24 (A/W)<br>APD增益: M = 1/[1-(V/V_B)^n]<br>量子效率: η = (1-R_f)[1-exp(-αW)]/(1-R_f·exp(-αW))<br>其中α为吸收系数，W为吸收层厚度，R_f为表面反射率</div>
+<div class="tip"><strong>考研高频</strong>：光电探测器的量子效率和响应度计算是考研常见题型。记住响应度公式R = ηq/hν，以及PIN和APD的工作原理区别。</div>
+`},
+{n:"太阳能电池效率极限",s:"★★★★☆",exam:1,body:`
+<p><strong>Shockley-Queisser极限</strong>：单结太阳能电池的理论最大效率约33.7%（对应带隙1.34eV，AM1.5光谱）。效率损失来自三个基本机制：</p>
+<p><strong>①低能光子损失</strong>：hν < Eg的光子不能被吸收（透射损失）。带隙越小，透射损失越少。</p>
+<p><strong>②热化损失</strong>：hν > Eg的光子，多余能量(hν-Eg)以热的形式耗散。带隙越大，热化损失越少。</p>
+<p><strong>③辐射复合损失</strong>：根据细致平衡原理，载流子的辐射复合不可避免。</p>
+<div class="formula-box">最大效率 η_max = P_max/(P_in)<br>S-Q极限 ≈ 33.7% (Eg=1.34eV, AM1.5)<br>开路电压: Voc ≈ (Eg/q) - (kT/q)·ln(J₀/Jsc)<br>填充因子: FF ≈ [1-(kT/qEg)·ln(qVoc/kT)]</div>
+<table class="cmp"><tr><th>材料</th><th>Eg (eV)</th><th>S-Q极限</th><th>实际效率</th></tr><tr><td>Si</td><td>1.12</td><td>~29%</td><td>~26.7%</td></tr><tr><td>GaAs</td><td>1.43</td><td>~33%</td><td>~29.1%</td></tr><tr><td>CdTe</td><td>1.5</td><td>~32%</td><td>~22.1%</td></tr><tr><td>Perovskite</td><td>~1.6</td><td>~31%</td><td>~26.1%</td></tr></table>
+<div class="tip"><strong>考研高频</strong>：S-Q极限的三种损失机制和为什么最佳带隙在1.3-1.5eV范围是考研简答题高频内容。GaAs（1.43eV）最接近最优带隙，Si（1.12eV）略低。</div>
+`},
+{n:"磁阻效应详细理论",s:"★★★☆☆",body:`
+<p><strong>磁阻效应(Magnetoresistance)</strong>：半导体在磁场中电阻率增大的现象。分为物理磁阻和几何磁阻两种。</p>
+<p><strong>物理磁阻</strong>：磁场使载流子运动轨迹弯曲（回旋运动），等效迁移率降低，电阻率增大。在弱场条件下：</p>
+<div class="formula-box">Δρ/ρ₀ = (μH)² = (μB)² (弱场)<br>其中μ_H为霍尔迁移率，B为磁感应强度<br>强场: Δρ/ρ₀ ∝ B (线性增长)</div>
+<p><strong>几何磁阻</strong>：与样品几何形状有关。短而宽的样品（长宽比L/W小），电流路径因霍尔电场被压缩而增长，磁阻效应增强。Corbino圆盘（圆形结构）的几何磁阻效应最大。</p>
+<p><strong>磁阻灵敏度</strong>：用ΔR/R₀·B²表征磁阻传感器的灵敏度。InSb材料因电子迁移率极高（~80000 cm²/V·s），磁阻效应最显著，常用于磁传感器。</p>
+<div class="info"><strong>应用</strong>：磁阻传感器用于硬盘读写头（GMR/TMR效应）、汽车ABS轮速传感器、电子罗盘等。半导体磁阻器件主要用InSb和InAs材料。</div>
+`},
+{n:"热电效应详解（塞贝克、帕尔帖、汤姆逊）",s:"★★★☆☆",body:`
+<p><strong>塞贝克效应(Seebeck Effect)</strong>：两种不同导体构成的回路中，当两个接头温度不同时，回路中产生电动势（热电动势）。塞贝克系数S = dV/dT，单位μV/K。</p>
+<div class="formula-box">热电动势: V = ∫(S_A - S_B)dT ≈ (S_A-S_B)·ΔT<br>半导体塞贝克系数: S = ±(k_B/q)[(r+5/2)-ξ]<br>其中r为散射因子，ξ = Ef/k_BT</div>
+<p><strong>帕尔帖效应(Peltier Effect)</strong>：电流通过两种不同导体的接头时，除焦耳热外，接头处还会吸收或释放热量。帕尔帖系数π = S·T。</p>
+<p><strong>热电优值(ZT)</strong>：衡量热电材料性能的无量纲参数：</p>
+<div class="formula-box">ZT = S²σT/κ<br>S为塞贝克系数，σ为电导率，κ为热导率<br>S²σ称为功率因子(Power Factor)</div>
+<p><strong>Bi₂Te₃</strong>是室温附近最成熟的热电材料（ZT~1），热电制冷（帕尔帖制冷）和温差发电是其主要应用方向。提高ZT的策略：纳米结构化降低热导率κ（"声子玻璃，电子晶体"概念）。</p>
+<div class="warn"><strong>易错</strong>：三个热电效应的物理本质不同：塞贝克效应是温度梯度→电压，帕尔帖效应是电流→吸/放热，汤姆逊效应是电流+温度梯度→吸/放热。它们通过开尔文关系联系：π=ST。</div>
+`},
 {n:"超晶格与量子阱",s:"★★★☆☆",body:`
 <p><strong>超晶格</strong>：两种不同半导体材料交替生长形成的周期性多层结构（如GaAs/AlGaAs），周期（~10nm）小于电子平均自由程。由于周期势场的存在，能带分裂为子能带（miniband），电子在一维方向呈现量子化运动。</p>
 <p><strong>量子阱</strong>：窄禁带材料（如GaAs）被两侧宽禁带材料（如AlGaAs）夹住形成的薄层（~5-20nm）。电子和空穴被约束在薄层内，能量量子化为离散能级。量子阱激光器具有阈值电流低、温度稳定性好、谱线窄等优点。</p>
@@ -1015,7 +1068,12 @@ var examQuestions=[
 {type:"计算",q:"n型Si：N_D=1.0×10¹⁶cm⁻³，τ=10μs，g=1.0×10¹⁸cm⁻³·s⁻¹，k₀T=0.026eV，n_i=1.0×10¹⁰cm⁻³。求：(1)光照稳态Δp；(2)无光照和有光照E_F相对于E_i的位置。",ans:"(1) Δp=gτ=10¹⁸×10⁻⁵=1.0×10¹³cm⁻³\n(2) 无光照：E_F-E_i=0.026×ln(10¹⁶/10¹⁰)=0.36eV\n有光照：Δn≪n₀，E_F-E_i≈0.36eV（几乎不变）",explain:"稳态Δp=gτ；非简并n型费米能级公式E_F-E_i=k₀Tln(n₀/n_i)。"},
 {type:"计算",q:"本征Ge：ρ_i=47Ω·cm，μ_n=3600，μ_p=1700，N=4.4×10²²cm⁻³。P掺杂浓度百万分之一。求：(1)n_i；(2)掺杂后n₀、p₀、ρ。",ans:"(1) n_i=1/[qρ_i(μ_n+μ_p)]=2.5×10¹³cm⁻³\n(2) N_D=4.4×10¹⁶cm⁻³\nn₀≈N_D=4.4×10¹⁶cm⁻³\np₀=n_i²/n₀=1.42×10¹⁰cm⁻³\nρ=1/(qn₀μ_n)=0.039Ω·cm",explain:"由本征电导率反推n_i；杂质完全电离n₀≈N_D；质量作用定律求p₀。"},
 {type:"计算",q:"PN结：N_D=2×10¹⁹，N_A=5×10¹⁴，ε_r=12，ε₀=8.84×10⁻¹⁴F/cm，n_i=10¹⁰，V_b=0.5V。求：(1)势垒高度qV_D；(2)无偏X_D；(3)正偏0.5V时势垒高度和宽度。",ans:"(1) qV_D=0.026×ln(10²³)=1.388eV\n(2) N_D≫N_A简化：X_D≈√(2ε₀ε_rV_D/(qN_A))\n(3) 正偏势垒高度=1.388-0.5=0.888eV",explain:"接触电势差公式；N_D≫N_A时简化势垒宽度公式；正偏有效电势差V_D-V_b。"}
-];
+,
+{type:"简答",q:"简述Kronig-Penney模型的物理意义，说明能带是如何形成的。",a:"K-P模型将晶体势场简化为周期性方势阱，求解薛定谔方程得到色散关系cos(ka)=cos(αa)+P·sin(αa)/(αa)。P有限时cos(ka)取值限制在[-1,1]，形成允许能带和禁带。能隙出现在布里渊区边界k=nπ/a处。P越大能隙越宽。",explain:"考研高频：能带形成机制是必考内容。"},
+{type:"简答",q:"Si、Ge、GaAs三种半导体的带隙类型和禁带宽度？哪个最适合制作LED？为什么？",a:"Si:间接带隙1.12eV；Ge:间接带隙0.66eV；GaAs:直接带隙1.43eV。GaAs最适合LED，因为直接带隙的电子-空穴复合为直接跃迁，辐射复合概率高，发光效率高。Si和Ge需声子参与，非辐射复合占主导。",explain:"直接/间接带隙对光电器件的影响是考研简答题高频内容。"},
+{type:"简答",q:"单结太阳能电池的Shockley-Queisser效率极限约33.7%，由哪三个损失机制决定？最佳带隙为什么在1.3-1.5eV？",a:"三种损失：①低能光子损失(hν<Eg不能吸收)；②热化损失(hν>Eg多余能量变为热)；③辐射复合损失。带隙太小→热化损失大，带隙太大→低能光子损失大，1.3-1.5eV是两种损失的最优折中。",explain:"太阳能电池效率极限是考研简答题高频内容。"},
+{type:"简答",q:"量子隧穿概率T≈exp(-2κd)中各参数含义？为什么隧道二极管需要重掺杂？",a:"κ=√[2m*(V₀-E)]/ℏ为衰减常数，d为势垒宽度。T随d指数衰减，势垒必须极窄(~10nm)才有显著隧穿概率。重掺杂使耗尽层宽度减小(W∝1/√N)，当N>10¹⁹cm⁻³时W可缩至10nm以下，隧穿变得显著。",explain:"隧道效应机制是考研高频考点。"},
+{type:"简答",q:"PIN光电二极管与APD的主要区别是什么？写出响应度公式。",a:"PIN无内部增益，靠增大I层厚度提高量子效率；APD利用碰撞电离实现内部增益。响应度R=ηq/hν=ηλ(μm)/1.24 (A/W)，η为量子效率。APD增益M使其响应度提高M倍，但噪声也增加。",explain:"光电探测器原理是考研简答题常见内容。"}];
 
 // ========== 渲染函数 ==========
 function renderChapter(ch,idx){
@@ -1025,7 +1083,7 @@ function renderChapter(ch,idx){
   for(var i=0;i<ch.kp.length;i++){
     var k=ch.kp[i];
     html+='<div class="kp-item" id="kp'+idx+'_'+i+'">';
-    html+='<div class="kp-head" onclick="toggleKP('+idx+','+i+')"><span class="kp-name">'+k.n+'</span><span class="kp-star">'+k.s+'</span><span class="kp-arrow">&#9662;</span></div>';
+    html+='<div class="kp-head" onclick="toggleKP('+idx+','+i+')"><span class="kp-name">'+k.n+(k.exam?'<span class="kp-exam">考研高频</span>':'')+'</span><span class="kp-star">'+k.s+'</span><span class="kp-arrow">&#9662;</span></div>';
     html+='<div class="kp-body">'+k.body+'</div>';
     html+='</div>';
   }
