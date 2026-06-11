@@ -42,8 +42,8 @@ body{font-family:-apple-system,'Microsoft YaHei','PingFang SC',sans-serif;backgr
 .kp-exam{display:inline-block;background:rgba(248,113,113,0.15);color:#f87171;padding:1px 7px;border-radius:10px;font-size:0.65em;margin-left:6px;font-weight:600}
 .kp-arrow{color:var(--text2);transition:transform 0.3s;font-size:0.75em}
 .kp-item.open .kp-arrow{transform:rotate(180deg)}
-.kp-body{padding:0 16px 14px;display:none}
-.kp-item.open .kp-body{display:block}
+.kp-body{padding:0 16px 14px;display:block}
+.kp.closed .kp-body{display:none}
 .kp-body p{margin-bottom:8px;line-height:1.75;color:var(--text);font-size:0.88em}
 .kp-body strong{color:var(--accent)}
 .kp-body .formula-box{background:rgba(102,126,234,0.08);border:1px solid rgba(102,126,234,0.2);border-radius:8px;padding:10px 14px;margin:8px 0;font-family:'Courier New',monospace;font-size:0.86em;color:#c4b5fd;line-height:1.6}
@@ -2599,8 +2599,8 @@ function renderExam(){
 }
 
 function toggleKP(ch,i){
-  var el = document.getElementById("kb-"+ch+"-"+i);
-  el.classList.toggle("open");
+  var el = document.getElementById("kp-"+ch+"-"+i);
+  el.classList.toggle("closed");
 }
 
 function toggleExam(i){
