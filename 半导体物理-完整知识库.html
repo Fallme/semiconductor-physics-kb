@@ -247,7 +247,7 @@ var chapters=[
 <p><strong>FCC晶格的第一布里渊区</strong>：截角八面体，高对称点：</p>
 <table class="cmp"><tr><th>符号</th><th>含义</th><th>坐标</th></tr><tr><td>Γ</td><td>布里渊区中心</td><td>(0,0,0)</td></tr><tr><td>X</td><td>正方形面心</td><td>(2π/a)(1,0,0)</td></tr><tr><td>L</td><td>六边形面心</td><td>(π/a)(1,1,1)</td></tr><tr><td>K</td><td>棱的中点</td><td>(3π/2a)(1,1,0)</td></tr></table>
 <p><strong>简约布里渊区</strong>：将所有k空间的E(k)通过倒格矢G约化到第一布里渊区内。由于E(k)=E(k+G)，只需研究第一布里渊区内的色散关系即可获得全部信息。</p>
-<div class="warn"><strong>易错</strong>：布里渊区的形状取决于晶体的布拉维格子类型（不是基矢类型）。FCC晶体的第一布里渊区是截角八面体，不是正方体。Si和GaAs同为FCC结构，布里渊区形状相同。</div>`},
+<div class="warn"><strong>易错</strong>：布里渊区的形状取决于晶体的布拉维格子类型（不是基矢类型）。FCC晶体的第一布里渊区是截角八面体，不是正方体。Si和GaAs同为FCC结构，布里渊区形状相同。</div><div class="tip"><strong>通俗理解</strong>：倒格子就像真实空间的“影子世界”——实空间晶格越密，倒格子就越稀疏，反之亦然。布里渊区则是倒格子空间中的“地盘划分”，每个区域代表一组不等价的电子状态，就像地图上的行政区划。</div>`},
 {n:"布洛赫定理",s:"★★★★★",exam:1,body:`<p><strong>布洛赫定理</strong>：在周期性势场V(r)=V(r+R)中，电子波函数具有如下形式：</p>
 <div class="formula-box">ψ_k(r) = u_k(r) · e^(ik·r)<br>其中 u_k(r) = u_k(r+R) 具有晶格周期性<br><br>物理意义：晶体中的电子波函数 = 平面波 × 周期函数</div>
 <p><strong>证明思路</strong>：平移算符T̂_R与哈密顿量Ĥ对易（因为势能具有周期性），因此它们有共同本征函数。T̂_R的本征值为e^(ik·R)（由群论可得），代入即得布洛赫形式。</p>
@@ -261,7 +261,7 @@ var chapters=[
 <div class="formula-box">零级能量：E⁰(k) = ℏ²k²/2m₀（自由电子抛物线）<br><br>在布里渊区边界k=nπ/a处，简并微扰论给出：<br>E± = E⁰ ± |V_n|<br><br>能隙宽度：E_g = 2|V_n|<br>其中V_n为势能的第n个傅里叶分量</div>
 <p><strong>能带形成的物理图像</strong>：当k接近布里渊区边界nπ/a时，前进波和反射波（布拉格反射）发生强烈干涉，形成驻波。两种驻波（电子云集中在原子间/原子核处）能量不同，产生能隙。</p>
 <p><strong>能隙出现在k=nπ/a处</strong>（即布里渊区边界），且能隙宽度由相应傅里叶分量|V_n|决定。势场越强，能隙越宽。</p>
-<div class="info"><strong>考研重点</strong>：近自由电子模型的三个关键结论——①能隙出现在BZ边界；②能隙宽度=2|V_n|；③BZ内部E(k)近似抛物线。这三个结论几乎每年都有相关考题。</div>`},
+<div class="info"><strong>考研重点</strong>：近自由电子模型的三个关键结论——①能隙出现在BZ边界；②能隙宽度=2|V_n|；③BZ内部E(k)近似抛物线。这三个结论几乎每年都有相关考题。</div><div class="tip"><strong>通俗理解</strong>：想象一群自由自在的电子走进了一座由原子排列成的“城市”——城市里有周期性分布的“红绿灯”（周期势场）。电子在大部分路段畅通无阻，但在某些特定位置（布里渊区边界）遇到“共振”，被迫减速形成能隙，就像水管在特定频率下产生驻波。</div>`},
 {n:"紧束缚模型",s:"★★★★☆",body:`<p><strong>紧束缚模型</strong>：从孤立原子的波函数出发，将晶体中相邻原子的波函数重叠视为微扰。</p>
 <div class="formula-box">E(k) = ε₀ - α - 2γ·Σcos(k·δ_i)<br><br>ε₀：原子能级能量<br>α：重叠积分（负值，使能带下移）<br>γ：最近邻重叠积分（决定带宽）<br>δ_i：最近邻格矢</div>
 <p><strong>与近自由电子模型的对比</strong>：近自由电子模型从自由电子出发（弱周期势），紧束缚模型从孤立原子出发（强原子势、弱重叠）。二者从不同极限出发，在中间区域给出定性一致的能带图像。</p>
@@ -275,7 +275,7 @@ var chapters=[
 <p>③ P→0时退化为自由电子（无能隙）。</p>
 <p>④ 在能带内部，群速度v_g=dE/dk≠0；在能带边界v_g=0（驻波）。</p>
 <div class="formula-box">有效质量在能带底部（k≈0）：<br>m* = ℏ²/(d²E/dk²) > 0（电子型）<br><br>有效质量在能带顶部（k=±π/a）：<br>m* < 0（空穴型）</div>
-<div class="warn"><strong>易错</strong>：K-P模型虽然是一维的，但它的结论（能隙出现在BZ边界、有效质量可正可负、带宽与势场强度的关系）对三维晶体同样定性成立。考试常要求画出cos(ka)与ka的关系图。</div>`},
+<div class="warn"><strong>易错</strong>：K-P模型虽然是一维的，但它的结论（能隙出现在BZ边界、有效质量可正可负、带宽与势场强度的关系）对三维晶体同样定性成立。考试常要求画出cos(ka)与ka的关系图。</div><div class="tip"><strong>通俗理解</strong>：K-P模型把复杂的晶体势场简化成一排等间距的“栅栏”（方势垒），然后问：电子穿过这排栅栏时，哪些能量可以通过、哪些被挡住？结果发现允许通过的能量是分段的——这就是能带和禁带的由来。</div>`},
 {n:"能带论基础总结",s:"★★★★★",body:`<p><strong>能带论的三个层次</strong>：</p>
 <p>① <strong>自由电子模型</strong>：完全忽略势场，E=ℏ²k²/2m₀，无能隙。仅适用于自由电子气。</p>
 <p>② <strong>近自由电子模型</strong>：弱周期势微扰，在BZ边界打开能隙。适用于金属中的s、p电子。</p>
@@ -293,7 +293,7 @@ var chapters=[
 <p><strong>GaAs的能带结构</strong>：直接带隙半导体。导带极小值和价带极大值都在Γ点（k=0）。具有双能谷结构：Γ能谷（最低）和L能谷（高0.29eV）。</p>
 <div class="formula-box">GaAs基本参数：<br>Eg=1.43eV (300K)<br>导带极值：Γ点（直接带隙）<br>导带有效质量：m*=0.067m₀（极小）<br>Γ-L能谷间距：ΔE≈0.29eV</div>
 <table class="cmp"><tr><th>参数</th><th>Si</th><th>Ge</th><th>GaAs</th></tr><tr><td>禁带类型</td><td>间接</td><td>间接</td><td>直接</td></tr><tr><td>Eg(eV,300K)</td><td>1.12</td><td>0.66</td><td>1.43</td></tr><tr><td>导带谷位置</td><td>&lt;100&gt;Δ轴</td><td>L点</td><td>Γ点</td></tr><tr><td>等价能谷数</td><td>6</td><td>4(8个半)</td><td>1</td></tr><tr><td>m*</td><td>ml=0.98,mt=0.19</td><td>ml=1.64,mt=0.082</td><td>0.067</td></tr><tr><td>适合作</td><td>MOS器件</td><td>红外器件</td><td>光电器件/高频</td></tr></table>
-<div class="warn"><strong>考研高频</strong>：Si/Ge/GaAs的能带参数对比是必考内容。GaAs直接带隙→高发光效率→LED/激光器；Si间接带隙→低发光效率→不宜做光源但适合MOS器件。</div>`},
+<div class="warn"><strong>考研高频</strong>：Si/Ge/GaAs的能带参数对比是必考内容。GaAs直接带隙→高发光效率→LED/激光器；Si间接带隙→低发光效率→不宜做光源但适合MOS器件。</div><div class="tip"><strong>通俗理解</strong>：Si和Ge就像“拐弯路”——电子要从价带跳到导带必须同时改变能量和动量（需要声子帮忙），所以发光效率低。GaAs则是“直通路”——电子可以直接跳过去，不需要额外帮手，所以发光效率很高，适合做LED和激光器。</div>`},
 {n:"有效质量",s:"★★★★★",exam:1,body:`<p><strong>定义</strong>：有效质量m*反映晶格势场对电子运动的等效影响，由能带曲率决定：</p>
 <div class="formula-box">1/m* = (1/ℏ²)·d²E/dk²<br><br>物理含义：<br>• 能带底部（曲率大，凸形）：m*小，电子"轻"<br>• 能带顶部（曲率大，凹形）：m*<0，空穴行为<br>• 能带平坦处：m*很大，电子"重"</div>
 <p><strong>有效质量张量</strong>：在三维情况下，有效质量是一个二阶张量：</p>
@@ -307,7 +307,7 @@ var chapters=[
 <p><strong>空穴的运动方程</strong>：</p>
 <div class="formula-box">ℏdk_h/dt = qE + qv_h×B（与电子形式相同）<br>m*_h·dv_h/dt = qE（忽略磁场）</div>
 <p><strong>Si价带结构</strong>：价带顶在Γ点，由三条带组成：重空穴带(mh*=0.53m₀)、轻空穴带(mlh*=0.16m₀)和自旋-轨道分裂带(Δ=0.044eV)。</p>
-<div class="warn"><strong>易错</strong>：空穴是准粒子，不是真实粒子。它描述的是价带中大量电子集体行为的等效。空穴的有效质量为正——因为价带顶E(k)是凹的，d²E/dk²<0，而m*_h=-m*_e使其为正。</div>`},
+<div class="warn"><strong>易错</strong>：空穴是准粒子，不是真实粒子。它描述的是价带中大量电子集体行为的等效。空穴的有效质量为正——因为价带顶E(k)是凹的，d²E/dk²<0，而m*_h=-m*_e使其为正。</div><div class="tip"><strong>通俗理解</strong>：想象一个坐满人的观众席（价带），如果有人离开了，留下一个空座位。其他座位上的人可以依次挪过来“填坑”，看起来就像这个空座位在移动。空穴就是这个“移动的空座位”——它带正电，表现得像一个真实粒子。</div>`},
 {n:"直接带隙与间接带隙",s:"★★★★★",exam:1,body:`<svg viewBox="0 0 500 200" style="display:block;margin:10px auto;max-width:100%;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.08)" xmlns="http://www.w3.org/2000/svg">
 <defs><style>text{font-family:sans-serif}</style></defs>
 <!-- Direct Bandgap (GaAs) -->
@@ -385,7 +385,7 @@ var chapters=[
 <p>① 热平衡系统中，费米能级处处相等（这是判断平衡的条件）。</p>
 <p>② E_F不随位置变化的条件：无外加电场、温度均匀、热平衡。</p>
 <p>③ 非平衡时引入准费米能级（E_Fn和E_Fp），分别描述电子和空穴的分布。</p>
-<div class="warn"><strong>考研高频</strong>：费米能级在能带图中的位置随掺杂和温度的变化规律，是选择题和简答题的常见考点。记住：N型E_F上移，P型E_F下移，高温回归本征位置。</div>`},
+<div class="warn"><strong>考研高频</strong>：费米能级在能带图中的位置随掺杂和温度的变化规律，是选择题和简答题的常见考点。记住：N型E_F上移，P型E_F下移，高温回归本征位置。</div><div class="tip"><strong>通俗理解</strong>：费米能级就像一个“水位线”——低于它的能级几乎被电子填满，高于它的能级几乎全空。温度升高时，水位线附近变得“模糊”，少数电子被热激发到高处，就像水面泛起了涟漪。</div>`},
 {n:"半导体材料参数对比",s:"★★★★☆",body:`<p>以下是考研常考的半导体材料关键参数对比：</p>
 <table class="cmp"><tr><th>参数</th><th>Si</th><th>Ge</th><th>GaAs</th><th>GaN</th><th>SiC(4H)</th></tr><tr><td>Eg(eV,300K)</td><td>1.12</td><td>0.66</td><td>1.43</td><td>3.4</td><td>3.26</td></tr><tr><td>带隙类型</td><td>间接</td><td>间接</td><td>直接</td><td>直接</td><td>间接</td></tr><tr><td>ni(cm⁻³,300K)</td><td>1.5×10¹⁰</td><td>2.4×10¹³</td><td>1.8×10⁶</td><td>1.9×10⁻¹⁰</td><td>5×10⁻⁹</td></tr><tr><td>μn(cm²/Vs)</td><td>1350</td><td>3900</td><td>8500</td><td>1000</td><td>700</td></tr><tr><td>μp(cm²/Vs)</td><td>480</td><td>1900</td><td>400</td><td>350</td><td>115</td></tr><tr><td>εr</td><td>11.8</td><td>16.0</td><td>13.1</td><td>9.0</td><td>9.7</td></tr><tr><td>Ec(kV/cm)</td><td>300</td><td>200</td><td>400</td><td>3000</td><td>2200</td></tr><tr><td>热导率</td><td>1.5</td><td>0.6</td><td>0.46</td><td>1.3</td><td>3.7</td></tr></table>
 <div class="tip"><strong>记忆要点</strong>：GaAs电子迁移率最高→高频器件；GaN/SiC击穿场强最大→功率器件；Si工艺最成熟→主流MOS器件；Ge的ni最大→高温漏电大。</div>`},
@@ -418,7 +418,7 @@ var chapters=[
 <p>③ <strong>价带结构</strong>：Γ点处三个价带简并（重空穴带HH、轻空穴带LH、自旋轨道劈裂带SO）：</p>
 <div class="formula-box">重空穴 m*_hh = 0.49m₀<br>轻空穴 m*_lh = 0.16m₀<br>自旋轨道劈裂 Δ_SO = 0.044eV<br>态密度有效质量 m*_dp = 0.81m₀</div>
 <p>④ <strong>间接跃迁</strong>：光吸收需要声子参与以满足动量守恒，因此Si的光吸收系数在带边附近较小，不发光。</p>
-<div class="warn"><strong>易错</strong>：Si有6个等价能谷≠6个导带底。正确说法是"导带底有6个等价的极小值点"。计算态密度有效质量时必须乘以6（简并度g_v=6）。</div>`},
+<div class="warn"><strong>易错</strong>：Si有6个等价能谷≠6个导带底。正确说法是"导带底有6个等价的极小值点"。计算态密度有效质量时必须乘以6（简并度g_v=6）。</div><div class="tip"><strong>通俗理解</strong>：Si的导带底不在正上方（Gamma点），而是在<100>方向的6个等价位置——好比山顶不在正中央，而在山腰的6个对称位置。这导致Si是间接带隙半导体，光吸收和发射都需要声子参与，效率较低。</div>`},
 {n:"GaAs的能带结构详解",s:"★★★★★",exam:1,body:`<p><strong>GaAs能带结构关键特征</strong>：</p>
 <p>① <strong>直接带隙</strong>：CBM和VBM都在Γ点，E_g=1.42eV(300K)。光吸收/发光效率极高。</p>
 <p>② <strong>Γ能谷</strong>：导带最小值在Γ点（k=0），有效质量极小 m*_Γ = 0.067m₀。</p>
@@ -448,7 +448,7 @@ var chapters=[
 <div class="formula-box">各向同性：m*_c = m*<br>多能谷（各向异性）：<br>1/m*_cn = (1/3)(1/m*_l + 2/m*_t)<br><br>Si：1/m*_cn = (1/3)(1/0.98 + 2/0.19)<br>→ m*_cn = 0.26m₀<br><br>GaAs：m*_c = 0.067m₀</div>
 <p>③ <strong>回旋有效质量m*_cr</strong>：回旋共振测得。</p>
 <div class="formula-box">m*_cr = (m*_l × m*_t²)^(1/3)<br>Si：m*_cr = (0.98×0.19²)^(1/3) = 0.35m₀</div>
-<div class="warn"><strong>易错</strong>：Si的态密度质量(1.08m₀)远大于电导率质量(0.26m₀)，原因是多能谷结构——态密度需要所有能谷的贡献（乘以g_v^(2/3)），而电导率只需要加权平均。</div>`},
+<div class="warn"><strong>易错</strong>：Si的态密度质量(1.08m₀)远大于电导率质量(0.26m₀)，原因是多能谷结构——态密度需要所有能谷的贡献（乘以g_v^(2/3)），而电导率只需要加权平均。</div><div class="tip"><strong>通俗理解</strong>：态密度有效质量决定“能装多少电子”（像仓库的容量），电导率有效质量决定“电子跑多快”（像赛道上的加速度）。Si有6个能谷，虽然单个方向跑得快，但总容量大，所以两个质量差别很大。</div>`},
 {n:"费米面与费米速度",s:"★★★★☆",body:`<p><strong>费米面</strong>：k空间中，E(k)=E_F的等能面。是理解金属和简并半导体电子性质的核心概念。</p>
 <div class="formula-box">费米波矢（3D自由电子）：<br>k_F = (3π²n)^(1/3)<br><br>费米速度：<br>v_F = ℏk_F/m*<br><br>费米能量：<br>E_F = ℏ²k_F²/(2m*) = (ℏ²/2m*)(3π²n)^(2/3)</div>
 <p><strong>金属的费米面</strong>：接近自由电子→球形；但在BZ边界处发生畸变（布拉格反射→费米面与BZ面相交处出现能隙）。</p>
@@ -495,7 +495,7 @@ kg:{nodes:[
 <p><strong>Si中施主电离能的计算</strong>：用态密度有效质量md*=(ml·mt²)^(1/3)=(0.98×0.19²)^(1/3)=0.33m₀，εr=11.8</p>
 <div class="formula-box">E_d = 0.33/(11.8²)×13.6 = 0.032eV<br>实测值~0.045eV（与计算值相近但有差异，因为忽略了 central cell correction）</div>
 <p><strong>为什么是浅能级</strong>：m*比m₀小很多（~0.3倍），εr很大（~12倍），所以E_d比氢原子小~1000倍（从13.6eV到~0.01eV量级）。轨道半径很大（~几十Å），波函数扩展到很多个晶格常数范围。</p>
-<div class="info"><strong>考研计算</strong>：类氢模型计算浅能级电离能是经典计算题。记住公式E_d=13.6×(m*/m₀)/εr²，代入材料参数即可。</div>`},
+<div class="info"><strong>考研计算</strong>：类氢模型计算浅能级电离能是经典计算题。记住公式E_d=13.6×(m*/m₀)/εr²，代入材料参数即可。</div><div class="tip"><strong>通俗理解</strong>：浅施主杂质的电子绕着杂质离子转，就像氢原子中电子绕质子转一样。只是在半导体中，介电常数很大（约12）而有效质量很小（约0.2m₀），所以束缚能比氢原子小上千倍，电子轨道大得多——这就是为什么浅能级只有几十meV。</div>`},
 {n:"深能级杂质",s:"★★★★★",body:`<p><strong>深能级杂质</strong>：电离能远大于kT的杂质能级，通常位于禁带中央附近。与浅能级不同，深能级杂质的波函数局域在杂质原子附近（几个晶格常数内），不能用类氢模型描述。</p>
 <p><strong>重要深能级杂质</strong>：</p>
 <table class="cmp"><tr><th>杂质</th><th>材料</th><th>能级位置</th><th>类型</th><th>特点</th></tr><tr><td>Au</td><td>Si</td><td>Ec-0.54eV</td><td>受主</td><td>高效复合中心</td></tr><tr><td>Au</td><td>Si</td><td>Ev+0.35eV</td><td>施主</td><td>双性杂质</td></tr><tr><td>Fe</td><td>Si</td><td>Ec-0.55eV</td><td>深施主</td><td>过渡金属</td></tr><tr><td>Cu</td><td>Si</td><td>Ev+0.24eV</td><td>深受主</td><td>快扩散杂质</td></tr><tr><td>EL2</td><td>GaAs</td><td>Ec-0.82eV</td><td>深施主</td><td>原生缺陷（As反位）</td></tr><tr><td>Cr</td><td>GaAs</td><td>Ev+0.87eV</td><td>补偿</td><td>半绝缘GaAs</td></tr></table>
@@ -520,7 +520,7 @@ kg:{nodes:[
 <p>① 氧浓度~10¹⁸cm⁻³（CZ法直拉硅），大部分以间隙形式存在。</p>
 <p>② 退火后氧可形成SiO₂沉淀，产生内吸杂效应（gettering），清除金属杂质。</p>
 <p>③ 氧也可能形成热施主（~300-500°C退火），产生额外的电子。</p>
-<div class="tip"><strong>考研考点</strong>：替位/间隙杂质的区别常出现在选择题中，重点掌握扩散速率的差异及其原因。</div>`},
+<div class="tip"><strong>考研考点</strong>：替位/间隙杂质的区别常出现在选择题中，重点掌握扩散速率的差异及其原因。</div><div class="tip"><strong>通俗理解</strong>：替位式杂质就像“换座位”——外来原子坐到了晶格原子的位置上；间隙式杂质则像“加座”——外来原子挤进了两个晶格原子之间的缝隙里。小原子（如B、C）通常走间隙，大小相近的原子（如P替Si）走替位。</div>`},
 {n:"点缺陷",s:"★★★★★",body:`<p><strong>晶体缺陷分类</strong>：</p>
 <p>① <strong>零维缺陷（点缺陷）</strong>：空位、间隙原子、替位杂质、反位缺陷</p>
 <p>② <strong>一维缺陷（线缺陷）</strong>：位错（刃型位错、螺旋位错）</p>
@@ -616,7 +616,7 @@ kg:{nodes:[
 <p>① 检测Si、GaAs中残余深能级缺陷</p>
 <p>② 评估辐照损伤和退火效果</p>
 <p>③ 研究界面态（界面深能级瞬态谱）</p>
-<div class="info">DLTS灵敏度可达 N_t < 10¹⁰ cm⁻³（远低于载流子浓度），是研究深能级缺陷的最有力工具。变体：SDLTS、ODLTS、FDLTS。</div>`},
+<div class="info">DLTS灵敏度可达 N_t < 10¹⁰ cm⁻³（远低于载流子浓度），是研究深能级缺陷的最有力工具。变体：SDLTS、ODLTS、FDLTS。</div><div class="tip"><strong>通俗理解</strong>：DLTS就像给深能级做“CT扫描”——先用偏压把陷阱填满，然后突然释放，监听电容随时间的变化。不同深能级“释放”电子的速度不同，通过改变温度扫描，就能把每个深能级的“身份证”（能级位置、俘获截面）一一揪出来。</div>`},
 {n:"杂质的固溶度",s:"★★☆☆☆",body:`<p><strong>固溶度</strong>：在给定温度下，杂质在半导体中能够保持固溶状态的最大浓度。</p>
 <div class="formula-box">固溶度公式：<br>C_s = C_max·exp(-ΔH_f/kT)<br>ΔH_f：杂质的溶解焓<br><br>Si中杂质的固溶度（1100°C）：<br>P: ~10²¹ cm⁻³（高）<br>B: ~6×10²⁰ cm⁻³（高）<br>Au: ~10¹⁶ cm⁻³（低）<br>Fe: ~10¹⁵ cm⁻³（很低）<br><br>固溶度-扩散系数的关联：<br>固溶度高的杂质扩散也快（杂质-空位相互作用）</div>
 <p><strong>固溶度的实际意义</strong>：</p>
@@ -648,7 +648,7 @@ kg:{nodes:[
 <p>③ T>0K时：费米面附近~kT范围内的电子被热激发到E_F以上。</p>
 <p>④ 当E-E_F>>kT时：f(E)≈exp(-(E-E_F)/kT)——玻尔兹曼近似。</p>
 <div class="formula-box">1-f(E) = 1/[1+exp((E_F-E)/kT)]<br>这是空穴占据概率（价带中空态的概率）</div>
-<div class="warn"><strong>易错</strong>：f(E)是电子占据概率，不是空穴概率！空穴概率是1-f(E)。在价带中计算空穴时用的是1-f(E)，不是f(E)。</div>`},
+<div class="warn"><strong>易错</strong>：f(E)是电子占据概率，不是空穴概率！空穴概率是1-f(E)。在价带中计算空穴时用的是1-f(E)，不是f(E)。</div><div class="tip"><strong>通俗理解</strong>：费米分布描述的是“一个座位被占的概率”——在费米能级处恰好是50%。温度越高，分布曲线越平滑，就像人群在楼梯上的分布从“全挤在底层”逐渐变为“均匀散开”。</div>`},
 {n:"玻尔兹曼近似",s:"★★★★★",exam:1,body:`<p><strong>适用条件</strong>：当(E-E_F)>>kT时（即费米能级远离带边），费米分布可近似为：</p>
 <div class="formula-box">电子：f(E) ≈ exp(-(E-E_F)/kT)（E>Ec）<br>空穴：1-f(E) ≈ exp(-(E_F-E)/kT)（E<Ev）<br><br>适用条件：<br>非简并半导体：Ec-E_F > 3kT（≈0.1eV）<br>或 E_F-Ev > 3kT</div>
 <p><strong>玻尔兹曼近似的物理意义</strong>：在非简并半导体中，导带中电子数远小于态密度（占据概率很小），电子分布可用经典统计描述。</p>
@@ -662,7 +662,7 @@ kg:{nodes:[
 <p><strong>态密度有效质量</strong>：当存在多个等价能谷时，需要用态密度有效质量：</p>
 <div class="formula-box">Si（6个等价谷）：<br>md*_n = 6^(2/3)·(ml·mt²)^(1/3) = 1.08m₀<br><br>GaAs（1个谷）：<br>md*_n = m*_n = 0.067m₀<br><br>Ge（4个等价谷，8个半谷）：<br>md*_n = 4^(2/3)·(ml·mt²)^(1/3) = 0.56m₀</div>
 <p><strong>态密度的物理图像</strong>：在k空间中，能量面E(k)=const围成等能面。等能面附近的k空间体积越大，该能量处的态密度越大。对于球形等能面，g(E)∝√E（抛物线色散关系的特征）。</p>
-<div class="warn"><strong>易错</strong>：态密度有效质量md*和电导率有效质量mc*不同！md*用于计算载流子浓度（态密度），mc*用于计算迁移率（散射）。Si的md*_n=1.08m₀，而mc*_n=0.26m₀。</div>`},
+<div class="warn"><strong>易错</strong>：态密度有效质量md*和电导率有效质量mc*不同！md*用于计算载流子浓度（态密度），mc*用于计算迁移率（散射）。Si的md*_n=1.08m₀，而mc*_n=0.26m₀。</div><div class="tip"><strong>通俗理解</strong>：态密度就像一栋大楼每层的“房间数”——低层房间少（抛物线增长），高层房间多。电子就是住客，他们从底层开始一层层往上住。态密度决定了在给定能量范围内有多少个“房间”可供电子选择。</div>`},
 {n:"导带电子浓度",s:"★★★★★",exam:1,body:`<p>在玻尔兹曼近似下，导带中的平衡电子浓度：</p>
 <div class="formula-box">n = ∫(Ec→∞) g_c(E)·f(E) dE<br>  = Nc · exp(-(Ec-E_F)/kT)<br><br>导带有效态密度：<br>Nc = 2(2πm*_n kT/h²)^(3/2)<br>   = 2.5×10¹⁹·(m*_n/m₀)^(3/2)·(T/300)^(3/2) cm⁻³</div>
 <p><strong>Nc的物理意义</strong>：如果把所有导带态都压缩到Ec处，每单位体积有Nc个态。实际上电子按玻尔兹曼分布占据这些态。</p>
@@ -679,7 +679,7 @@ kg:{nodes:[
 <p>② 知道n即可求p（反之亦然）：p=ni²/n。</p>
 <p>③ Eg越大→ni越小→Si比Ge更适合高温器件。</p>
 <div class="formula-box">近似公式（T在300K附近）：<br>ni(Si) ≈ 3.88×10¹⁶·T^(3/2)·exp(-7000/T) cm⁻³</div>
-<div class="warn"><strong>考研高频</strong>：n·p=ni²是全书最重要的公式之一。但要注意适用条件：热平衡、非简并、玻尔兹曼近似。非平衡时n·p>ni²。</div>`},
+<div class="warn"><strong>考研高频</strong>：n·p=ni²是全书最重要的公式之一。但要注意适用条件：热平衡、非简并、玻尔兹曼近似。非平衡时n·p>ni²。</div><div class="tip"><strong>通俗理解</strong>：本征载流子浓度是半导体“天生”的电子-空穴对浓度，完全由温度和带隙决定。温度越高，热激发越强，产生的电子-空穴对越多，就像水温越高溶解的盐越多一样。</div>`},
 {n:"杂质半导体的载流子浓度",s:"★★★★★",exam:1,body:`<p><strong>N型半导体</strong>（施主浓度N_D，受主浓度N_A）：</p>
 <div class="formula-box">电中性条件：n + N_A = p + N_D<br>简化（忽略p，假设完全电离）：<br>n ≈ N_D - N_A<br>p = ni²/n = ni²/(N_D-N_A)</div>
 <p><strong>P型半导体</strong>：</p>
@@ -700,7 +700,7 @@ kg:{nodes:[
 <p>• N_D增大→n增大→E_F向Ec靠近→进入导带（简并化）</p>
 <p>• N_A增大→p增大→E_F向Ev靠近→进入价带（简并化）</p>
 <div class="formula-box">简并化条件：<br>N_D > Nc（或N_A > Nv）时，E_F进入带内<br>Si: Nc≈2.8×10¹⁹ cm⁻³<br>所以掺杂>10¹⁹cm⁻³时开始简并化</div>
-<div class="warn"><strong>考研必考</strong>：画出E_F随T和掺杂的变化趋势图是高频考题。记住三条曲线：N型E_F从Ec附近→禁带中央，P型从Ev附近→禁带中央，本征始终在中央。</div>`},
+<div class="warn"><strong>考研必考</strong>：画出E_F随T和掺杂的变化趋势图是高频考题。记住三条曲线：N型E_F从Ec附近→禁带中央，P型从Ev附近→禁带中央，本征始终在中央。</div><div class="tip"><strong>通俗理解</strong>：费米能级就像天平的支点——它精确地平衡了电子和空穴的“供需关系”。N型半导体电子多，费米能级往导带靠；P型空穴多，费米能级往价带靠。温度极高时，费米能级回到禁带中央。</div>`},
 {n:"简并半导体",s:"★★★★★",body:`<p><strong>简并半导体</strong>：费米能级进入导带或价带内部的半导体，此时玻尔兹曼近似失效，必须使用费米-狄拉克分布。</p>
 <div class="formula-box">简并化条件：<br>N型：Ec - E_F < 0（E_F在导带内）<br>P型：E_F - Ev < 0（E_F在价带内）<br><br>近似判断：N_D > Nc 或 N_A > Nv</div>
 <p><strong>简并半导体的特性</strong>：</p>
@@ -717,7 +717,7 @@ kg:{nodes:[
 <p>② 本征激发（ni随T增加）</p>
 <p>③ 有效态密度Nc、Nv的T^(3/2)依赖</p>
 <div class="info"><strong>考研计算题型</strong>：给出n-T或n-1/T数据，要求：①判断温区；②求Ed或Eg；③画能带图标注E_F位置。这是计算题高频题型。</div>
-<div class="warn"><strong>易错</strong>：ln(n)vs 1/T图中，低温区斜率对应Ed/2k（不是Ed/k），高温区斜率对应Eg/2k（不是Eg/k）。因为n∝exp(-E/2kT)中指数是E/2kT。</div>`},
+<div class="warn"><strong>易错</strong>：ln(n)vs 1/T图中，低温区斜率对应Ed/2k（不是Ed/k），高温区斜率对应Eg/2k（不是Eg/k）。因为n∝exp(-E/2kT)中指数是E/2kT。</div><div class="tip"><strong>通俗理解</strong>：载流子浓度随温度变化的曲线像一段“三段式公路”——低温区杂质逐步电离（上坡），中间平台区杂质全电离（平坦），高温区本征激发占主导（急剧上坡）。三个区域的物理机制完全不同。</div>`},
 {n:"电中性条件",s:"★★★★☆",body:`<p><strong>电中性条件</strong>：半导体整体电中性，正电荷密度等于负电荷密度：</p>
 <div class="formula-box">p + N_D⁺ = n + N_A⁻<br><br>完全电离时简化为：<br>p + N_D = n + N_A（N型简化：n≈N_D-N_A）<br><br>本征半导体：n = p = ni</div>
 <p><strong>电中性条件是求解载流子浓度的出发点</strong>：将n和p用E_F表示（通过Nc、Nv公式），再代入电中性条件，即可求解E_F和n、p。</p>
@@ -761,7 +761,7 @@ kg:{nodes:[
 <div class="formula-box">本征载流子浓度：<br>n_i² = N_c·N_v·exp(-E_g/kT)<br>= 4.83×10³¹·(T/300)³·exp(-E_g/kT)  [cm⁻⁶]<br><br>Si(300K): n_i = 1.5×10¹⁰ cm⁻³<br>Ge(300K): n_i = 2.4×10¹³ cm⁻³<br>GaAs(300K): n_i = 2.1×10⁶ cm⁻³</div>
 <p><strong>ln(n_i) vs 1/T图</strong>：在高温区呈线性，斜率=-E_g/(2k)。通过此直线可精确测定禁带宽度E_g。</p>
 <p><strong>本征区的特征</strong>：<br>• 费米能级趋近禁带中央：E_F ≈ (E_c+E_v)/2<br>• 多子浓度等于少子浓度<br>• 迁移率主要由声学波散射决定<br>• 材料呈本征导电特性</p>
-<div class="warn"><strong>易错</strong>：本征区≠室温。Si的本征温度（ni=N_D）约300-500°C（取决于掺杂浓度），室温下Si仍是杂质导电为主。</div>`},
+<div class="warn"><strong>易错</strong>：本征区≠室温。Si的本征温度（ni=N_D）约300-500°C（取决于掺杂浓度），室温下Si仍是杂质导电为主。</div><div class="tip"><strong>通俗理解</strong>：在高温本征区，热能量足以把电子从价带直接激发到导带，产生的载尔子远多于掺杂贡献的。此时半导体表现得像“纯净物”——掺杂的影响可以忽略，n_i支配一切。</div>`},
 {n:"杂质电离区的载流子浓度",s:"★★★★☆",body:`<p><strong>杂质电离区</strong>（饱和区）：温度足够高使杂质完全电离，但ni << N_D（或N_A），属于杂质导电。</p>
 <div class="formula-box">N型（完全电离）：n ≈ N_D<br>P型（完全电离）：p ≈ N_A<br><br>费米能级位置：<br>E_F = E_c - kT·ln(N_c/N_D) （N型）<br>E_F = E_v + kT·ln(N_v/N_A) （P型）</div>
 <p><strong>温度依赖性</strong>：<br>• n ≈ N_D（常数，与温度无关）<br>• E_F随温度线性移动（T升高→E_F远离带边）<br>• 迁移率随温度变化（主要散射机制决定）<br>• 电阻率主要由迁移率的温度依赖性决定</p>
@@ -784,7 +784,7 @@ kg:{nodes:[
 <p><strong>补偿度</strong>：K = N_A/N_D（对N型）</p>
 <div class="formula-box">补偿度影响：<br>K→0：无补偿，n=N_D<br>K→1：完全补偿，n→0（接近本征）<br><br>补偿对迁移率的影响：<br>总散射率 = 施主散射 + 受主散射<br>迁移率随补偿度增大而降低</div>
 <p><strong>补偿半导体的特点</strong>：<br>• 有效载流子浓度降低<br>• 散射增强（施主+受主离子都散射）<br>• 实际工艺中不可避免存在补偿<br>• Hall效应测量的是净杂质浓度|N_D-N_A|</p>
-<div class="warn"><strong>易错</strong>：Hall效应无法直接区分N_D和N_A，只能测出|N_D-N_A|。要分别确定两者需要变温Hall+低温Hall测量。</div>`},
+<div class="warn"><strong>易错</strong>：Hall效应无法直接区分N_D和N_A，只能测出|N_D-N_A|。要分别确定两者需要变温Hall+低温Hall测量。</div><div class="tip"><strong>通俗理解</strong>：补偿半导体就像“一加一减”——施主和受主同时存在，它们先互相“抵消”，多余的才是净载流子。如果N_D=N_A，载流子浓度为零（完全补偿），虽然杂质很多但材料接近绝缘。</div>`},
 {n:"费米能级的温度依赖性",s:"★★★★☆",body:`<p><strong>E_F随温度的变化</strong>：是理解半导体从冻结区→饱和区→本征区转变的关键。</p>
 <p><strong>N型半导体（N_D > N_A）</strong>：</p>
 <div class="formula-box">低温（冻结区）：<br>E_F ≈ (E_c + E_d)/2 + (kT/2)ln(N_D/(2N_c))<br>E_F靠近禁带上半部中央<br><br>中温（饱和区）：<br>E_F = E_c - kT·ln(N_c/N_D)<br>E_F随T线性远离导带<br><br>高温（本征区）：<br>E_F → (E_c + E_v)/2 = E_i<br>E_F趋向禁带中央</div>
@@ -844,7 +844,7 @@ kg:{nodes:[
 <div class="formula-box">光学波散射的迁移率：<br>μ_o ∝ [exp(ℏω_op/kT)-1] / T^(1/2)<br><br>高温时 μ_o ∝ T^(-1/2)<br>低温时 μ_o 急剧增大（冻结效应）</div>
 <p><strong>Ge、Si中</strong>：以声学波散射为主（非极性）。</p>
 <p><strong>GaAs中</strong>：低温以电离杂质散射为主，高温以光学波散射为主。</p>
-<div class="warn"><strong>易错</strong>：声学波散射 μ ∝ T^(-3/2)，不要和电离杂质散射 μ ∝ T^(3/2) 搞混！指数符号相反。</div>`},
+<div class="warn"><strong>易错</strong>：声学波散射 μ ∝ T^(-3/2)，不要和电离杂质散射 μ ∝ T^(3/2) 搞混！指数符号相反。</div><div class="tip"><strong>通俗理解</strong>：晶格原子不是静止的，它们在热振动，就像弹簧上的小球在不停晃动。电子穿过晶体时会被这些“晃动的原子”撞来撞去，这就是晶格振动散射。温度越高，振动越剧烈，散射越强，迁移率越低。</div>`},
 {n:"电离杂质散射",s:"★★★★★",exam:1,body:`<p><strong>库仑散射</strong>：电离杂质周围存在库仑势场，经过的载流子受到库仑力作用而偏转。</p>
 <div class="formula-box">Brooks-Herring公式：<br>μ_I = (128√2·ε²·(kT)^(3/2)) / (√π·q³·m*^(1/2)·N_I·[ln(1+b)-b/(1+b)])<br><br>其中 b = 8m*kT·ε/(ℏ²·q²·n)<br>ε = ε₀·ε_r（介电常数）<br>N_I = 电离杂质浓度<br><br>简化：μ_I ∝ T^(3/2) / N_I</div>
 <p><strong>温度依赖性</strong>：μ_I ∝ T^(3/2)。温度升高，载流子热运动速度增大，经过电离杂质时偏转角度减小，等效散射减弱，迁移率增大。</p>
@@ -900,7 +900,7 @@ kg:{nodes:[
 <p>① 由R_H的符号判断导电类型（N型负，P型正）</p>
 <p>② 由|R_H|计算载流子浓度 n = 1/(q|R_H|)</p>
 <p>③ 霍尔系数与电导率结合得到霍尔迁移率</p>
-<div class="warn"><strong>注意</strong>：严格来说，R_H = r_H/(qn)，其中r_H为霍尔因子（1~2），取决于散射机制。声学波散射时r_H = 3π/8 ≈ 1.18。实际中常忽略r_H，直接用R_H = 1/(qn)。</div>`},
+<div class="warn"><strong>注意</strong>：严格来说，R_H = r_H/(qn)，其中r_H为霍尔因子（1~2），取决于散射机制。声学波散射时r_H = 3π/8 ≈ 1.18。实际中常忽略r_H，直接用R_H = 1/(qn)。</div><div class="tip"><strong>通俗理解</strong>：霍尔效应就像一条河——水流（电流）向前走时，如果水里有带电粒子，磁场会让它们往一侧偏转，在河两岸形成电压差。测量这个电压差（霍尔电压），就能算出河里有多少带电粒子以及它们带什么电。</div>`},
 {n:"变温Hall实验",s:"★★★★☆",exam:1,body:`<p><strong>变温Hall实验</strong>：测量不同温度下的霍尔系数R_H和电阻率ρ，是研究半导体掺杂和能带结构的重要实验。</p>
 <div class="formula-box">N型半导体的R_H-T曲线（三段式）：<br><br>① 低温杂质电离区：<br>n ∝ exp(-E_D/2kT)，R_H急剧下降<br><br>② 杂质完全电离区（饱和区）：<br>n ≈ N_D - N_A ≈ 常数，R_H ≈ 常数<br><br>③ 高温本征激发区：<br>n ∝ T^(3/2)·exp(-E_g/2kT)，R_H → 0</div>
 <p><strong>从实验数据获取信息</strong>：</p>
@@ -929,13 +929,13 @@ kg:{nodes:[
 <p>① 低温：杂质部分电离，n较小，ρ较高</p>
 <p>② 中温饱和区：杂质全电离，n≈常数，μ随T下降→ρ随T上升</p>
 <p>③ 高温本征激发区：n_i急剧增大→ρ急剧下降</p>
-<div class="warn"><strong>考试技巧</strong>：ρ-T曲线的转折点可以判断杂质电离能和禁带宽度。ρ的极小值出现在本征激发开始主导的温度。</div>`},
+<div class="warn"><strong>考试技巧</strong>：ρ-T曲线的转折点可以判断杂质电离能和禁带宽度。ρ的极小值出现在本征激发开始主导的温度。</div><div class="tip"><strong>通俗理解</strong>：掺杂就像往纯净水中加盐——加一点点就能让导电能力大幅提升。但加太多也不行，杂质本身也会散射电子，就像路上人太多反而走不快。所以电阻率随掺杂先降后趋于平缓。</div>`},
 {n:"高场效应与速度饱和",s:"★★★★☆",exam:1,body:`<p><strong>低场欧姆区</strong>：电场较低时，v_d = μE，电流与电压成正比。</p>
 <p><strong>高场效应</strong>：当电场增大到一定程度，v_d不再与E成正比，出现非线性。</p>
 <div class="formula-box">速度-电场关系（两段近似）：<br><br>低场（E << E_c）：v_d = μE<br><br>高场（E >> E_c）：v_d → v_sat<br><br>经验公式：v_d = μE/[1+(μE/v_sat)^(1/β)]^(1/β)<br><br>Si：v_sat ≈ 1×10⁷ cm/s<br>GaAs：v_sat ≈ 0.7×10⁷ cm/s<br>E_c（Si）≈ 3×10⁴ V/cm</div>
 <p><strong>速度饱和的原因</strong>：高能声子散射。载流子从电场获得的能量等于通过声学波和光学波散射损失的能量时，速度达到饱和。</p>
 <p><strong>GaAs的负微分电导</strong>：GaAs中导带有主能谷(Γ)和子能谷(L)，当E增大使电子从Γ谷转移到L谷时，由于L谷的有效质量大、迁移率低，出现负微分电导(dJ/dE < 0)。</p>
-<div class="info">GaAs的负微分电导是体效应器件（耿氏二极管）的基础，用于微波振荡器。</div>`},
+<div class="info">GaAs的负微分电导是体效应器件（耿氏二极管）的基础，用于微波振荡器。</div><div class="tip"><strong>通俗理解</strong>：低电压下电子越跑越快（速度正比于电场），但跑快了就会频繁碰撞声子，最终速度达到上限——就像汽车在高速路上限速一样。Si中这个饱和速度约10⁷ cm/s，这就是“速度饱和”。</div>`},
 {n:"热载流子效应",s:"★★★☆☆",body:`<p><strong>热载流子</strong>：在强电场下，载流子的平均能量（有效温度T_e）高于晶格温度（T_L）。此时载流子称为"热载流子"。</p>
 <div class="formula-box">热载流子特征：<br>T_e = T_L + qEτ·v_d/(3k) ≈ T_L(1 + E²/E_c²)<br><br>热载流子的分布函数偏离平衡的麦克斯韦分布<br>高能尾巴增强→碰撞电离、热发射等效应</div>
 <p><strong>热载流子效应的影响</strong>：</p>
@@ -951,7 +951,7 @@ kg:{nodes:[
 <div class="formula-box">极性光学波散射（GaAs中重要）：<br>1/μ_PO ∝ exp(ℏω_LO/kT) - 1<br><br>非极性光学波散射（Si/Ge中）：<br>1/μ_O ∝ T^(1/2)（高温近似）<br><br>GaAs室温：μ_PO是主要限制因素→μ_max ≈ 8500 cm²/(V·s)</div>
 <p><strong>两种散射的对比</strong>：</p>
 <table class="cmp"><tr><th>特征</th><th>声学波散射</th><th>光学波散射</th></tr><tr><td>声子能量</td><td>小（连续谱）</td><td>大（~30-60meV）</td></tr><tr><td>温度依赖</td><td>μ∝T^(-3/2)</td><td>低温冻结，高温∝T^(-1/2)~T^(-3/2)</td></tr><tr><td>主导材料</td><td>Si, Ge（主要）</td><td>GaAs（极性光学）</td></tr></table>
-<div class="warn"><strong>易错</strong>：μ∝T^(-3/2)对应晶格散射主导的温区，不代表所有温区。低温下杂质散射主导→μ∝T^(3/2)。</div>`},
+<div class="warn"><strong>易错</strong>：μ∝T^(-3/2)对应晶格散射主导的温区，不代表所有温区。低温下杂质散射主导→μ∝T^(3/2)。</div><div class="tip"><strong>通俗理解</strong>：声学波散射就像“缓慢起伏的路面”——整个晶格缓慢形变，电子被轻微扰动。光学波散射则像“突然的台阶”——两种原子反向振动，能量交换剧烈。低温下声学波主导，高温下光学波贡献增大。</div>`},
 {n:"高场输运：速度过冲与弹道输运",s:"★★★★☆",body:`<p><strong>速度过冲（Velocity Overshoot）</strong>：在极短的时间/距离内，载流子速度超过稳态饱和速度v_sat的现象。</p>
 <div class="formula-box">时间尺度：t_ov ~ m*v_sat/(qE) ≈ 0.1-1 ps<br>空间尺度：x_ov ~ v_sat × t_ov ≈ 10-100 nm<br><br>稳态饱和速度：<br>Si: v_sat ≈ 1×10⁷ cm/s<br>GaAs: v_sat ≈ 0.7×10⁷ cm/s</div>
 <p><strong>物理解释</strong>：<br>1. 载流子在电场中加速→速度增加<br>2. 需要时间积累足够的光学声子散射才能达到稳态速度<br>3. 在散射尚未充分的短暂时间内，速度可超过v_sat<br>4. 这是弹道输运和快速器件的基础</p>
@@ -970,7 +970,7 @@ kg:{nodes:[
 <p><strong>三个温区</strong>：<br>① 低温（T < T_m）：杂质散射主导 → μ随T升高而增大<br>② T = T_m：迁移率达到最大值<br>③ 高温（T > T_m）：晶格散射主导 → μ随T升高而减小</p>
 <p><strong>典型值</strong>（Si中电子）：</p>
 <table class="cmp"><tr><th>温度</th><th>限制因素</th><th>μ_e (cm²/Vs)</th></tr><tr><td>77K</td><td>杂质散射</td><td>~2000-4000</td></tr><tr><td>200K</td><td>两者相当</td><td>~1500（峰值附近）</td></tr><tr><td>300K</td><td>晶格散射</td><td>1400</td></tr><tr><td>400K</td><td>晶格散射</td><td>~800</td></tr></table>
-<div class="warn"><strong>考研必考</strong>：迁移率温度依赖性是最高频考点。记住低温μ∝T^(3/2)、高温μ∝T^(-3/2)，极值处两者相等。</div>`},
+<div class="warn"><strong>考研必考</strong>：迁移率温度依赖性是最高频考点。记住低温μ∝T^(3/2)、高温μ∝T^(-3/2)，极值处两者相等。</div><div class="tip"><strong>通俗理解</strong>：迁移率随温度变化的曲线像一座“山峰”——低温区杂质散射弱（迁移率随T升高而降低），高温区晶格散射强（迁移率随T升高继续降低），中间有一个极值。整个曲线反映了不同散射机制的“接力赛”。</div>`},
 {n:"半导体热电效应的微观机制",s:"★★★★☆",body:`<p><strong>塞贝克效应（Seebeck）</strong>的微观解释：</p>
 <p>热端的载流子具有更高的平均动能→向冷端扩散→建立内建电场→达到动态平衡→温差电动势。</p>
 <div class="formula-box">塞贝克系数（N型）：<br>S_n = -(k/q)[ln(N_c/N_D) + 5/2 + ξ]<br>ξ = (E_F - E_c)/(kT)<br><br>绝对值：|S| ~ 100-200 μV/K（半导体）<br>金属：|S| ~ 1-10 μV/K</div>
@@ -1001,7 +1001,7 @@ kg:{nodes:[
 <div class="formula-box">三种基本复合机制：<br><br>① 直接复合（带间复合）：<br>R = r·n·p（r为复合系数）<br>Δn随时间变化：dΔn/dt = G - r[(n₀+p₀)Δn + Δn²]<br>寿命：τ = 1/[r(n₀+p₀)]<br><br>② 间接复合（Shockley-Read-Hall复合）：<br>通过禁带中的深能级缺陷进行<br>是Si、Ge中的主要复合机制<br><br>③ 俄歇复合（Auger）：<br>三个粒子参与，高注入时重要</div>
 <p><strong>直接复合</strong>：导带电子直接跃迁到价带与空穴复合，释放光子。在直接带隙半导体（GaAs）中重要。</p>
 <p><strong>间接复合（SRH）</strong>：电子先被深能级陷阱俘获，再与价带空穴复合。分四步：①电子俘获②电子发射③空穴俘获④空穴发射。</p>
-<div class="warn"><strong>重点</strong>：Si和Ge是间接带隙，带间直接复合概率很低，SRH复合是主要机制。GaAs是直接带隙，辐射复合概率高。</div>`},
+<div class="warn"><strong>重点</strong>：Si和Ge是间接带隙，带间直接复合概率很低，SRH复合是主要机制。GaAs是直接带隙，辐射复合概率高。</div><div class="tip"><strong>通俗理解</strong>：复合就像“配对消亡”——多余的电子找到空穴，两者一起“消失”并释放能量（光或热）。注入的非平衡载流子不会永远存在，它们会通过复合过程逐渐回到平衡态，就像池塘里的涟漪终会平息。</div>`},
 {n:"Shockley-Read-Hall复合",s:"★★★★★",exam:1,body:`<p><strong>SRH复合</strong>：通过禁带中的深能级缺陷（复合中心）进行的复合过程，是间接带隙半导体中最重要的复合机制。</p>
 <div class="formula-box">SRH复合速率：<br>U = [np - ni²] / [τ_p(n+n₁) + τ_n(p+p₁)]<br><br>其中：<br>n₁ = N_c·exp(-(E_c-E_t)/kT) = ni·exp((E_t-E_i)/kT)<br>p₁ = N_v·exp(-(E_t-E_v)/kT) = ni·exp((E_i-E_t)/kT)<br>τ_n = 1/(σ_n·v_th·N_t) — 电子俘获时间<br>τ_p = 1/(σ_p·v_th·N_t) — 空穴俘获时间<br><br>小注入简化（n₀ >> p₀, Δn << n₀）：<br>U ≈ Δn/τ<br>τ = τ_p + τ_n（近似，当E_t ≈ E_i时）</div>
 <p><strong>深能级位置的影响</strong>：</p>
@@ -1016,7 +1016,7 @@ kg:{nodes:[
 <p>③ <strong>温度</strong>：影响n₁和p₁，从而影响复合速率</p>
 <p>④ <strong>缺陷密度</strong>：位错、晶界等也是复合中心</p>
 <p>⑤ <strong>注入水平</strong>：大注入时俄歇复合变得重要，有效寿命降低</p>
-<div class="info">Si的典型寿命：高纯Si约1ms，集成电路级Si约1-10μs，太阳电池级Si约10-100μs。</div>`},
+<div class="info">Si的典型寿命：高纯Si约1ms，集成电路级Si约1-10μs，太阳电池级Si约10-100μs。</div><div class="tip"><strong>通俗理解</strong>：少子寿命就是少数载流子“活多久”——注入后多久复合掉一半。寿命越长，载流子能跑得越远，器件响应越慢。它取决于复合中心的多少：杂质多寿命短，晶体完美寿命长。</div>`},
 {n:"俄歇复合",s:"★★★☆☆",body:`<p><strong>俄歇复合（Auger Recombination）</strong>：三个载流子参与的非辐射复合过程。复合释放的能量不以光子形式发射，而是传递给第三个载流子（使其跃迁到更高能态），随后通过声子散射释放热量。</p>
 <div class="formula-box">俄歇复合速率：<br>R_A = (C_n·n + C_p·p)(np - ni²)<br><br>N型主导：<br>τ_A ≈ 1/(C_n·n₀²)<br><br>P型主导：<br>τ_A ≈ 1/(C_p·p₀²)<br><br>本征：<br>τ_A ≈ 1/(C_n+C_p)ni²<br><br>C_n ≈ 2.8×10⁻³¹ cm⁶/s（Si中的电子）</div>
 <p><strong>重要性</strong>：</p>
@@ -1036,7 +1036,7 @@ kg:{nodes:[
 <p><strong>扩散长度的物理意义</strong>：L_p是注入少子在复合前能扩散的平均距离。Δp(x) = Δp₀·exp(-x/L_p)表示经过距离L_p后，浓度降到注入值的1/e。</p>
 <p><strong>典型值</strong>：</p>
 <table class="cmp"><tr><th>参数</th><th>Si（τ=10μs）</th><th>GaAs（τ=1ns）</th></tr><tr><td>D_n</td><td>~35 cm²/s</td><td>~220 cm²/s</td></tr><tr><td>L_n</td><td>~60 μm</td><td>~0.5 μm</td></tr></table>
-<div class="warn"><strong>易错</strong>：D_n ≠ D_p（一般D_n > D_p），因为μ_n > μ_p且D/μ = kT/q（爱因斯坦关系）。</div>`},
+<div class="warn"><strong>易错</strong>：D_n ≠ D_p（一般D_n > D_p），因为μ_n > μ_p且D/μ = kT/q（爱因斯坦关系）。</div><div class="tip"><strong>通俗理解</strong>：扩散长度就是少子从产生到复合“能走多远”的度量。就像墨水滴入水中——扩散系数大、寿命长的墨水能扩散很远，反之则很快“消失”。扩散长度L=√(Dτ)，是器件设计的关键参数。</div>`},
 {n:"表面复合与表面复合速度",s:"★★★☆☆",body:`<p><strong>表面复合</strong>：半导体表面存在大量悬挂键和表面缺陷，这些缺陷能级在禁带中充当有效的复合中心。表面处的复合速率远高于体内。</p>
 <div class="formula-box">表面复合速率：<br>R_s = s·Δp_s<br><br>s = σ_s·v_th·N_st<br>s — 表面复合速度（cm/s）<br>σ_s — 表面缺陷的俘获截面<br>N_st — 表面态密度<br><br>边界条件（半无限大样品x=0处）：<br>D_p·(∂Δp/∂x)|_{x=0} = s·Δp(0)</div>
 <p><strong>表面复合对少子扩散的影响</strong>：有效扩散长度减小。</p>
@@ -1053,7 +1053,7 @@ kg:{nodes:[
 <p>② 电子准费米能级E_Fn在N区平坦，在P区变化</p>
 <p>③ 空穴准费米能级E_Fp在P区平坦，在N区变化</p>
 <p>④ 在正向偏压下，E_Fn - E_Fp = qV（V为外加偏压）</p>
-<div class="warn"><strong>重要</strong>：准费米能级在能带图中是水平线（只要该区域载流子处于准平衡）。只有在强复合区（空间电荷区），E_Fn和E_Fp才有显著变化。</div>`},
+<div class="warn"><strong>重要</strong>：准费米能级在能带图中是水平线（只要该区域载流子处于准平衡）。只有在强复合区（空间电荷区），E_Fn和E_Fp才有显著变化。</div><div class="tip"><strong>通俗理解</strong>：准费米能级是“分而治之”的产物——电子和空穴各自有独立的“水位线”（准费米能级），不再共享一个费米能级。两个准费米能级分开得越远，说明偏离平衡越远，就像两条河的水位差越大，水流越急。</div>`},
 {n:"扩散电流与爱因斯坦关系",s:"★★★★★",exam:1,body:`<p><strong>扩散电流</strong>：载流子浓度存在梯度时，即使没有电场也会有定向运动，形成扩散电流。</p>
 <div class="formula-box">扩散电流密度：<br>J_n_diff = q·D_n·(dn/dx) — 电子扩散<br>J_p_diff = -q·D_p·(dp/dx) — 空穴扩散<br><br>注意空穴扩散电流方向与梯度方向相反<br><br>总电流（电子）：<br>J_n = qnμ_nE + qD_n(dn/dx) — 漂移+扩散<br><br>总电流（空穴）：<br>J_p = qpμ_pE - qD_p(dp/dx)</div>
 <p><strong>爱因斯坦关系</strong>：扩散系数D和迁移率μ之间的基本关系：</p>
@@ -1066,7 +1066,7 @@ kg:{nodes:[
 <p>② 红外探测器：InSb、HgCdTe等</p>
 <p>③ 光电导衰退法测量少子寿命</p>
 <p><strong>陷阱效应</strong>：深能级杂质可能俘获一种载流子而不立即复合，导致该载流子的寿命远大于另一种。有效寿命由两种载流子共同决定。</p>
-<div class="warn"><strong>光电导增益</strong>可以远大于1！当τ >> τ_tr时，一个光生载流子在被复合前可以多次通过外电路，产生多个电子的电流贡献。</div>`},
+<div class="warn"><strong>光电导增益</strong>可以远大于1！当τ >> τ_tr时，一个光生载流子在被复合前可以多次通过外电路，产生多个电子的电流贡献。</div><div class="tip"><strong>通俗理解</strong>：光电导就像给半导体“照X光”——光照产生额外的电子-空穴对，让原本不太导电的材料突然变得导电了。光越强产生的载流子越多，电阻下降越明显。暗处恢复到原来的高电阻状态。</div>`},
 {n:"扩散方程的典型解",s:"★★★★☆",exam:1,body:`<p><strong>典型边界条件与解</strong>：</p>
 <p><strong>情况1：表面稳态注入</strong>（x=0处注入，x→∞时Δp→0）</p>
 <div class="formula-box">Δp(x) = Δp(0)·exp(-x/L_p)<br>J_p(x) = (qD_p/L_p)·Δp(0)·exp(-x/L_p)<br>总少子电荷：Q = q·A·L_p·Δp(0)<br>总扩散电流：I = qAD_pΔp(0)/L_p = Q/(L_p²/D_p) = Q/τ</div>
@@ -1144,7 +1144,7 @@ kg:{nodes:[
 <p>① 空间电荷区（耗尽层）中载流子被扫出，只留下电离杂质</p>
 <p>② 耗尽层外的P区和N区是电中性的</p>
 <p>③ 能带在空间电荷区连续弯曲，形成势垒</p>
-<div class="info">Si的V_D：中等掺杂（10¹⁵~10¹⁶）约0.6-0.7V，高掺杂可达0.8V以上。</div>`},
+<div class="info">Si的V_D：中等掺杂（10¹⁵~10¹⁶）约0.6-0.7V，高掺杂可达0.8V以上。</div><div class="tip"><strong>通俗理解</strong>：PN结就像两种不同浓度的染料溶液放在一起——P区的空穴往N区扩散，N区的电子往P区扩散，扩散后在交界处留下带电的杂质离子，形成一个“电场屏障”，最终阻止进一步扩散，达到动态平衡。</div>`},
 {n:"PN结能带图",s:"★★★★★",exam:1,body:`<svg viewBox="0 0 600 200" style="display:block;margin:10px auto;max-width:100%;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.08)" xmlns="http://www.w3.org/2000/svg">
 <defs><style>text{font-family:sans-serif}</style></defs>
 <!-- Zero Bias Panel -->
@@ -1208,7 +1208,7 @@ kg:{nodes:[
 <div class="formula-box">电中性条件：N_A·x_p = N_D·x_n<br><br>耗尽层宽度：<br>x_p = W·N_D/(N_A+N_D)<br>x_n = W·N_A/(N_A+N_D)<br><br>W = √[2ε_s·(V_D-V)(N_A+N_D)/(qN_AN_D)]<br><br>V_D-V > 0（正偏时V>0，W变窄）<br>V_D-V < 0（反偏时V<0，W变宽）</div>
 <p><strong>单边突变结</strong>（N_A >> N_D，即p+n结）：</p>
 <div class="formula-box">W ≈ √[2ε_s(V_D-V)/(qN_D)]<br>E_max ≈ √[2qN_D(V_D-V)/ε_s]<br>势垒电容：C = ε_s/W = ε_s/√[2ε_s(V_D-V)/(qN_D)]<br>→ C ∝ (V_D-V)^(-1/2)</div>
-<div class="warn"><strong>易错</strong>：单边突变结的W和C都只取决于轻掺杂一侧的浓度。高掺杂侧可以忽略。</div>`},
+<div class="warn"><strong>易错</strong>：单边突变结的W和C都只取决于轻掺杂一侧的浓度。高掺杂侧可以忽略。</div><div class="tip"><strong>通俗理解</strong>：耗尽层就像两军对峙的“无人区”——交界处附近的自由载流子都跑光了，只剩下固定不动的带电杂质离子。电场在这个区域内线性变化（类似三角形），在交界面处最大，就像一根绷紧的橡皮筋。</div>`},
 {n:"线性缓变结",s:"★★★★☆",body:`<p><strong>线性缓变结</strong>：杂质浓度在空间电荷区内线性变化的PN结，常见于扩散工艺制备的PN结。</p>
 <div class="formula-box">杂质分布：N(x) = a·x（在x=0处为冶金结）<br>a — 杂质梯度（cm⁻⁴）<br><br>泊松方程：<br>d²V/dx² = -qa·x/ε<br><br>电场分布（抛物线）：<br>E(x) = -qa·(W²/4-x²)/(2ε)<br><br>最大电场：<br>E_max = qa·W²/(8ε)（在x=0处）<br><br>耗尽层宽度：<br>W = [12ε(V_D-V)/(qa)]^(1/3)<br><br>C ∝ (V_D-V)^(-1/3)</div>
 <p><strong>与突变结的对比</strong>：</p>
@@ -1220,20 +1220,20 @@ kg:{nodes:[
 <p>① 正偏（V>0）：I ∝ exp(qV/kT)，指数增长</p>
 <p>② 反偏（|V| >> kT/q）：I ≈ -I_s，很小的恒定反向电流</p>
 <p>③ 正向导通电压：Si约0.6-0.7V，Ge约0.2-0.3V</p>
-<div class="warn"><strong>肖克莱方程的限制</strong>：①没有考虑空间电荷区的产生-复合；②没有考虑大注入效应；③没有考虑串联电阻。实际PN结的I-V偏离理想指数关系。</div>`},
+<div class="warn"><strong>肖克莱方程的限制</strong>：①没有考虑空间电荷区的产生-复合；②没有考虑大注入效应；③没有考虑串联电阻。实际PN结的I-V偏离理想指数关系。</div><div class="tip"><strong>通俗理解</strong>：肖克莱方程描述PN结电流与电压的指数关系——正向加压降低了“电场屏障”，电流指数增长，就像大坝开了一个小口，水位差越大水流越大。反向时屏障升高，只有极小的“漏电流”。</div>`},
 {n:"PN结正向电流的物理图像",s:"★★★★★",exam:1,body:`<p><strong>正向注入</strong>：正偏降低势垒，多子从两侧注入空间电荷区，成为对侧的少子。</p>
 <div class="formula-box">注入过程：<br>N区电子 → 空间电荷区 → P区（少子注入）<br>P区空穴 → 空间电荷区 → N区（少子注入）<br><br>边界值：<br>Δp(x_n) = p_n0·[exp(qV/kT)-1]<br>Δn(-x_p) = n_p0·[exp(qV/kT)-1]<br><br>注入少子在准中性区扩散并复合<br>扩散长度L决定电流大小</div>
 <p><strong>正向电流的组成</strong>：</p>
 <p>① <strong>扩散电流</strong>：注入少子的扩散（主要贡献）</p>
 <p>② <strong>复合电流</strong>：空间电荷区中载流子的复合</p>
 <p>③ 低注入时以复合电流为主（I ∝ exp(qV/2kT)），中等注入以扩散电流为主（I ∝ exp(qV/kT)）</p>
-<div class="info">Si PN结在低电流下通常表现为I ∝ exp(qV/nkT)，n称为理想因子，低电流时n≈2（复合电流），大电流时n→1（扩散电流）。</div>`},
+<div class="info">Si PN结在低电流下通常表现为I ∝ exp(qV/nkT)，n称为理想因子，低电流时n≈2（复合电流），大电流时n→1（扩散电流）。</div><div class="tip"><strong>通俗理解</strong>：正向偏压下，电子从N区“翻墙”注入到P区，空穴从P区“翻墙”注入到N区。注入的少子在对方区域扩散并复合，这个扩散-复合过程构成了正向电流。注入比越高，电流越大。</div>`},
 {n:"PN结反向电流",s:"★★★★★",exam:1,body:`<p><strong>反向抽取</strong>：反偏增大势垒，空间电荷区中的电场将少子抽取（sweep out），使边界处少子浓度趋近于0。</p>
 <div class="formula-box">边界条件（反偏V<0，|V|>>kT/q）：<br>p_n(x_n) ≈ 0（边界处少子浓度为零）<br>n_p(-x_p) ≈ 0<br><br>少子从体内扩散到边界→被电场扫过耗尽层<br>反向电流 = 少子扩散电流 = I_s<br><br>I_s = qAni²[D_p/(L_p·N_D) + D_n/(L_n·N_A)]</div>
 <p><strong>I_s的物理意义</strong>：反向电流由少数载流子的热产生决定。在空间电荷区边缘，少子浓度因反偏被压低到近零，体内少子必须不断扩散到边界来补充。</p>
 <p><strong>I_s的温度依赖性</strong>：</p>
 <div class="formula-box">I_s ∝ ni² ∝ T³·exp(-E_g/kT)<br><br>温度升高→ni²指数增长→I_s急剧增大<br><br>经验规则：温度每升高10°C，I_s约增大一倍</div>
-<div class="warn"><strong>考试重点</strong>：I_s ∝ ni² → 随温度急剧变化。Ge器件的I_s远大于Si（ni²更大），这限制了Ge器件的工作温度。</div>`},
+<div class="warn"><strong>考试重点</strong>：I_s ∝ ni² → 随温度急剧变化。Ge器件的I_s远大于Si（ni²更大），这限制了Ge器件的工作温度。</div><div class="tip"><strong>通俗理解</strong>：反向偏压把“墙”加高了，正常情况下几乎没有电流。但热激发会不断产生电子-空穴对，少子被电场扫过耗尽层形成微小的反向饱和电流。温度越高，热产生越强，反向电流越大。</div>`},
 {n:"空间电荷区的产生与复合电流",s:"★★★★☆",exam:1,body:`<p><strong>产生电流</strong>（反偏时）：反偏使空间电荷区内ni<<ni²，产生率大于复合率。</p>
 <div class="formula-box">产生电流：<br>I_gen = q·A·W·G<br>= q·A·W·ni/(2τ)<br><br>I_gen ∝ W ∝ (V_D+|V|)^(1/2)<br>I_gen ∝ ni（不是ni²！）<br><br>总反向电流：<br>I_R = I_s + I_gen<br>对于Si器件，I_gen >> I_s（室温）</div>
 <p><strong>复合电流</strong>（正偏时）：正偏使空间电荷区内np > ni²，复合率大于产生率。</p>
@@ -1254,7 +1254,7 @@ kg:{nodes:[
 <div class="formula-box">C_D = dQ/dV<br>Q = 少子存储电荷<br><br>C_D = (q²/kT)·(L_p·p_n0/L_p + L_n·n_p0/L_n)·exp(qV/kT)<br>简化：C_D = (τ/2)·I/(kT/q)<br>C_D ∝ I ∝ exp(qV/kT)</div>
 <p><strong>两者对比</strong>：</p>
 <table class="cmp"><tr><th>特征</th><th>势垒电容C_T</th><th>扩散电容C_D</th></tr><tr><td>主要出现</td><td>反偏</td><td>正偏</td></tr><tr><td>物理本质</td><td>耗尽层电荷变化</td><td>少子存储变化</td></tr><tr><td>偏压依赖</td><td>C_T ∝ V^(-n)</td><td>C_D ∝ exp(qV/kT)</td></tr></table>
-<div class="info">C-V法是测量PN结掺杂分布和内建电势的重要实验手段。1/C²-V图的线性度可以判断突变结近似是否成立。</div>`},
+<div class="info">C-V法是测量PN结掺杂分布和内建电势的重要实验手段。1/C²-V图的线性度可以判断突变结近似是否成立。</div><div class="tip"><strong>通俗理解</strong>：势垒电容就像一个“平板电容器”——耗尽层是绝缘层，两边的中性区是极板，电压变化改变耗尽层厚度就是改变电容。扩散电容则是注入少子存储效应造成的，正向偏压下更显著。</div>`},
 {n:"大注入效应",s:"★★★★☆",exam:1,body:`<p><strong>大注入</strong>：注入少子浓度与多子浓度相当（Δn ≈ Δp ≈ n₀），破坏了耗尽层近似。</p>
 <div class="formula-box">大注入条件：Δp ≈ n₀（N型一侧）<br><br>大注入时的I-V关系：<br>I ∝ exp(qV/2kT)（不再是exp(qV/kT)）<br><br>原因：注入少子改变多子分布<br>→ 产生"感应电场"<br>→ 加速少子扩散，但也产生漂移分量<br>→ 有效扩散系数增大</div>
 <p><strong>大注入的物理图像</strong>：</p>
@@ -1265,7 +1265,7 @@ kg:{nodes:[
 <p><strong>电流-电压特性的变化</strong>：</p>
 <p>小注入：I ∝ exp(qV/kT)（扩散电流）</p>
 <p>大注入：I ∝ exp(qV/2kT)（类似复合电流）</p>
-<div class="warn"><strong>易错</strong>：大注入时I ∝ exp(qV/2kT)不是因为复合电流，而是因为感应电场改变了载流子传输方式。</div>`},
+<div class="warn"><strong>易错</strong>：大注入时I ∝ exp(qV/2kT)不是因为复合电流，而是因为感应电场改变了载流子传输方式。</div><div class="tip"><strong>通俗理解</strong>：大注入就像“人潮涌入”——注入的少子浓度超过了该区域的多子浓度，原有的电中性被打破，内建电场被改变。电流不再遵循理想的指数关系，而是变成近似线性，就像高速公路堵车后车速不再随踩油门线性增加。</div>`},
 {n:"电荷控制模型",s:"★★★☆☆",body:`<p><strong>电荷控制模型</strong>：用存储电荷Q来描述PN结特性，比分布参数模型更简洁。</p>
 <div class="formula-box">存储少子电荷：<br>Q = q·A·∫₀^∞ Δp(x)dx = q·A·L_p·Δp(0)<br><br>扩散电流：<br>I = Q/τ（稳态）<br><br>瞬态：<br>dQ/dt = I_inject - Q/τ<br><br>开关时间：<br>t_s = τ·ln[(I_F-I_R)/(I_R)]<br>（存储延迟时间，I_F→I_R反向恢复）</div>
 <p><strong>电荷控制方程的应用</strong>：</p>
@@ -1291,7 +1291,7 @@ kg:{nodes:[
 <p>原因：T升高→声子散射增强→平均自由程减小→需要更强的电场才能触发电离</p>
 <p>② 齐纳击穿：V_BR随温度升高而减小（负温度系数）</p>
 <p>原因：T升高→禁带宽度减小→隧穿概率增大</p>
-<div class="warn"><strong>考试常考</strong>：正向电压的负温度系数（-2mV/°C）是温度传感器（如带隙基准电压源）的基础。</div>`},
+<div class="warn"><strong>考试常考</strong>：正向电压的负温度系数（-2mV/°C）是温度传感器（如带隙基准电压源）的基础。</div><div class="tip"><strong>通俗理解</strong>：PN结对温度非常敏感——正向压降随温度升高而降低（约-2mV/°C），反向电流随温度升高而急剧增大（约每升高10°C翻倍）。这就是为什么半导体器件需要散热设计。</div>`},
 {n:"PN结的瞬态特性",s:"★★★☆☆",body:`<p><strong>正向→反向的开关过程</strong>：</p>
 <div class="formula-box">阶段1：存储延迟期（0 < t < t_s）<br>正向存储电荷被反向电流抽取<br>I_R 恒定，V仍为正向（约+0.7V）<br>t_s = τ·ln[(I_F+I_R)/I_R]<br><br>阶段2：过渡期（t_s < t < t_f）<br>存储电荷清除完毕，耗尽层开始展宽<br>V从+0.7V下降到-V_R<br>t_f ≈ τ·ln(2ΔV/0.1)（ΔV为电压变化）<br><br>总反向恢复时间：t_rr = t_s + t_f</div>
 <p><strong>反向恢复电荷</strong>：</p>
@@ -1311,7 +1311,7 @@ kg:{nodes:[
 <p><strong>关键关系</strong>：<br>• V_BR ∝ N_B^(-3/4)（掺杂越高→击穿电压越低）<br>• V_BR ∝ E_g^(3/2)（宽禁带→高击穿电压）<br>• 击穿时最大电场 E_max ≈ E_c（临界击穿场）</p>
 <p><strong>击穿时的耗尽层宽度</strong>：</p>
 <div class="formula-box">W_BR = 2ε_s·V_BR/(qN_B)<br>= 2ε_s·E_c/(qN_B)（用E_c表示）</div>
-<div class="warn"><strong>易错</strong>：齐纳击穿（V_BR < 5V）机制是量子隧穿，与雪崩击穿机制不同。齐纳击穿的温度系数为负（V_BR随T升高而降低），雪崩击穿为正。</div>`},
+<div class="warn"><strong>易错</strong>：齐纳击穿（V_BR < 5V）机制是量子隧穿，与雪崩击穿机制不同。齐纳击穿的温度系数为负（V_BR随T升高而降低），雪崩击穿为正。</div><div class="tip"><strong>通俗理解</strong>：击穿就像“堤坝崩溃”——反向电压增大到一定程度，耗尽区电场强到足以把价带电子直接拽到导带（齐纳击穿），或加速电子到能撞击产生新载流子（雪崩击穿），电流突然暴增。</div>`},
 {n:"PN结的反向恢复过程",s:"★★★★☆",exam:1,body:`<p><strong>反向恢复</strong>：PN结从正向偏置突然切换到反向偏置时，反向电流不会立即消失，而是先有很大的反向尖峰电流，然后逐渐衰减。</p>
 <div class="formula-box">反向恢复时间：t_rr = t_a + t_b<br>t_a = 存储电荷被抽取的时间<br>t_b = 耗尽层建立时间<br><br>反向恢复电荷：Q_rr = ∫i_r·dt<br>t_rr ≈ τ·ln(1 + I_F/I_R)（近似）</div>
 <p><strong>物理过程</strong>：<br>1. 正偏时：扩散区存储了大量少子（存储电荷Q_s）<br>2. 突然反偏：外电路抽取存储电荷→大的反向电流<br>3. 存储电荷被耗尽→反向电流衰减<br>4. 耗尽层建立→达到稳态反向电流</p>
@@ -1324,7 +1324,7 @@ kg:{nodes:[
 <div class="formula-box">I_s ∝ n_i² ∝ T³·exp(-E_g/kT)<br><br>温度每升高10°C，I_s增大约2倍<br>（经验法则：I_s(T+10) ≈ 2·I_s(T)）</div>
 <p><strong>击穿电压的温度依赖性</strong>：</p>
 <div class="formula-box">雪崩击穿（V_BR > 5V）：<br>dV_BR/dT > 0（正温度系数）<br>T↑→声子增多→散射增强→需更高电压达到雪崩<br><br>齐纳击穿（V_BR < 5V）：<br>dV_BR/dT < 0（负温度系数）<br>T↑→E_g↓→隧穿更容易→击穿电压降低</div>
-<div class="warn"><strong>考研必考</strong>：正向电压随温度升高而降低（约-2mV/°C），可用于温度传感器和温度补偿电路。</div>`},
+<div class="warn"><strong>考研必考</strong>：正向电压随温度升高而降低（约-2mV/°C），可用于温度传感器和温度补偿电路。</div><div class="tip"><strong>通俗理解</strong>：PN结的温度特性可以用一句话概括：正向压降随温度线性下降，反向电流随温度指数增大。低温时击穿以齐纳机制为主（负温度系数），高温时以雪崩机制为主（正温度系数），工程上利用这个特点做温度补偿。</div>`},
 {n:"PN结的功率损耗与散热",s:"★★★☆☆",body:`<p><strong>PN结功率损耗</strong>：</p>
 <div class="formula-box">直流功率损耗：<br>P = V_F × I_F（正偏）<br>P = V_R × I_R ≈ V_R × I_s（反偏，很小）<br><br>开关功率损耗（高频时重要）：<br>P_sw = ½ × V_R × I_F × (t_r + t_f) × f_sw<br>f_sw = 开关频率</div>
 <p><strong>散热设计</strong>：</p>
@@ -1364,7 +1364,7 @@ kg:{nodes:[
 <div class="formula-box">功函数 W = E₀ - E_F<br>E₀：真空能级<br>E_F：费米能级<br><br>电子亲和能 χ（半导体）：<br>χ = E₀ - E_c<br>（从导带底到真空能级）<br><br>Si: χ ≈ 4.05 eV, W_Si ≈ 4.6 eV<br>GaAs: χ ≈ 4.07 eV, W_GaAs ≈ 4.7 eV<br><br>金属功函数（典型值）：<br>Al: 4.28 eV, Au: 5.1 eV, Pt: 5.65 eV<br>Mo: 4.6 eV, Ti: 4.33 eV</div>
 <p><strong>N型半导体</strong>：W_S = χ + (E_c - E_F) = χ + E_n</p>
 <p><strong>P型半导体</strong>：W_S = χ + E_g - E_p，其中E_p = E_F - E_v</p>
-<div class="warn"><strong>注意</strong>：功函数不是固定值！金属功函数受表面状态影响；半导体功函数随掺杂浓度变化（费米能级位置改变）。</div>`},
+<div class="warn"><strong>注意</strong>：功函数不是固定值！金属功函数受表面状态影响；半导体功函数随掺杂浓度变化（费米能级位置改变）。</div><div class="tip"><strong>通俗理解</strong>：功函数就像把电子从金属/半导体里“拽出来”需要的最小力气——金属的费米能级到真空能级的差距。亲和能则是把电子从导带底拽到真空需要的能量。两者之差决定了金属和半导体接触时的能带弯曲方向。</div>`},
 {n:"肖特基势垒（金属-N型半导体）",s:"★★★★★",exam:1,body:`<p><strong>肖特基势垒</strong>：金属与N型半导体接触时，在半导体表面形成的势垒。</p>
 <div class="formula-box">情况1：W_m > W_s（如Au-Si）<br>电子从半导体流向金属→半导体表面带正电<br>→ 能带向上弯曲 → 形成势垒<br><br>势垒高度：<br>Φ_Bn = W_m - χ（理想情况）<br>Φ_Bn = W_m - W_s + E_n（实际）<br><br>情况2：W_m < W_s（如Al-Si）<br>电子从金属流向半导体→能带向下弯曲<br>→ 形成反阻挡层（积累型）</div>
 <p><strong>能带图分析</strong>：</p>
@@ -1376,23 +1376,23 @@ kg:{nodes:[
 <p>① n > 1：界面态和镜像力降低效应导致n=1.02~1.10</p>
 <p>② 串联电阻效应：大电流时I ∝ exp(qV/nkT)偏离指数关系</p>
 <p>③ 反向泄漏：实际反向电流大于理论值（隧穿、边缘效应）</p>
-<div class="info">肖特基二极管的势垒高度约为0.5-0.8eV（Si），正向导通电压约0.3-0.5V，低于PN结。</div>`},
+<div class="info">肖特基二极管的势垒高度约为0.5-0.8eV（Si），正向导通电压约0.3-0.5V，低于PN结。</div><div class="tip"><strong>通俗理解</strong>：肖特基二极管利用金属-半导体接触的势垒来整流——正向偏压降低势垒，电流指数增长；反向偏压升高势垒，几乎无电流。与PN结不同的是，肖特基势垒主要由多数载流子导电，开关速度极快。</div>`},
 {n:"镜像力降低效应",s:"★★★★☆",exam:1,body:`<p><strong>镜像力</strong>：金属-半导体界面处，电子在金属中感应出的镜像电荷对电子产生吸引力，降低了势垒高度。</p>
 <div class="formula-box">镜像势能：<br>V_image(x) = -q²/(16πε_s·x)<br><br>势垒降低量：<br>ΔΦ = √[qE_max/(4πε_s)]<br>E_max = √[2qN_D(V_bi-V)/ε_s]<br><br>典型值：<br>ΔΦ ≈ 0.05-0.1 V<br><br>有效势垒高度：<br>Φ_Beff = Φ_Bn - ΔΦ<br>反向偏压增大→E_max增大→ΔΦ增大→Φ_Beff减小<br>→ 反向电流增大</div>
 <p><strong>物理意义</strong>：镜像力使最高势垒位置向金属-半导体界面移动。在强电场下，势垒的最高点不是在界面，而是在半导体内部约几nm处。</p>
-<div class="warn"><strong>影响</strong>：镜像力降低效应是实际肖特基二极管反向泄漏电流较大的主要原因之一。</div>`},
+<div class="warn"><strong>影响</strong>：镜像力降低效应是实际肖特基二极管反向泄漏电流较大的主要原因之一。</div><div class="tip"><strong>通俗理解</strong>：电子靠近金属表面时，会在金属内感应出一个“镜像正电荷”，两者之间产生吸引力。这个力降低了有效势垒高度，就像有人在你翻墙时从另一边拉了你一把，让你更容易翻过去。</div>`},
 {n:"界面态的影响",s:"★★★★☆",exam:1,body:`<p><strong>界面态</strong>：金属-半导体界面处存在的局域电子态，来源于悬挂键、缺陷、杂质等。</p>
 <div class="formula-box">界面态密度：D_it（cm⁻²·eV⁻¹）<br><br>费米能级钉扎效应：<br>当D_it很大时，势垒高度与金属功函数无关：<br>Φ_Bn ≈ 常数 ≈ 2/3·E_g（Si）<br><br>Bardeen极限（高界面态密度）：<br>Φ_Bn = E_g/χ_p - δ（与W_m无关）<br><br>实验观察：<br>Si: Φ_Bn ≈ 0.5-0.8 eV（几乎与W_m无关）<br>GaAs: Φ_Bn ≈ 0.8 eV（强钉扎）</div>
 <p><strong>费米能级钉扎</strong>：当界面态密度很高（D_it > 10¹³ cm⁻²·eV⁻¹）时，费米能级被界面态"钉住"在某个位置，改变金属功函数对势垒高度几乎没有影响。</p>
 <p><strong>解释</strong>：界面态作为电荷库，吸收了由金属功函数差引起的多余电荷，维持费米能级位置不变。</p>
-<div class="info">GaAs的表面态密度很高（~10¹³ cm⁻²·eV⁻¹），费米能级被钉扎在禁带中央附近，这使得制造好的肖特基接触和欧姆接触都很困难。</div>`},
+<div class="info">GaAs的表面态密度很高（~10¹³ cm⁻²·eV⁻¹），费米能级被钉扎在禁带中央附近，这使得制造好的肖特基接触和欧姆接触都很困难。</div><div class="tip"><strong>通俗理解</strong>：界面态就是半导体表面“断裂”的化学键留下的悬挂键——它们像一个个“陷阱”，可以捕获或释放电子，钉扎费米能级，改变肖特基势垒高度。这就是为什么实际器件的特性偏离理想模型。</div>`},
 {n:"肖特基二极管与PN结二极管对比",s:"★★★★★",exam:1,body:`<table class="cmp"><tr><th>特征</th><th>肖特基二极管</th><th>PN结二极管</th></tr><tr><td>载流子</td><td>多子热发射</td><td>少子扩散</td></tr><tr><td>少子存储</td><td>无</td><td>有</td></tr><tr><td>开关速度</td><td>极快（~ns）</td><td>慢（~μs）</td></tr><tr><td>正向压降</td><td>低（0.3-0.5V）</td><td>较高（0.6-0.7V）</td></tr><tr><td>反向恢复</td><td>无</td><td>有（存储延迟）</td></tr><tr><td>反向漏电</td><td>较大</td><td>较小</td></tr><tr><td>温度稳定性</td><td>较差</td><td>较好</td></tr></table>
 <div class="tip"><strong>考研重点对比</strong>：肖特基二极管是多子器件，无少子存储→快速开关；PN结是少子器件→有扩散电容和反向恢复。</div>`},
 {n:"欧姆接触",s:"★★★★★",exam:1,body:`<p><strong>欧姆接触</strong>：金属与半导体接触形成的非整流接触，接触电阻极小，电流可双向通过。</p>
 <div class="formula-box">实现条件：<br>① N型：W_m < W_s（形成积累层）<br>② P型：W_m > W_s（形成积累层）<br><br>实际制备方法：<br>① 高掺杂隧道接触（最常用）<br>N_D > 10¹⁹ cm⁻³ → 势垒极窄 → 隧穿<br><br>② 选择合适金属<br>N型GaAs：AuGeNi合金<br>P型Si：Al<br>N型Si：TiSi₂, NiSi</div>
 <p><strong>接触电阻</strong>：</p>
 <div class="formula-box">比接触电阻 ρ_c（Ω·cm²）：<br><br>热发射：ρ_c ∝ exp(Φ_B/kT)<br><br>隧穿（高掺杂）：<br>ρ_c ∝ exp(Φ_B/(E₀))<br>E₀ = (ℏ/2)·√(qN_D/(m*ε_s))<br><br>ρ_c 随 N_D 增大指数下降</div>
-<div class="info">现代CMOS工艺中，硅化物（TiSi₂、CoSi₂、NiSi）与重掺杂Si形成良好的欧姆接触，ρ_c < 10⁻⁷ Ω·cm²。</div>`},
+<div class="info">现代CMOS工艺中，硅化物（TiSi₂、CoSi₂、NiSi）与重掺杂Si形成良好的欧姆接触，ρ_c < 10⁻⁷ Ω·cm²。</div><div class="tip"><strong>通俗理解</strong>：欧姆接触就是“进出自由”的电极——电流可以双向流通，没有整流效应，接触电阻尽可能小。实现方法：要么用重掺杂使势垒极薄（电子隧穿过去），要么选择合适的金属使势垒本来就很低。</div>`},
 {n:"肖特基势垒的电流输运机制",s:"★★★☆☆",body:`<p><strong>四种电流输运机制</strong>：</p>
 <p>① <strong>热电子发射（TE）</strong>：载流子越过势垒顶部。适用于势垒区宽度 >> 平均自由程的情况。</p>
 <div class="formula-box">J_TE = A*T²·exp(-Φ_B/kT)·[exp(qV/kT)-1]</div>
@@ -1429,7 +1429,7 @@ kg:{nodes:[
 <div class="formula-box">① 金属硅化物（Silicide）工艺：<br>Ti + Si → TiSi₂（自对准硅化物，salicide）<br>Ni + Si → NiSi（先进节点）<br>Co + Si → CoSi₂<br><br>工艺流程：金属溅射→高温退火（400-800°C）→去除未反应金属<br><br>② 重掺杂+金属：<br>离子注入B或P→退火激活→沉积金属<br>→ 隧穿形成低接触电阻<br><br>ρ_c 可达 < 10⁻⁷ Ω·cm²</div>
 <p><strong>III-V族的欧姆接触</strong>：</p>
 <div class="formula-box">GaAs N型：AuGeNi合金<br>Ge在GaAs中是浅施主（高掺杂）<br>800°C合金化后形成低势垒接触<br><br>GaAs P型：AuZn或AuBe<br>Zn在GaAs中是浅受主<br><br>GaN N型：Ti/Al/Ni/Au<br>Ti与GaN反应形成TiN→低势垒<br><br>GaN P型：Ni/Au或NiO/Au<br>功函数匹配</div>
-<div class="warn"><strong>工艺关键</strong>：欧姆接触的质量直接影响器件的串联电阻。在功率器件中，接触电阻过大→局部发热→烧毁。因此ρ_c < 10⁻⁶ Ω·cm²是基本要求。</div>`},
+<div class="warn"><strong>工艺关键</strong>：欧姆接触的质量直接影响器件的串联电阻。在功率器件中，接触电阻过大→局部发热→烧毁。因此ρ_c < 10⁻⁶ Ω·cm²是基本要求。</div><div class="tip"><strong>通俗理解</strong>：Si上做欧姆接触的标准方法是：先在表面重掺杂形成N+或P+层，再蒸镀金属（如Al/Si合金），快速退火形成合金。关键是让接触电阻率小于10的负6次方欧姆平方厘米，否则接触电阻会主导器件总电阻。</div>`},
 {n:"金属-半导体接触的电场分布",s:"★★★☆☆",body:`<p><strong>肖特基势垒区的电场</strong>：</p>
 <div class="formula-box">耗尽层近似下的电场：<br>E(x) = qN_D(W-x)/ε_s<br><br>W = √[2ε_s(V_bi-V)/(qN_D)]<br><br>最大电场（x=0，界面处）：<br>E_max = √[2qN_D(V_bi-V)/ε_s]<br><br>势垒区中的电位分布：<br>V(x) = E_max·W·(1-x/W)²/2<br><br>耗尽层宽度随偏压变化：<br>正偏→W减小→势垒降低<br>反偏→W增大→势垒升高</div>
 <p><strong>与PN结的对比</strong>：</p>
@@ -1460,7 +1460,7 @@ kg:{nodes:[
 <p>① <strong>本征表面态</strong>：理想清洁表面的悬挂键态</p>
 <p>② <strong>外征表面态</strong>：氧化物/界面缺陷引起的态</p>
 <p><strong>费米能级钉扎</strong>：高密度表面态会将费米能级钉扎在禁带中央附近（类似界面态对肖特基势垒的影响）。对于Si/SiO₂系统，高质量热氧化可以将表面态密度降到10¹⁰ cm⁻²·eV⁻¹以下。</p>
-<div class="info">半导体表面物理和MOS器件的发展关键在于降低表面态密度。热氧化SiO₂是最重要的突破。</div>`},
+<div class="info">半导体表面物理和MOS器件的发展关键在于降低表面态密度。热氧化SiO₂是最重要的突破。</div><div class="tip"><strong>通俗理解</strong>：晶体表面是原子排列“戛然而止”的地方——表面原子缺少邻居，化学键断裂形成悬挂键。这些悬挂键就是表面态的来源，它们会在禁带中引入额外的电子态，像“陷阱”一样捕获电子。</div>`},
 {n:"MIS结构的能带图",s:"★★★★★",exam:1,body:`<svg viewBox="0 0 500 250" style="display:block;margin:10px auto;max-width:100%;background:rgba(255,255,255,0.03);border-radius:8px;border:1px solid rgba(255,255,255,0.08)" xmlns="http://www.w3.org/2000/svg">
 <defs><style>text{font-family:sans-serif}</style></defs>
 <text x="250" y="16" font-size="11" fill="#333" text-anchor="middle" font-weight="bold">MIS Band Bending (P-type Si)</text>
@@ -1554,7 +1554,7 @@ kg:{nodes:[
 <p>② <strong>tox增大</strong>→ C_ox减小 → V_T增大</p>
 <p>③ <strong>Q_ox增大</strong>（正电荷）→ V_T减小</p>
 <p>④ <strong>Φ_ms</strong>取决于金属和衬底掺杂</p>
-<div class="warn"><strong>考试重点</strong>：V_T公式的推导过程。关键步骤：①画能带图确定φ_s = 2φ_F ②计算耗尽层电荷Q_dep ③利用高斯定理列V_ox ④累加各项。</div>`},
+<div class="warn"><strong>考试重点</strong>：V_T公式的推导过程。关键步骤：①画能带图确定φ_s = 2φ_F ②计算耗尽层电荷Q_dep ③利用高斯定理列V_ox ④累加各项。</div><div class="tip"><strong>通俗理解</strong>：强反型就像“翻转身份”——在P型半导体表面加足够大的正电压，把表面的空穴全部赶走并吸引大量电子，使得表面电子浓度超过体内空穴浓度。此时表面看起来像N型，沟道可以导电了。</div>`},
 {n:"积累层、耗尽层、反型层",s:"★★★★★",exam:1,body:`<p><strong>三种表面积累状态详解</strong>（以P型Si为例）：</p>
 <p><strong>积累层</strong>（V < V_FB）：</p>
 <div class="formula-box">表面多子（空穴）积累<br>表面电阻率低于体内<br>表面态密度高<br>半导体表面呈p⁺特征<br>耗尽层宽度 = 0</div>
@@ -1562,7 +1562,7 @@ kg:{nodes:[
 <div class="formula-box">多子被排斥，留下固定电荷<br>耗尽层宽度：W = √[2ε_sφ_s/(qN_A)]<br>耗尽层电荷：Q_dep = qN_A·W<br>半导体表面电阻率高<br>耗尽层宽度受偏压调控</div>
 <p><strong>反型层</strong>（V > V_T）：</p>
 <div class="formula-box">少子（电子）在表面形成n型薄层<br>反型层厚度：~几nm~几十nm<br>反型层电荷：Q_inv = C_ox·(V_G - V_T)<br><br>弱反型：φ_F < φ_s < 2φ_F<br>强反型：φ_s = 2φ_F<br>深耗尽：φ_s >> 2φ_F（非平衡态）</div>
-<div class="warn"><strong>易混淆</strong>：深耗尽和强反型的区别。强反型是平衡态（少子产生率=复合率），需要足够的少子积累时间。深耗尽是瞬态（少子来不及产生），耗尽层可以比平衡时更宽。</div>`},
+<div class="warn"><strong>易混淆</strong>：深耗尽和强反型的区别。强反型是平衡态（少子产生率=复合率），需要足够的少子积累时间。深耗尽是瞬态（少子来不及产生），耗尽层可以比平衡时更宽。</div><div class="tip"><strong>通俗理解</strong>：积累层是“堆人”——多数载流子在表面堆积；耗尽层是“清场”——多数载流子被赶走，只剩固定离子；反型层是“变脸”——表面类型从P变N（或反之）。MOS器件的工作就依赖这三个状态的切换。</div>`},
 {n:"MIS结构的C-V特性",s:"★★★★★",exam:1,body:`<p><strong>C-V特性</strong>：MIS结构的电容随偏压变化的曲线，是表征MOS器件最重要的实验方法。</p>
 <div class="formula-box">总电容（串联模型）：<br>1/C = 1/C_ox + 1/C_s<br>C_ox = ε_ox/tox（氧化层电容）<br>C_s = 半导体表面空间电荷层电容<br><br>C/C_ox = 1/(1 + C_ox/C_s)</div>
 <p><strong>低频C-V曲线</strong>：</p>
@@ -1583,7 +1583,7 @@ kg:{nodes:[
 <div class="formula-box">温度偏压应力（BTS）实验：<br>加高温+偏压→可动离子迁移→C-V偏移<br>通过偏移量计算可动离子面密度</div>
 <p><strong>④ 深耗尽C-V</strong>：</p>
 <div class="formula-box">快速扫描→少子来不及产生<br>→ 耗尽层超过W_max<br>→ C继续降低到C_min以下<br>→ 停止后慢慢恢复到平衡C-V</div>
-<div class="info">高频C-V法可测量：氧化层厚度tox、掺杂浓度N_A、平带电压V_FB、氧化层电荷密度Q_ox/ε_ox、界面态密度N_it。</div>`},
+<div class="info">高频C-V法可测量：氧化层厚度tox、掺杂浓度N_A、平带电压V_FB、氧化层电荷密度Q_ox/ε_ox、界面态密度N_it。</div><div class="tip"><strong>通俗理解</strong>：C-V曲线就像“MOS结构的体检报告”——不同偏压下电容的变化反映了耗尽层厚度和载流子浓度的信息。通过C-V曲线可以提取氧化层厚度、掺杂浓度、平带电压等关键参数。</div>`},
 {n:"MOSFET基本结构与工作原理",s:"★★★★★",exam:1,body:`<p><strong>MOSFET（Metal-Oxide-Semiconductor FET）</strong>：利用MIS结构的反型层作为导电沟道的场效应晶体管。</p>
 <div class="formula-box">N沟道MOSFET：<br>P型Si衬底 + N⁺源/漏极 + SiO₂ + 金属栅<br><br>工作原理：<br>V_GS > V_T → P型表面反型为n型<br>→ 形成n型导电沟道（连接源和漏）<br>V_DS > 0 → 电子从源到漏 → 漏极电流I_D<br><br>截止条件：V_GS < V_T → 无沟道 → I_D ≈ 0</div>
 <p><strong>I-V特性</strong>（长沟道模型）：</p>
@@ -1594,7 +1594,7 @@ kg:{nodes:[
 <p><strong>增强型与耗尽型</strong>：</p>
 <p>① <strong>增强型</strong>（normally-off）：V_T > 0（NMOS），V_GS = 0时无沟道</p>
 <p>② <strong>耗尽型</strong>（normally-on）：V_T < 0（NMOS），V_GS = 0时已有沟道</p>
-<div class="info">现代CMOS工艺使用离子注入精确控制V_T，使NMOS的V_T ≈ 0.3-0.4V，PMOS的V_T ≈ -0.3~-0.4V。</div>`},
+<div class="info">现代CMOS工艺使用离子注入精确控制V_T，使NMOS的V_T ≈ 0.3-0.4V，PMOS的V_T ≈ -0.3~-0.4V。</div><div class="tip"><strong>通俗理解</strong>：阈值电压是MOS管“开门”的最小电压。调控手段包括：改变氧化层厚度（影响栅控能力）、改变掺杂浓度（影响耗尽层电荷）、加离子注入调表面浓度。就像调门的弹簧松紧和门锁高度。</div>`},
 {n:"亚阈值特性与亚阈值摆幅",s:"★★★★☆",exam:1,body:`<p><strong>亚阈值区</strong>（V_GS < V_T）：弱反型区，MOSFET并未完全关断，仍有微小的漏电流。</p>
 <div class="formula-box">亚阈值电流：<br>I_sub ∝ exp[q(V_GS-V_T)/(nkT)]<br><br>n = 1 + C_dep/C_ox ≈ 1.2-1.5<br>C_dep = ε_s/W_dep<br><br>亚阈值摆幅（SS）：<br>SS = (dV_GS/d(log₁₀I_D)) = n·(kT/q)·ln(10)<br><br>室温下理论极限：<br>SS_min = n·60 mV/dec ≈ 60-90 mV/dec<br>（理想n=1时为60mV/dec）</div>
 <p><strong>SS的意义</strong>：SS描述关断时电流下降的速度。SS越小，器件开关特性越好。</p>
@@ -1602,7 +1602,7 @@ kg:{nodes:[
 <p>① <strong>tox增大</strong>→ C_ox减小 → n增大 → SS增大（变差）</p>
 <p>② <strong>界面态</strong>→ 等效增大n → SS增大</p>
 <p>③ <strong>DIBL效应</strong>→ V_BR引起额外亚阈值泄漏</p>
-<div class="warn"><strong>重要限制</strong>：SS的Boltzmann极限（60mV/dec）是传统MOSFET的固有限制。隧穿FET（TFET）可以突破此限制。</div>`},
+<div class="warn"><strong>重要限制</strong>：SS的Boltzmann极限（60mV/dec）是传统MOSFET的固有限制。隧穿FET（TFET）可以突破此限制。</div><div class="tip"><strong>通俗理解</strong>：亚阈值区是MOS管“半开半关”的状态——电压低于阈值但仍有微小电流。亚阈值摆幅SS描述“关”得多干净——SS越小，从开到关的切换越锐利，就像开关越灵敏越好。</div>`},
 {n:"短沟道效应",s:"★★★★☆",exam:1,body:`<p><strong>短沟道效应</strong>：MOSFET沟道长度缩短到亚微米以下时出现的各种非理想效应。</p>
 <p><strong>① 阈值电压的沟道长度依赖性</strong>：</p>
 <div class="formula-box">L减小 → 源漏耗尽层扩展到沟道下方<br>→ 有效耗尽层电荷减少<br>→ V_T降低（V_T roll-off）<br><br>ΔV_T ∝ exp(-L/(2l_t))<br>l_t = √(ε_s·tox·x_dep/ε_ox)（特征长度）</div>
@@ -1611,7 +1611,7 @@ kg:{nodes:[
 <p><strong>③ 穿通（Punch-through）</strong>：源漏耗尽层相连→电流无法关断。</p>
 <p><strong>④ 速度饱和</strong>：短沟道中电场极强，载流子速度饱和，I_D ∝ (V_GS-V_T)（不再是平方关系）。</p>
 <p><strong>⑤ 热载流子效应</strong>：高能载流子注入栅氧化层→可靠性问题。</p>
-<div class="info">应对短沟道效应的技术：高κ栅介质（减小EOT）、FinFET三维结构、应变硅（提高迁移率）、超薄体SOI等。</div>`},
+<div class="info">应对短沟道效应的技术：高κ栅介质（减小EOT）、FinFET三维结构、应变硅（提高迁移率）、超薄体SOI等。</div><div class="tip"><strong>通俗理解</strong>：短沟道就像把水管缩得很短——源极和漏极的电场开始互相干扰，栅极对沟道的控制力减弱。结果是阈值电压降低、漏电流增大、热载流子效应加剧。这是先进制程面临的最大挑战之一。</div>`},
 {n:"MOSFET的频率特性",s:"★★★☆☆",body:`<p><strong>截止频率f_T</strong>：电流增益等于1的频率，标志器件可以工作的最高频率。</p>
 <div class="formula-box">f_T = g_m/(2πC_gs)<br><br>g_m = dI_D/dV_GS = μ_nC_ox(W/L)(V_GS-V_T)<br>C_gs ≈ (2/3)·W·L·C_ox（饱和区）<br><br>简化：<br>f_T ≈ μ_n(V_GS-V_T)/(2πL²)<br>∝ 1/L²（沟道越短越快）</div>
 <p><strong>提高频率的方法</strong>：</p>
@@ -1692,7 +1692,7 @@ kg:{nodes:[
 <div class="formula-box">ΔE_c = χ₁ - χ₂（材料1导带更高时取正）<br>ΔE_v = ΔE_g - ΔE_c<br>ΔE_g = E_g₂ - E_g₁<br><br>例：Al₀.₃Ga₀.₇As/GaAs<br>χ(GaAs) = 4.07 eV<br>χ(Al₀.₃Ga₀.₇As) ≈ 3.74 eV<br>ΔE_c = 0.33 eV<br>ΔE_g = 1.80 - 1.42 = 0.38 eV<br>ΔE_v = 0.38 - 0.33 = 0.05 eV</div>
 <p><strong>能带偏移比</strong>：ΔE_c/ΔE_g和ΔE_v/ΔE_g是设计异质结器件的关键参数。</p>
 <div class="formula-box">Al_xGa_{1-x}As/GaAs系统：<br>ΔE_c ≈ 0.6·ΔE_g（导带承担60%偏移）<br>ΔE_v ≈ 0.4·ΔE_g<br><br>In_xGa_{1-x}As/GaAs系统：<br>ΔE_c ≈ 0.65·ΔE_g</div>
-<div class="warn"><strong>Anderson模型的局限</strong>：实际异质结的ΔE_c不一定等于χ₁-χ₂。界面偶极、化学键合等因素会影响偏移量。实验数据通常更可靠。更精确的方法需要第一性原理计算。</div>`},
+<div class="warn"><strong>Anderson模型的局限</strong>：实际异质结的ΔE_c不一定等于χ₁-χ₂。界面偶极、化学键合等因素会影响偏移量。实验数据通常更可靠。更精确的方法需要第一性原理计算。</div><div class="tip"><strong>通俗理解</strong>：Anderson模型就像拼图——两种半导体贴在一起时，它们的真空能级对齐，然后各自带隙的差异分配给导带偏移和价带偏移。偏移量之差就是带隙之差。</div>`},
 {n:"同型异质结与反型异质结",s:"★★★★☆",body:`<p><strong>反型异质结</strong>（如n-AlGaAs/p-GaAs）：</p>
 <div class="formula-box">类似PN结，但有能带不连续性<br>ΔE_c和ΔE_v在界面形成"台阶"<br><br>注入效率：<br>γ = J_n/(J_n+J_p)<br>由于ΔE_c > ΔE_v（通常），<br>电子注入势垒 < 空穴注入势垒<br>→ 电子注入效率远高于空穴<br>→ γ → 1（高注入效率）</div>
 <p><strong>同型异质结</strong>（如n-AlGaAs/n-GaAs）：</p>
@@ -1707,7 +1707,7 @@ kg:{nodes:[
 <p><strong>2DEG的态密度</strong>：</p>
 <div class="formula-box">三维态密度：g(E) ∝ E^(1/2)<br>二维态密度：g₂D = m*/(πℏ²)（阶梯函数）<br>一维态密度：g₁D ∝ E^(-1/2)<br>零维态密度：δ函数（量子点）</div>
 <p><strong>2DEG的输运特性</strong>：<br>① 迁移率极高（调制掺杂后无杂质散射）<br>② 量子霍尔效应（整数量子霍尔效应在2DEG中发现）<br>③ 磁阻振荡（Shubnikov-de Haas效应）</p>
-<div class="info">量子霍尔效应中，霍尔电导率量子化为σ_xy = n·e²/h，精确到10⁻⁹。被用作电阻标准。</div>`},
+<div class="info">量子霍尔效应中，霍尔电导率量子化为σ_xy = n·e²/h，精确到10⁻⁹。被用作电阻标准。</div><div class="tip"><strong>通俗理解</strong>：二维电子气就像把电子关在一个极薄的“夹心饼干”里——电子在垂直方向被限制在几个纳米厚的量子阱中无法自由运动，但在平面内可以自由移动。这种低维结构产生了极高的电子迁移率。</div>`},
 {n:"调制掺杂与异质结载流子输运",s:"★★★★☆",body:`<p><strong>调制掺杂</strong>：只在宽带隙侧掺杂，窄带隙侧保持本征。载流子通过扩散越过异质结界面，被三角势阱俘获形成2DEG。</p>
 <div class="formula-box">调制掺杂的优势：<br>• 2DEG远离电离杂质→杂质散射极弱<br>• 低温迁移率可达10⁶ cm²/(V·s)<br>• 室温迁移率也显著高于同浓度体材料<br><br>2DEG面浓度：<br>n_s ≈ (ε/d)·(V_bi - V_g - ΔE_c/q)<br>d = 掺杂层厚度</div>
 <p><strong>DX中心的影响</strong>：在AlGaAs中（x > 0.22），施主形成DX中心→低温下电子被DX中心俘获→2DEG浓度下降→"persistent photoconductivity"效应。</p>
@@ -1723,7 +1723,7 @@ kg:{nodes:[
 <p><strong>量子阱态密度</strong>：每个子能带的态密度为台阶函数（2D态密度）。</p>
 <div class="formula-box">2D态密度（每子能带）：<br>g₂D = m*/(πℏ²) = 常数（与能量无关）<br><br>总的态密度：台阶状上升<br>g(E) = Σ_n m*/(πℏ²)·H(E - E_n)</div>
 <p><strong>量子阱激光器的优势</strong>：<br>• 2D态密度→阈值电流低<br>• 子能级间距可调→波长可调<br>• 量子限制增强增益<br>• 温度稳定性好</p>
-<div class="warn"><strong>易错</strong>：量子阱的子能级间隔随阱宽d²反比→阱越窄间隔越大。典型GaAs/AlGaAs量子阱（d=10nm）：E₁-E₂ ≈ 100meV。</div>`},
+<div class="warn"><strong>易错</strong>：量子阱的子能级间隔随阱宽d²反比→阱越窄间隔越大。典型GaAs/AlGaAs量子阱（d=10nm）：E₁-E₂ ≈ 100meV。</div><div class="tip"><strong>通俗理解</strong>：量子阱就像一个“量子游泳池”——电子被限制在有限宽度的阱中，能量不再是连续的，而是分成一格一格的子能级。阱越窄，能级间距越大，就像游泳池越窄水波频率越高。</div>`},
 {n:"超晶格与微带特性",s:"★★★★☆",body:`<p><strong>超晶格</strong>：两种不同半导体材料交替生长形成的周期性多层结构，周期（d = d_A + d_B）通常为几nm~几十nm。</p>
 <div class="formula-box">当d >> 原子间距时：<br>形成"微带"（miniband）<br>微隙（minigap）分隔微带<br><br>微带宽度：<br>ΔE ∝ exp(-κd)<br>d = 势垒宽度<br>κ = 势垒中的衰减常数<br><br>微带中心间距：<br>δE = π²ℏ²/(2m*(a+b)²)</div>
 <p><strong>超晶格的输运特性</strong>：</p>
@@ -1737,11 +1737,11 @@ kg:{nodes:[
 {n:"GaN基半导体异质结",s:"★★★★★",exam:1,body:`<p><strong>GaN基异质结</strong>的特殊性：强极化效应（自发极化+压电极化）。</p>
 <div class="formula-box">AlGaN/GaN异质结中的极化效应：<br>自发极化：P_SP(GaN) ≈ -0.029 C/m²<br>P_SP(AlN) ≈ -0.081 C/m²<br><br>压电极化：<br>P_PZ = 2·a₁·(ε_xx - ε_zz·C₁₃/C₃₃)<br><br>净界面极化电荷：<br>σ = P₂ - P₁ > 0（AlGaN/GaN）<br>→ 吸引电子形成高密度2DEG<br>n_s ~ 10¹³ cm⁻²（无需掺杂！）</div>
 <p><strong>GaN异质结的优势</strong>：<br>• 2DEG浓度比GaAs高一个数量级<br>• GaN击穿场强高→高功率应用<br>• 耐高温（>500°C）</p>
-<div class="info">GaN HEMT是5G基站和雷达的核心功率放大器器件，功率密度可达10 W/mm以上，远超GaAs和Si LDMOS。</div>`},
+<div class="info">GaN HEMT是5G基站和雷达的核心功率放大器器件，功率密度可达10 W/mm以上，远超GaAs和Si LDMOS。</div><div class="tip"><strong>通俗理解</strong>：GaN/AlGaN异质结的独特之处在于界面处有极强的压电极化和自发极化效应——不需要故意掺杂就能在界面产生高浓度2DEG。这使得GaN器件在功率和射频领域有巨大优势。</div>`},
 {n:"异质结双极型晶体管(HBT)",s:"★★★★☆",exam:1,body:`<p><strong>HBT</strong>（Heterojunction Bipolar Transistor）：发射结为异质结的双极型晶体管。</p>
 <div class="formula-box">基本结构（Npn型）：<br>N-AlGaAs发射极 / p-GaAs基极 / n-GaAs集电极<br><br>电流增益：<br>β = J_nB/J_pE = (D_n/L_n·n²_iB)/(D_p/L_p·n²_iE)·(N_E/N_B)<br><br>利用ΔE_v增大β：<br>β(HBT)/β(HBT) ∝ exp(ΔE_v/kT)<br>ΔE_v ≈ 0.3eV → β增强~10⁵倍</div>
 <p><strong>HBT优势</strong>：<br>• 基极可重掺杂（高f_T）而不损失注入效率<br>• 高f_T × 高BV_CEO → 高功率高频性能<br>• 低基极电阻→低噪声</p>
-<div class="info">SiGe HBT已实现f_T > 500 GHz。GaAs HBT是手机功率放大器的主流技术。</div>`},
+<div class="info">SiGe HBT已实现f_T > 500 GHz。GaAs HBT是手机功率放大器的主流技术。</div><div class="tip"><strong>通俗理解</strong>：HBT就像“升级版三极管”——发射极用宽带隙材料（如AlGaAs），基极用窄带隙材料（如GaAs）。这样发射结注入效率极高，即使基区重掺杂也能保持高电流增益，同时降低基区电阻，提高工作频率。</div>`},
 {n:"半导体异质结量子阱的电子态",s:"★★★★☆",body:`<p><strong>量子阱中的电子态</strong>：当窄带隙层厚度d与德布罗意波长可比时，电子运动被量子化。</p>
 <div class="formula-box">束缚态条件：<br>d > d_min（最小阱宽）<br>对于GaAs/AlGaAs：d_min ~ 1-2 nm<br><br>子能级能量：<br>E_n = n²π²ℏ²/(2m*L²)（无限深阱近似）<br><br>量子阱中的允许跃迁：<br>Δn = 0（选择定则）<br>如：E₁₁→E₁₁, E₂₂→E₂₂</div>
 <p><strong>量子阱的光谱特征</strong>：<br>• 吸收边呈阶梯状（2D态密度特征）<br>• 激子吸收峰在低温下很尖锐<br>• 量子限制Stark效应：电场下峰位移动</p>
@@ -1787,13 +1787,13 @@ kg:{nodes:[
 <p><strong>间接跃迁</strong>：导带底和价带顶在k空间不同位置（Si、Ge）。</p>
 <div class="formula-box">需要声子参与（满足动量守恒）：<br>Δk = k_声子<br>hν = E_g ± E_phonon<br><br>三粒子过程 → 概率低 → α小<br>α ~ 10²~10³ cm⁻¹</div>
 <table class="cmp"><tr><th>材料</th><th>带隙类型</th><th>α(cm⁻¹)</th><th>LED/激光</th></tr><tr><td>GaAs</td><td>直接</td><td>~10⁴</td><td>高效</td></tr><tr><td>Si</td><td>间接</td><td>~10³</td><td>效率低</td></tr><tr><td>Ge</td><td>间接</td><td>~10³</td><td>效率低</td></tr><tr><td>GaN</td><td>直接</td><td>~10⁵</td><td>蓝光LED</td></tr></table>
-<div class="info">Si是间接带隙，难以高效发光，这是硅光子学面临的主要挑战。</div>`},
+<div class="info">Si是间接带隙，难以高效发光，这是硅光子学面临的主要挑战。</div><div class="tip"><strong>通俗理解</strong>：直接跃迁就像“直上直下”——电子在k空间不变位置直接跳到导带，动量守恒自动满足。间接跃迁则需要“借力”——电子同时吸收一个光子和一个声子（晶格振动量子），动量才能守恒，所以概率低得多。</div>`},
 {n:"吸收系数与光子能量的定量关系",s:"★★★★★",exam:1,body:`<p><strong>直接带隙半导体</strong>的吸收系数：</p>
 <div class="formula-box">α(hν) = A·(hν - E_g)^(1/2)（hν > E_g）<br>A ≈ 10⁴~10⁵ cm⁻¹<br><br>GaAs(直接)：α ~ 10⁴ cm⁻¹（hν ≈ E_g）<br>典型吸收深度 ~ 1/α ≈ 1 μm</div>
 <p><strong>间接带隙半导体</strong>的吸收系数：</p>
 <div class="formula-box">α(hν) = B·(hν - E_g ± E_ph)²（hν > E_g）<br>E_ph = 声子能量<br>+E_ph: 发射声子（更可能）<br>-E_ph: 吸收声子（需热激发）<br>B ~ 10²~10³ cm⁻¹<br><br>Si(间接)：α ~ 10² cm⁻¹（hν ≈ E_g）<br>吸收深度 ~ 10-100 μm</div>
 <table class="cmp"><tr><th>材料</th><th>类型</th><th>α @ 带边</th><th>吸收深度</th></tr><tr><td>GaAs</td><td>直接</td><td>~10⁴ cm⁻¹</td><td>~1μm</td></tr><tr><td>Si</td><td>间接</td><td>~10² cm⁻¹</td><td>~100μm</td></tr><tr><td>Ge</td><td>间接</td><td>~10³ cm⁻¹</td><td>~10μm</td></tr></table>
-<div class="warn"><strong>易错</strong>：Si在300nm以下波长（UV）时吸收系数可达10⁶ cm⁻¹——间接带隙只在带边附近吸收弱，短波长时直接跃迁也参与。</div>`},
+<div class="warn"><strong>易错</strong>：Si在300nm以下波长（UV）时吸收系数可达10⁶ cm⁻¹——间接带隙只在带边附近吸收弱，短波长时直接跃迁也参与。</div><div class="tip"><strong>通俗理解</strong>：吸收系数描述光进入半导体后“衰减多快”——光子能量刚超过带隙时吸收弱（需要动量匹配），随着能量增大吸收急剧增强（就像打开了一扇越来越大的窗户）。直接带隙材料的吸收比间接带隙强几个数量级。</div>`},
 {n:"激子吸收与激子效应",s:"★★★★☆",body:`<p><strong>激子</strong>（Exciton）：光激发产生的电子-空穴对通过库仑引力束缚在一起，形成的类氢束缚态。</p>
 <div class="formula-box">激子结合能：<br>E_ex = m_r·q⁴/(2ε²ℏ²n²) = Ry*/n²<br>m_r = m_e·m_h/(m_e+m_h)（约化质量）<br><br>Si: E_ex ≈ 15 meV<br>GaAs: E_ex ≈ 4 meV<br>Cu₂O: E_ex ≈ 150 meV（大，可观察Rydberg系列）</div>
 <p><strong>激子吸收光谱</strong>：在带边以下出现一系列尖锐的吸收峰（对应n=1,2,3...束缚态），峰间距收敛于E_g。</p>
@@ -1814,11 +1814,11 @@ kg:{nodes:[
 <p><strong>内量子效率</strong>：</p>
 <div class="formula-box">η_int = R_rad/(R_rad + R_non-rad)<br>= 1/(1 + τ_rad/τ_nr)<br><br>直接带隙：τ_rad ~ 1ns → η_int ≈ 90%+<br>间接带隙：τ_rad ~ 1μs → η_int < 10%</div>
 <p><strong>发光效率的提升</strong>：<br>• 量子阱限制→提高辐射复合速率<br>• 减少缺陷→降低非辐射复合<br>• 调制掺杂→减小载流子-杂质复合</p>
-<div class="info">电致发光激发机构：正向注入（LED）、雪崩碰撞（ACL）、热载流子注入、场致发光等。</div>`},
+<div class="info">电致发光激发机构：正向注入（LED）、雪崩碰撞（ACL）、热载流子注入、场致发光等。</div><div class="tip"><strong>通俗理解</strong>：发光就是“跃迁的逆过程”——导带电子掉回价带与空穴复合，释放的能量变成光子。直接带隙材料发光效率高（GaAs LED），间接带隙材料需要声子参与，大部分能量变成了热（Si几乎不发光）。</div>`},
 {n:"LED效率的详细分析",s:"★★★★★",exam:1,body:`<p><strong>LED效率的三个层次</strong>：</p>
 <div class="formula-box">内量子效率（IQE）：<br>η_i = R_rad/(R_rad + R_nr)<br><br>提取效率（EE）：<br>η_ext = 光子逃逸概率<br>~ 1/(4n²)（全内反射限制）<br>n_r(GaAs)=3.6 → η_ext ~ 2%（未处理）<br><br>外量子效率（EQE）：<br>η_ext = η_i × η_extract × η_injection</div>
 <p><strong>提高提取效率的方法</strong>：<br>• 表面粗化（破坏全内反射）<br>• 倒装芯片结构<br>• 光子晶体<br>• 透明衬底（去除吸收衬底）</p>
-<div class="warn"><strong>考试常问</strong>：LED效率的两个关键因素——内量子效率（材料和结构）和光取出效率（几何和光学设计）。</div>`},
+<div class="warn"><strong>考试常问</strong>：LED效率的两个关键因素——内量子效率（材料和结构）和光取出效率（几何和光学设计）。</div><div class="tip"><strong>通俗理解</strong>：LED效率由三步决定：注入效率（多少电流变成载流子）、内量子效率（多少载流子复合产生光子）、提取效率（多少光子逃出芯片）。每一步都有损失，目前最好的LED三者乘积可达80%以上。</div>`},
 {n:"发光材料与波长选择",s:"★★★☆☆",body:`<p><strong>LED/Laser材料选择</strong>：</p>
 <div class="formula-box">发光波长：λ = hc/E_g = 1.24/E_g(μm)<br><br>GaAs (1.43eV): λ ≈ 870nm（近红外）<br>GaN (3.4eV): λ ≈ 365nm（紫外）<br>InGaN: 通过In含量调节E_g（蓝/绿光）</div>
 <p><strong>三元/四元合金</strong>：</p>
@@ -1830,11 +1830,11 @@ kg:{nodes:[
 <p><strong>半导体激光器结构</strong>：</p>
 <div class="formula-box">① 双异质结（DH）结构：<br>n-AlGaAs / p-GaAs（有源层）/ p-AlGaAs<br>载流子限制 + 光限制（折射率差形成波导）<br><br>② 谐振腔：两个解理面（反射率≈32%）<br><br>③ 阈值条件：<br>g_th = α_i + (1/2L)·ln(1/R₁R₂)</div>
 <p><strong>阈值电流密度</strong>：J_th ≈ 100-500 A/cm²（室温连续工作）</p>
-<div class="info">量子阱激光器的有源层厚度仅~10nm，利用量子限制效应进一步降低阈值电流。DFB激光器使用光栅实现单纵模工作，是光纤通信的首选光源。</div>`},
+<div class="info">量子阱激光器的有源层厚度仅~10nm，利用量子限制效应进一步降低阈值电流。DFB激光器使用光栅实现单纵模工作，是光纤通信的首选光源。</div><div class="tip"><strong>通俗理解</strong>：激光器需要三个条件：增益（受激辐射放大）、谐振腔（光在两端面来回反射形成驻波）、粒子数反转（导带电子多于价带空穴）。就像一个“声音放大器”——话筒加扬声器反馈等于声学振荡（激光）。</div>`},
 {n:"半导体激光器的增益与阈值条件",s:"★★★★★",exam:1,body:`<p><strong>光增益</strong>：受激辐射产生的光子数大于吸收消耗的光子数→光放大。</p>
 <div class="formula-box">增益系数：<br>g(hν) = (πq²)/(n_r·c·ε₀m₀²ω)·|M|²·ρ_r(hν)·(f_c - f_v)<br><br>关键条件（粒子数反转）：<br>f_c(E₂) > f_v(E₁)<br><br>阈值条件：<br>α_m + α_i = Γ·g_th<br>α_m = 镜面损耗 = (1/L)·ln(1/R)<br>Γ = 光场限制因子</div>
 <div class="formula-box">阈值电流密度：<br>J_th = J₀ + (α_m + α_i)/(Γ·a)<br><br>GaAs DH激光器：J_th ~ 1-3 kA/cm²<br>GaAs QW激光器：J_th ~ 100-500 A/cm²<br>GaN激光器：J_th ~ 1-5 kA/cm²</div>
-<div class="warn"><strong>易错</strong>：粒子数反转≠n_e > n_h。正确条件是：导带态占据概率f_c > 价带态占据概率f_v。对于重掺杂简并半导体，即使n_e < n_h也能实现反转。</div>`},
+<div class="warn"><strong>易错</strong>：粒子数反转≠n_e > n_h。正确条件是：导带态占据概率f_c > 价带态占据概率f_v。对于重掺杂简并半导体，即使n_e < n_h也能实现反转。</div><div class="tip"><strong>通俗理解</strong>：阈值条件是“得失平衡”——光在腔内来回一次获得的增益必须刚好补偿损失（吸收+散射+透射）。电流低于阈值时只有自发辐射（像灯泡），超过阈值后受激辐射占主导，光强急剧增加。</div>`},
 {n:"光致发光与阴极荧光",s:"★★★★☆",body:`<p><strong>光致发光（PL）</strong>：激光/单色光激发半导体→产生非平衡载流子→复合→发射光。</p>
 <div class="formula-box">PL光谱分析：<br>峰位置→带隙/缺陷能级信息<br>峰宽度→温度/掺杂/合金均匀性<br>峰强度→辐射复合效率<br><br>PL谱的常见峰：<br>• FE：自由激子<br>• BE：束缚激子<br>• D-A：施主-受主对<br>• Defect：缺陷相关</div>
 <p><strong>阴极荧光（CL）</strong>：用聚焦电子束（SEM）激发→空间分辨率极高的发光成像。</p>
@@ -1844,7 +1844,7 @@ kg:{nodes:[
 <div class="formula-box">结构：P⁺-I-N⁺<br>I层（本征层）为光吸收区<br>耗尽层宽→高量子效率<br><br>响应度：<br>R = η·q/(hν) = η·λ(μm)/1.24<br><br>GaAs PIN @ 850nm:<br>η ≈ 80%, R ≈ 0.55 A/W</div>
 <p><strong>雪崩光电二极管（APD）</strong>：</p>
 <div class="formula-box">在高反偏下工作<br>光生载流子触发电离→雪崩倍增<br>增益 M = 1/(1-(V/V_BR)^n)<br>R_APD = M·R_PIN</div>
-<table class="cmp"><tr><th>特征</th><th>PIN</th><th>APD</th></tr><tr><td>增益</td><td>1</td><td>10-100</td></tr><tr><td>噪声</td><td>低</td><td>较高</td></tr><tr><td>偏压</td><td>低（<20V）</td><td>高（>50V）</td></tr><tr><td>应用</td><td>短距通信</td><td>长距通信</td></tr></table>`},
+<table class="cmp"><tr><th>特征</th><th>PIN</th><th>APD</th></tr><tr><td>增益</td><td>1</td><td>10-100</td></tr><tr><td>噪声</td><td>低</td><td>较高</td></tr><tr><td>偏压</td><td>低（<20V）</td><td>高（>50V）</td></tr><tr><td>应用</td><td>短距通信</td><td>长距通信</td></tr></table><div class="tip"><strong>通俗理解</strong>：光电探测器就是“反着用的LED”——光照在反偏PN结上产生电子-空穴对，被电场扫过耗尽层形成光电流。关键指标是响应度（每个光子产生多少电子）和带宽（能检测多快的信号）。</div>`},
 {n:"光纤通信半导体材料",s:"★★★☆☆",body:`<p><strong>光纤通信波段</strong>：三个低损耗窗口。</p>
 <div class="formula-box">① 850nm（第一窗口）<br>多模光纤，损耗~2dB/km<br>光源：GaAlAs/GaAs激光器<br>探测器：Si PIN/APD<br><br>② 1310nm（第二窗口）<br>单模光纤，零色散<br>光源：InGaAsP/InP激光器<br><br>③ 1550nm（第三窗口）<br>单模光纤，最低损耗0.2dB/km<br>光源：InGaAsP DFB激光器<br>探测器：InGaAs PIN/APD</div>
 <div class="info">1550nm波段是长距离光纤通信的核心波段，InGaAsP/InP材料体系几乎垄断了这一领域。</div>`},
@@ -1885,7 +1885,7 @@ kg:{nodes:[
 <div class="formula-box">N型半导体：<br>S = -(k/q)·[(E_c-E_F)/kT + A]<br>A ≈ 2-4（取决于散射机制）<br>S < 0<br><br>P型半导体：<br>S = (k/q)·[(E_F-E_v)/kT + A]<br>S > 0<br><br>高温（本征激发）：<br>S = -(k/q)·[(E_g/2kT) + (3/4)·ln(m_p*/m_n*)]</div>
 <p><strong>两种载流子的温差电动势率</strong>：</p>
 <div class="formula-box">同时存在电子和空穴时：<br>S = (σ_n·S_n + σ_p·S_p)/(σ_n + σ_p)<br><br>本征半导体：σ_n ≈ σ_p<br>→ S ≈ (k/q)·(3/4)·ln(m_p*/m_n*)<br>→ S很小（正负抵消）</div>
-<div class="warn"><strong>易错</strong>：本征半导体的塞贝克系数很小，因为电子和空穴贡献相反。好的热电材料需要掺杂使S_n或S_p占主导。</div>`},
+<div class="warn"><strong>易错</strong>：本征半导体的塞贝克系数很小，因为电子和空穴贡献相反。好的热电材料需要掺杂使S_n或S_p占主导。</div><div class="tip"><strong>通俗理解</strong>：塞贝克效应就像“温差发电”——半导体两端温度不同时，载流子从热端向冷端扩散，产生电压。塞贝克系数描述每度温差能产生多少电压，它取决于载流子类型和浓度，是热电材料的核心参数。</div>`},
 {n:"帕尔帖效应与热电制冷",s:"★★★★☆",body:`<p><strong>帕尔帖效应</strong>：电流通过两种不同导体的结时，结处产生吸热或放热现象。</p>
 <div class="formula-box">帕尔帖系数：<br>Π = S·T<br><br>帕尔帖热功率：<br>Q = Π·I = S·T·I<br><br>制冷效率（COP）：<br>COP = Q_c/W = Q_c/(Q_h - Q_c)<br>Q_c = 冷端吸热量<br>Q_h = 热端放热量</div>
 <p><strong>热电制冷器（TEC）</strong>：<br>• 多对P-N热电偶串联<br>• 冷端降温，热端散热<br>• 最大温差：ΔT_max ~ 70K（Bi₂Te₃）</p>
@@ -1912,7 +1912,7 @@ kg:{nodes:[
 {n:"帕尔帖效应与热电制冷应用",s:"★★★★☆",exam:1,body:`<p><strong>帕尔帖制冷器</strong>的优化设计：</p>
 <div class="formula-box">制冷量：Q_c = Π·I - ½I²R - K·ΔT<br>Π = S_p-S_n（温差电动势率差）<br>R = 总电阻<br>K = 总热导<br><br>最大制冷温差：<br>ΔT_max = (ZT+1)/2 · T_c<br>ZT = S²σT/κ<br><br>最大制冷效率：<br>COP_max = (T_c/ΔT)·(√(1+ZT)-T_h/T_c)/(√(1+ZT)+1)</div>
 <p><strong>热电制冷器设计原则</strong>：<br>• 冷端温度T_c越低→效率越低→需要多级级联<br>• 高ZT材料→高COP<br>• 低热导率→减少热泄漏<br>• 优化几何形状→L/A比最优</p>
-<div class="info">商业TEC（热电制冷器）通常使用Bi₂Te₃材料，单级最大温差约70K，多级可达150K以上。</div>`},
+<div class="info">商业TEC（热电制冷器）通常使用Bi₂Te₃材料，单级最大温差约70K，多级可达150K以上。</div><div class="tip"><strong>通俗理解</strong>：帕尔帖效应是塞贝克效应的“反面”——给两种不同半导体的接头通电，一侧吸热（变冷）另一侧放热（变热）。就像冰箱的压缩机，但没有运动部件。通过控制电流大小就能精确控温，广泛用于激光器和芯片散热。</div>`},
 {n:"塞贝克系数的散射机制依赖性",s:"★★★☆☆",body:`<p><strong>散射机制对塞贝克系数的影响</strong>：</p>
 <div class="formula-box">散射因子A的取值：<br>声学波散射（非简并）：A = 2<br>电离杂质散射：A = 4<br>光学波散射：A ≈ 0-2<br><br>总塞贝克系数：<br>S = -(k/q)[(E_c-E_F)/kT + A]</div>
 <p><strong>简并半导体的塞贝克系数</strong>：</p>
@@ -1958,7 +1958,7 @@ kg:{nodes:[
 <div class="formula-box">设N型半导体，电场E_x，磁场B_z<br><br>平衡条件（洛伦兹力=电场力）：<br>qE_y = qv_dB_z<br><br>霍尔系数：R_H = E_y/(J_x·B_z)<br>= 1/(qn)（N型）<br>= -1/(qp)（P型）<br><br>霍尔角：tan(θ_H) = μ·B_z<br><br>霍尔迁移率：μ_H = |R_H|·σ = |R_H|/ρ</div>
 <p><strong>例题</strong>：Si样品，N_D=10¹⁶cm⁻³，μ_n=1400cm²/(V·s)，B=1kG=0.1T</p>
 <div class="formula-box">R_H = 1/(qn) = 1/(1.6×10⁻¹⁹×10¹⁶)<br>= 625 cm³/C<br><br>ρ = 1/(qnμ) = 0.446 Ω·cm<br><br>μ_H = 625/0.446 = 1400 cm²/(V·s)</div>
-<div class="warn"><strong>易错</strong>：霍尔系数的符号决定导电类型（R_H>0→P型，R_H<0→N型）。霍尔迁移率与漂移迁移率不总相等（多载流子时有霍尔因子r_H）。</div>`},
+<div class="warn"><strong>易错</strong>：霍尔系数的符号决定导电类型（R_H>0→P型，R_H<0→N型）。霍尔迁移率与漂移迁移率不总相等（多载流子时有霍尔因子r_H）。</div><div class="tip"><strong>通俗理解</strong>：霍尔效应的定量计算需要考虑载流子类型和散射机制——霍尔系数R_H=-1/(nq)或+1/(pq)取决于导电类型，实际测量中还需乘以霍尔因子（约1.18，与散射机制有关）。应用包括：判断导电类型、测载流子浓度、判断材料纯度。</div>`},
 {n:"霍尔系数的温度依赖性",s:"★★★★★",exam:1,body:`<p><strong>N型半导体R_H(T)的三段变化</strong>：</p>
 <div class="formula-box">低温（冻结区）：<br>n ↑ → |R_H| ↓<br><br>饱和区：<br>n ≈ N_D → R_H ≈ -r_H/(qN_D) = 常数<br><br>本征区：<br>n ≈ p ≈ n_i → R_H趋于0<br>且R_H符号反转（N型→R_H变正）</div>
 <p><strong>霍尔因子r_H</strong>：</p>
@@ -2024,7 +2024,7 @@ kg:{nodes:[
 {n:"压阻效应的晶体取向依赖性",s:"★★★★☆",exam:1,body:`<p><strong>压阻系数的各向异性</strong>：</p>
 <div class="formula-box">Si的压阻系数（10⁻¹¹Pa⁻¹）：<br>p-Si [111]：π_l = +93.5（最灵敏）<br>n-Si [100]：π_l = -102.2<br>p-Si [100]：π_l = +6.6<br>n-Si [111]：π_l = -47.8</div>
 <p><strong>设计选择</strong>：<br>• p型Si[111]：最大纵向压阻→最灵敏传感器<br>• 力传感器芯片通常沿[110]方向制作电阻条</p>
-<div class="warn"><strong>易错</strong>：不同参考文献的压阻系数符号约定可能不同。</div>`},
+<div class="warn"><strong>易错</strong>：不同参考文献的压阻系数符号约定可能不同。</div><div class="tip"><strong>通俗理解</strong>：压阻效应就是“用力按半导体，电阻会变”。但变化幅度取决于力的方向与晶体方向的相对关系——就像掰一根木头，顺着纹理和横着纹理效果完全不同。Si的[110]方向压阻系数最大，所以MOS管通常沿这个方向设计。</div>`},
 {n:"压阻传感器的工作原理",s:"★★★★☆",body:`<p><strong>惠斯通电桥压阻传感器</strong>：</p>
 <div class="formula-box">V_out/V_in = ΔR/R = π_l·σ/4<br><br>灵敏度：S = V_out/(V_in·σ) = π_l/4</div>
 <p><strong>MEMS压力传感器</strong>：<br>• 量程：1kPa ~ 100MPa<br>• 精度：0.1-0.5% FS</p>
@@ -2052,7 +2052,7 @@ kg:{nodes:[
 <div class="formula-box">扩展态 vs 局域态：<br>• 扩展态：波函数遍布整个晶体（类Bloch波）<br>• 局域态：波函数指数衰减→电子被"困住"<br><br>迁移率边（mobility edge）：<br>E_c和E_v定义了扩展态和局域态的边界<br>E_c以上：扩展态（可导电）<br>E_v以下：扩展态<br>E_v到E_c之间：局域态（跳跃导电）</div>
 <p><strong>非晶半导体的能带模型</strong>（CFO模型）：</p>
 <div class="formula-box">能态分布：<br>• 带边不再是锐利的，而是向禁带中延伸出带尾态<br>• 禁带中央有高密度的缺陷态（悬挂键等）<br>• 带尾宽度 ~ 0.1-0.2 eV<br>• 缺陷态密度 ~ 10¹⁶-10¹⁸ cm⁻³eV⁻¹</div>
-<div class="warn"><strong>易错</strong>：非晶Si的迁移率远低于晶态Si（10²倍以上），因为缺乏长程有序→布洛赫定理不适用→能带概念需修正为"扩展态/局域态"。</div>`},
+<div class="warn"><strong>易错</strong>：非晶Si的迁移率远低于晶态Si（10²倍以上），因为缺乏长程有序→布洛赫定理不适用→能带概念需修正为"扩展态/局域态"。</div><div class="tip"><strong>通俗理解</strong>：非晶态半导体就像“打碎重组的玻璃”——原子排列失去了长程周期性，只有短程有序。电子状态不再是清晰的能带，而是出现了“带尾态”——禁带中长出了“毛刺”，载流子在这些局域态之间跳跃传导。</div>`},
 {n:"非晶半导体的化学键与缺陷",s:"★★★★☆",body:`<p><strong>非晶半导体的化学键</strong>：短程有序由化学键决定，长程无序来自键角和二面角的分布。</p>
 <div class="formula-box">a-Si的键结构：<br>• sp³杂化 → 四面体配位<br>• 键角分布：~109.5° ± 10°<br>• 键长：~2.35 Å（接近晶体值）<br><br>悬挂键（Dangling Bond）：<br>• 未配对电子 → 产生缺陷态<br>• 密度：未钝化 ~10¹⁹ cm⁻³<br>• 掺氢后：~10¹⁵-10¹⁶ cm⁻³</div>
 <p><strong>掺杂效应</strong>：</p>
@@ -2090,7 +2090,7 @@ kg:{nodes:[
 <div class="formula-box">Anderson模型：H = Σᵢ εᵢ| i><i| + Σ V_{ij}| i><j|<br>εᵢ随机分布，宽度W<br><br>定域化条件：<br>3D：W/V > ~16<br>2D：所有态都定域化<br>1D：所有态都定域化</div>
 <p><strong>迁移率边</strong>：E_c和E_v分隔扩展态和局域态。</p>
 <div class="formula-box">E > E_c：扩展态（可导电）<br>E_v < E < E_c：局域态（跳跃导电）<br>迁移率在E_c和E_v处突变</div>
-<div class="warn"><strong>易错</strong>：迁移率边处态密度不为零，但迁移率从有限值突变为零。</div>`},
+<div class="warn"><strong>易错</strong>：迁移率边处态密度不为零，但迁移率从有限值突变为零。</div><div class="tip"><strong>通俗理解</strong>：Anderson定域化说的是：当无序度足够强时，电子波函数不再能传播到整个晶体，而是被“困”在某个区域内，就像声音在嘈杂的房间里传不远。迁移能级（迁移率边）就是局域态和扩展态的分界线。</div>`},
 {n:"变程跳跃电导(VRH)",s:"★★★★☆",body:`<p><strong>Mott VRH</strong>：非晶半导体低温下的导电机制。</p>
 <div class="formula-box">σ = σ₀·exp(-(T₀/T)^(1/4))<br>T₀ = 18α³/(k·g(E_F))<br><br>ES VRH（低温库仑间隙）：<br>σ = σ₀·exp(-(T₀'/T)^(1/2))</div>
 <div class="tip"><strong>实验区分</strong>：lnσ vs T^{-1/4}（Mott）或T^{-1/2}（ES）的线性关系。</div>`},
